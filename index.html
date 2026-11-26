@@ -1,881 +1,456 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>HQuan.com</title>
 <style>
-:root{--bg:#05091a;--panel:#0b1530;--line:#214b85;--blue:#258cff;--cyan:#32e5ff;--purple:#a65cff}
-*{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at 20% 0%,#123b8055,transparent 40%),var(--bg);color:#edf6ff;font-family:Arial,sans-serif;min-height:100vh}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{--bg:#050a1c;--panel:#081333;--blue:#328bff;--cyan:#26d8ff;--purple:#a24bff;--gold:#ffc94d;--line:#1b49a0}
+body{background:radial-gradient(circle at 10% 20%,#123b8b44,transparent 38%),radial-gradient(circle at 90% 80%,#30206b33,transparent 35%),#030817;color:#fff;font-family:Arial, sans-serif;min-height:100vh;overflow-x:hidden}
 button,input,select,textarea{font:inherit}
-button{cursor:pointer;border:0;border-radius:10px;padding:12px 16px;background:linear-gradient(100deg,#1769e9,#19bfe9);color:white;font-weight:800}
-button:disabled{opacity:.55;cursor:not-allowed}
-button.secondary{background:#142746;border:1px solid #31577e;color:#d9edff}
-button.danger{background:#9c2946;color:white}
-input,select,textarea{width:100%;padding:13px;margin:7px 0 12px;border:1px solid #294c75;border-radius:10px;background:#071126;color:white;outline:none}
-input:focus,select:focus,textarea:focus{border-color:var(--cyan);box-shadow:0 0 12px #32e5ff30}
-textarea{min-height:90px;resize:vertical}
-header{position:sticky;top:0;z-index:20;background:#071126ee;border-bottom:1px solid #1d4780;backdrop-filter:blur(12px)}
-.head{max-width:1180px;margin:auto;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px}
-.brand{font-size:26px;font-weight:1000;letter-spacing:1px;background:linear-gradient(90deg,#fff,#48dfff,#a88cff);color:transparent;background-clip:text}
-.sub{font-size:11px;color:#9bb6d7;margin-top:4px}
-.wrap{max-width:1180px;margin:28px auto;padding:0 18px}
-.panel{background:linear-gradient(145deg,#101e3b,#091329);border:1px solid #204a79;border-radius:17px;padding:22px;margin-bottom:17px;box-shadow:0 10px 35px #0003}
-h1{font-size:27px;margin:0 0 9px}
-h2{font-size:19px;color:#65dfff;margin:0 0 13px}
-h3{font-size:15px;color:#b9d8ff;margin:18px 0 8px}
-p,.muted{color:#a6bad4;line-height:1.6}
-.small{font-size:12px;color:#91a9c6}
+button{cursor:pointer}
 .hidden{display:none!important}
-.status{padding:12px;border-radius:10px;background:#071126;border:1px solid #294a72;color:#b9eaff;white-space:pre-line;margin-top:10px;overflow-wrap:anywhere}
-.status.good{border-color:#1d9465;color:#8fffc6}
-.status.bad{border-color:#a93d54;color:#ffabb8}
-.device{padding:13px;border:1px dashed #3388c9;border-radius:10px;background:#061127;color:#5fe5ff;overflow-wrap:anywhere}
-.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
-.row>*{flex:1;min-width:130px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
-.stat{background:#071329;border:1px solid #1c426d;border-radius:12px;padding:16px}
-.stat b{display:block;color:#4bdfff;font-size:25px;margin-bottom:5px}
-.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px}
-.tabs button{background:#142746;border:1px solid #2b4e77}
-.tabs button.active{background:linear-gradient(100deg,#1769e9,#19bfe9)}
-.listitem{padding:14px;background:#071329;border:1px solid #1c426d;border-radius:12px;margin:9px 0;overflow-wrap:anywhere}
-.listitem b{color:#e9f7ff}
-.badge{display:inline-block;padding:4px 8px;border-radius:20px;background:#153a61;color:#7cddff;font-size:11px;font-weight:bold;margin:3px}
-.badge.green{background:#123b2e;color:#7effbd}
-.badge.red{background:#4a1d2c;color:#ff9bad}
-.livegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
-.livecard{background:#09172e;border:1px solid #245080;border-radius:14px;padding:14px;display:grid;grid-template-columns:75px 1fr;gap:12px}
-.livepic{height:75px;border-radius:11px;background:linear-gradient(145deg,#5035a0,#126b9c);display:grid;place-items:center;font-size:27px}
-.livecard h3{margin:0 0 5px;color:#fff}
-.livecard p{margin:4px 0;font-size:12px}
-.livecard button{grid-column:1/-1}
-footer{text-align:center;padding:30px;color:#617c9d;font-size:12px}
-@media(max-width:600px){.wrap{margin:17px auto;padding:0 11px}.panel{padding:17px}.head{padding:12px}.brand{font-size:22px}h1{font-size:23px}}
+.wrap{max-width:1120px;margin:auto;padding:0 16px}
+header{padding:17px 16px 13px;background:linear-gradient(110deg,#0b1f5e,#07112f 70%,#10176a);border-bottom:2px solid #1b49c8;box-shadow:0 5px 25px #126bff22}
+.head{max-width:1120px;margin:auto;display:flex;align-items:center;gap:13px}
+.logo{width:57px;height:57px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 40% 30%,#4aa0ff,#0c2c92);border:3px solid #5ab6ff;box-shadow:0 0 18px #2f8bff}
+.logo svg{width:28px}
+.brand h1{font-size:30px;font-weight:950;background:linear-gradient(#fff,#7fd6ff);color:transparent;background-clip:text;filter:drop-shadow(0 0 7px #2f8bff)}
+.brand p{font-size:11px;color:#dbe7ff;margin-top:4px}
+.status{display:inline-flex;align-items:center;gap:7px;border:1px solid #1d3f9a;background:#09163f;border-radius:30px;padding:5px 11px;margin-top:6px;color:#7dffb0;font-size:11px}
+.dot{width:7px;height:7px;border-radius:50%;background:#2ee86b;box-shadow:0 0 8px #2ee86b}
+.hero{padding:34px 0 24px;text-align:center}
+.eyebrow{color:#70caff;font-size:11px;letter-spacing:3px;font-weight:bold}
+.hero h2{font-size:clamp(32px,7vw,58px);font-weight:1000;margin:13px 0;background:linear-gradient(90deg,#fff,#64caff,#a98aff);color:transparent;background-clip:text;text-shadow:0 0 30px #238aff33}
+.hero p{color:#a9c2e9;font-size:14px;line-height:1.7;max-width:620px;margin:auto}
+.actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:22px}
+.btn{border:1px solid #438fff;border-radius:11px;padding:12px 18px;background:linear-gradient(100deg,#176bff,#12bfe8);color:#fff;font-weight:900;box-shadow:0 0 17px #168dff44}
+.btn.alt{background:#101d43;border-color:#315b9d}
+.btn.danger{background:linear-gradient(100deg,#9d2852,#e04d65);border-color:#ff7795}
+.btn:disabled{opacity:.55;cursor:wait}
+.section-title{font-size:19px;font-weight:900;margin:22px 0 12px}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.feature{padding:17px;border:1px solid #1b4c99;background:linear-gradient(145deg,#0d1c43,#070e24);border-radius:14px;box-shadow:inset 0 0 18px #167bff0d}
+.feature .emoji{font-size:25px}
+.feature b{display:block;margin:9px 0 5px}
+.feature p{color:#91a9d0;font-size:12px;line-height:1.6}
+.panel{border:1px solid #2878e8;border-radius:17px;background:linear-gradient(145deg,#101d43,#070e25);box-shadow:0 0 30px #176bff25;padding:20px}
+.gate{max-width:520px;margin:25px auto 50px}
+.panel-title{text-align:center;font-size:25px;font-weight:1000;background:linear-gradient(90deg,#36eaff,#a78bfa,#ff66bd);color:transparent;background-clip:text}
+.panel-sub{text-align:center;color:#9dbce9;font-size:11px;letter-spacing:2px;margin:7px 0 20px}
+.field{margin:13px 0}
+.field label{display:block;color:#67e5ff;font-weight:800;font-size:12px;margin-bottom:7px}
+.inp{width:100%;border:1px solid #235eae;border-radius:10px;background:#050d22;color:white;padding:13px;outline:none}
+.inp:focus{border-color:#38dfff;box-shadow:0 0 12px #168dff55}
+.inp::placeholder{color:#637da8}
+.full{width:100%;margin-top:9px}
+.note{padding:11px;border:1px solid #244b86;background:#07132d;color:#bdeaff;border-radius:9px;font-size:12px;line-height:1.6;margin-top:12px;overflow-wrap:anywhere}
+.small{text-align:center;color:#718bb6;font-size:10px;margin-top:15px}
+#gateView{padding:0 15px}
+#siteView{display:none}
+.topline{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 0;color:#a9c9ff;font-size:12px}
+.tabs{display:grid;grid-template-columns:1.6fr 1.2fr 1fr 1fr;gap:7px;margin:12px 0}
+.tab{height:59px;border:1px solid #2459a9;border-radius:10px;background:#091333;color:#d5e6ff;font-weight:900}
+.tab.active{background:linear-gradient(135deg,#2a6bff,#1a2fb0);border-color:#58b0ff;box-shadow:0 0 15px #2f6bff55}
+.tab.ruong{border-color:#8b4be0;color:#c9a0ff}
+.tab.tui{border-color:#1fd0c8;color:#8ff5ef}
+.tab.treo{border-color:#d19a1f;color:#ffc94d}
+.filters{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}
+.chip{border:1px solid #2459a9;border-radius:30px;background:#091233;color:#bcd8ff;padding:8px 13px;font-size:12px}
+.chip.active{background:#173c92;border-color:#58b0ff;color:white}
+.search{flex:1;min-width:130px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.stat{padding:12px;border:1px solid #17306f;border-radius:11px;background:#09112e;color:#a9c9ff;font-size:11px}
+.stat strong{display:block;color:#25b8ff;font-size:22px;margin-top:5px}
+.list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+.livecard{display:grid;grid-template-columns:80px 1fr;gap:12px;padding:12px;border:1px solid #2865c7;border-radius:13px;background:linear-gradient(135deg,#0b1744,#070f30)}
+.livepic{height:82px;border-radius:9px;background:linear-gradient(#1a0f48,#4a2a8a 55%,#14224a);display:grid;place-items:center;font-size:27px}
+.liveinfo{min-width:0}
+.liveinfo b{font-size:14px}
+.liveinfo p{font-size:11px;color:#9db8e6;margin-top:7px;line-height:1.5}
+.liveinfo .btn{padding:8px 12px;font-size:11px;margin-top:8px}
+.empty{text-align:center;color:#8fa6d8;padding:28px 10px;border:1px dashed #244b86;border-radius:12px;grid-column:1/-1;font-size:13px}
+.banner{margin:22px 0;padding:17px;border:1px solid #234f9d;border-radius:12px;background:linear-gradient(90deg,#140a38,#07102e 55%,#0a2a6a);color:#c9baff}
+nav{position:fixed;bottom:0;left:0;right:0;background:#050a1cf2;border-top:1px solid #17306f;z-index:20;backdrop-filter:blur(12px);padding-bottom:env(safe-area-inset-bottom)}
+.navinner{max-width:600px;margin:auto;height:59px;display:flex;align-items:center;justify-content:space-around}
+.navinner button{background:none;border:0;color:#a9c2e9;font-size:11px;display:grid;gap:3px;justify-items:center}
+.navinner button span{font-size:19px}
+.navinner button.active{color:#45aaff}
+.bottomspace{height:85px}
+#adminView{display:none;position:fixed;inset:0;z-index:50;overflow:auto;background:#030817f7;padding:16px}
+.adminbox{max-width:900px;margin:20px auto 50px}
+.adminhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:15px}
+.adminnav{display:flex;gap:7px;flex-wrap:wrap;margin:15px 0}
+.adminnav button{padding:9px 13px;border:1px solid #285a9f;border-radius:9px;background:#0a1736;color:#cce4ff;font-weight:bold;font-size:12px}
+.adminnav button.active{background:#174a9e;border-color:#4abaff}
+.adminsection{display:none}
+.adminsection.active{display:block}
+.adminlist{display:grid;gap:9px;margin-top:12px}
+.item{padding:13px;border:1px solid #244c89;border-radius:11px;background:#08152f;font-size:12px;overflow-wrap:anywhere}
+.item b{color:#73dfff}
+.item-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.item-actions button{padding:7px 10px;font-size:11px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+footer{text-align:center;color:#617ba5;font-size:10px;padding:20px 0 100px}
+@media(max-width:650px){
+ .wrap{padding:0 11px}.feature-grid{grid-template-columns:1fr}
+ .hero{padding:25px 0 17px}.hero p{font-size:12px}
+ .list{grid-template-columns:1fr}.tabs{gap:4px}
+ .tab{height:54px;font-size:12px}.panel{padding:16px}
+ .brand h1{font-size:26px}.stats{gap:6px}
+}
+@media(min-width:900px){.hero{padding:50px 0 30px}.gate{margin-top:38px}.feature{padding:22px}.livecard{grid-template-columns:100px 1fr}.livepic{height:100px}}
 </style>
 </head>
 <body>
 
 <header>
  <div class="head">
-  <div>
-   <div class="brand" id="siteName">HQuan.com</div>
-   <div class="sub">Hệ thống Live • Xác minh thiết bị • Quản trị</div>
+  <div class="logo">
+   <svg viewBox="0 0 24 24" fill="white"><path d="M21.5 3.2 2.6 10.5c-.9.4-.9 1.1-.2 1.3l4.8 1.5 1.9 5.9c.2.6.4.8.9.8s.7-.2 1-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.3-1.6z"/></svg>
   </div>
-  <button class="secondary" onclick="showLogin('admin')">ADMIN</button>
+  <div class="brand">
+   <h1>HQuan.com</h1>
+   <p>Hệ thống săn rương & tín hiệu Live</p>
+   <span class="status"><i class="dot"></i> HỆ THỐNG HQUAN</span>
+  </div>
  </div>
 </header>
 
-<main class="wrap">
-
-<!-- XÁC MINH THIẾT BỊ -->
-<section id="verifyPanel" class="panel">
- <h1>Xác minh thiết bị</h1>
- <p>Thiết bị cần được cấp quyền bằng KEY trước khi vào hệ thống.</p>
- <h2>Thiết bị của bạn</h2>
- <div class="device" id="deviceId">Đang tạo Device ID...</div>
- <div class="row">
-  <button class="secondary" onclick="copyDevice()">Sao chép Device ID</button>
-  <button class="secondary" onclick="showLogin('admin')">Đăng nhập Admin</button>
- </div>
- <h2 style="margin-top:22px">Nhập KEY truy cập</h2>
- <input id="keyInput" placeholder="Ví dụ: HQ-XXXXXXXX..." autocomplete="off">
- <button id="activateBtn" onclick="activateDevice()">XÁC MINH VÀO WEBSITE</button>
- <div class="status" id="verifyStatus">Trạng thái: Chưa được cấp quyền.</div>
- <p class="small">Nếu chưa có KEY, hãy liên hệ quản trị viên để được cấp quyền.</p>
-</section>
-
-<!-- TRANG CHỦ -->
-<section id="homePanel" class="hidden">
- <div class="panel">
-  <h1 id="welcomeTitle">Chào mừng đến với HQuan.com</h1>
-  <p id="announcement">Chào mừng bạn đến với hệ thống HQuan!</p>
-  <div class="grid">
-   <div class="stat"><b id="liveTotal">0</b><span class="small">Tổng Live</span></div>
-   <div class="stat"><b id="liveActive">0</b><span class="small">Đang hoạt động</span></div>
-   <div class="stat"><b id="deviceState">Đã xác minh</b><span class="small">Trạng thái thiết bị</span></div>
+<!-- TRANG NGOÀI -->
+<main id="gateView">
+ <section class="wrap">
+  <div class="hero">
+   <div class="eyebrow">WELCOME TO HQUAN SYSTEM</div>
+   <h2>HỆ THỐNG HQUAN</h2>
+   <p>Nền tảng theo dõi tín hiệu Live với giao diện trực quan, tối ưu trên điện thoại và máy tính. Vui lòng xác minh thiết bị bằng KEY để truy cập.</p>
+   <div class="actions">
+    <button class="btn" onclick="document.getElementById('keyPanel').scrollIntoView({behavior:'smooth'})">✦ KÍCH HOẠT KEY</button>
+    <button class="btn alt" onclick="openAdmin()">⚙ ADMIN</button>
+   </div>
   </div>
- </div>
+  <div class="feature-grid">
+   <div class="feature"><div class="emoji">🧰</div><b>RƯƠNG</b><p>Khu vực theo dõi tín hiệu rương và thông tin phiên Live.</p></div>
+   <div class="feature"><div class="emoji">🎒</div><b>TÚI</b><p>Phân loại tín hiệu theo từng nhóm nội dung.</p></div>
+   <div class="feature"><div class="emoji">⏳</div><b>TREO</b><p>Khu vực hiển thị các mục đang chờ cập nhật.</p></div>
+  </div>
+  <div class="gate panel" id="keyPanel">
+   <div class="panel-title">HQuan.com</div>
+   <div class="panel-sub">DEVICE AUTHENTICATION</div>
+   <div class="field"><label>DEVICE ID CỦA THIẾT BỊ</label><input class="inp" id="deviceId" readonly></div>
+   <button class="btn alt full" onclick="copyDevice()">▣ SAO CHÉP DEVICE ID</button>
+   <div class="field"><label>NHẬP KEY TRUY CẬP</label><input class="inp" id="keyInput" placeholder="HQ-XXXXXXXXXXXXXXXX" autocomplete="off"></div>
+   <button class="btn full" id="activateBtn" onclick="activateKey()">XÁC MINH VÀO WEBSITE</button>
+   <div class="note" id="gateMessage">Trạng thái: Chưa được cấp quyền.</div>
+   <div class="small">HQuan.com • Hệ thống xác minh thiết bị</div>
+  </div>
+ </section>
+</main>
 
- <div class="panel">
-  <div class="row">
-   <div><h2>Danh sách Live</h2><p class="small">Dữ liệu cập nhật từ máy chủ bot.</p></div>
-   <button class="secondary" onclick="loadFromBot()">Làm mới Live</button>
+<!-- TRANG TRONG -->
+<main id="siteView">
+ <div class="wrap">
+  <div class="topline"><span>✦ HỆ THỐNG LIVE</span><span id="memberStatus">Thiết bị đã xác minh</span></div>
+  <div class="tabs">
+   <button class="tab active" data-tab="all">✦ Tất cả<br><small id="countAll">(0)</small></button>
+   <button class="tab ruong" data-tab="ruong">🧰 Rương<br><small id="countRuong">(0)</small></button>
+   <button class="tab tui" data-tab="tui">🎒 Túi<br><small id="countTui">(0)</small></button>
+   <button class="tab treo" data-tab="treo">⏳ Treo<br><small id="countTreo">(0)</small></button>
   </div>
-  <div class="row">
-   <select id="liveFilter" onchange="renderLive()">
-    <option value="all">Tất cả Live</option>
-    <option value="ruong">Rương</option>
-    <option value="tui">Túi</option>
-    <option value="treo">Treo</option>
-   </select>
-   <input id="liveSearch" placeholder="Tìm tên / quốc gia..." oninput="renderLive()">
+  <div class="filters">
+   <button class="chip" data-filter="1">Ratio 1</button>
+   <button class="chip" data-filter="2">Ratio 2</button>
+   <button class="chip" data-filter="3">Ratio 3</button>
+   <button class="chip" data-filter="xu20">Xu ≥ 20</button>
+   <input class="inp search" id="searchInput" placeholder="Tìm kiếm...">
   </div>
-  <div class="status" id="botStatus">Đang kết nối bot...</div>
-  <div id="liveList" class="livegrid" style="margin-top:13px">
-   <div class="listitem">Đang tải dữ liệu...</div>
+  <div class="stats">
+   <div class="stat">TỔNG LIVE<strong id="totalLive">0</strong></div>
+   <div class="stat">TRẠNG THÁI<strong style="color:#ffc94d">ĐANG CHỜ API</strong></div>
   </div>
+  <div class="section-title">✦ Danh sách Live</div>
+  <div class="note">Giao diện Live đã sẵn sàng. Chưa kết nối API Live theo yêu cầu của bạn.</div>
+  <div class="list" id="liveList">
+   <div class="empty">Chưa kết nối dữ liệu Live.<br>Rương / Túi / Treo sẽ hiển thị tại đây khi tích hợp API.</div>
+  </div>
+  <div class="banner"><b>HQuan.com</b><br><small>Săn nhanh • Tối ưu • Hiệu quả</small></div>
  </div>
-
- <div class="panel">
-  <h2>Khu vực thành viên</h2>
-  <div class="row">
-   <button onclick="showLogin('ctv')">Đăng nhập CTV</button>
-   <button class="secondary" onclick="showLogin('admin')">Đăng nhập Admin</button>
-   <button class="secondary" onclick="logoutDevice()">Thoát thiết bị</button>
-  </div>
- </div>
-</section>
-
-<!-- ĐĂNG NHẬP ADMIN / CTV -->
-<section id="loginPanel" class="panel hidden">
- <h1 id="loginTitle">Đăng nhập</h1>
- <p id="loginDescription">Nhập thông tin tài khoản.</p>
- <input id="loginUser" placeholder="Tên đăng nhập" autocomplete="username">
- <input id="loginPass" type="password" placeholder="Mật khẩu" autocomplete="current-password">
- <div class="row">
-  <button id="loginButton" onclick="submitLogin()">ĐĂNG NHẬP</button>
-  <button class="secondary" onclick="backToVerifyOrHome()">Quay lại</button>
- </div>
- <div class="status" id="loginStatus"></div>
-</section>
+ <div class="bottomspace"></div>
+ <nav><div class="navinner">
+  <button class="active" onclick="showHome()"><span>⌂</span>Trang chủ</button>
+  <button onclick="selectTab('all')"><span>▶</span>Live</button>
+  <button onclick="showNotice()"><span>♢</span>Thông báo</button>
+  <button onclick="openAdmin()"><span>⚙</span>ADMIN</button>
+ </div></nav>
+</main>
 
 <!-- ADMIN -->
-<section id="adminPanel" class="hidden">
- <div class="panel">
-  <h1>TRUNG TÂM QUẢN TRỊ HQUAN</h1>
-  <p>Quản lý KEY, thiết bị, cộng tác viên và nội dung trang chủ.</p>
-  <div class="tabs">
-   <button class="active" data-tab="keys" onclick="adminTab('keys',this)">Quản lý KEY</button>
-   <button data-tab="devices" onclick="adminTab('devices',this)">Thiết bị</button>
-   <button data-tab="ctv" onclick="adminTab('ctv',this)">Cộng tác viên</button>
-   <button data-tab="settings" onclick="adminTab('settings',this)">Cài đặt web</button>
-   <button class="secondary" onclick="adminLogout()">Đăng xuất</button>
+<div id="adminView">
+ <div class="adminbox panel">
+  <div class="adminhead">
+   <div><div class="panel-title">HQuan ADMIN</div><div class="panel-sub">CONTROL CENTER</div></div>
+   <button class="btn alt" onclick="closeAdmin()">ĐÓNG ✕</button>
   </div>
- </div>
-
- <div id="admin-keys" class="panel adminTab">
-  <h2>Tạo KEY mới</h2>
-  <label class="small">Tên / ghi chú KEY</label>
-  <input id="keyLabel" placeholder="Ví dụ: Khách hàng A">
-  <div class="grid">
-   <div><label class="small">Thời hạn</label><input id="keyDuration" type="number" min="1" value="30"></div>
-   <div><label class="small">Đơn vị</label>
-    <select id="keyUnit">
-     <option value="minute">Phút</option><option value="hour">Giờ</option>
-     <option value="day" selected>Ngày</option><option value="month">Tháng</option>
-     <option value="permanent">Vĩnh viễn</option>
-    </select>
+  <div id="adminLogin">
+   <div class="field"><label>TÀI KHOẢN ADMIN</label><input class="inp" id="adminUser" placeholder="Username"></div>
+   <div class="field"><label>MẬT KHẨU ADMIN</label><input class="inp" id="adminPass" type="password" placeholder="Password"></div>
+   <button class="btn full" onclick="adminSignIn()">ĐĂNG NHẬP ADMIN</button>
+   <div class="note" id="adminLoginMessage">Đăng nhập bằng tài khoản đã cấu hình trong Cloudflare Worker.</div>
+  </div>
+  <div id="adminDashboard" class="hidden">
+   <div class="adminnav">
+    <button class="active" data-admin-tab="keys">QUẢN LÝ KEY</button>
+    <button data-admin-tab="devices">THIẾT BỊ</button>
+    <button data-admin-tab="ctv">CỘNG TÁC VIÊN</button>
+    <button data-admin-tab="settings">THÔNG BÁO WEB</button>
    </div>
-   <div><label class="small">Số thiết bị được phép</label><input id="keyDevices" type="number" min="1" value="1"></div>
+
+   <section class="adminsection active" id="admin-keys">
+    <div class="section-title">✦ Tạo KEY mới</div>
+    <div class="field"><label>TÊN / GHI CHÚ KEY</label><input class="inp" id="keyLabel" placeholder="Ví dụ: Khách hàng A"></div>
+    <div class="row2">
+     <div class="field"><label>THỜI HẠN</label><input class="inp" id="keyDuration" type="number" min="1" value="30"></div>
+     <div class="field"><label>ĐƠN VỊ</label><select class="inp" id="keyUnit"><option value="day">Ngày</option><option value="hour">Giờ</option><option value="minute">Phút</option><option value="month">Tháng</option><option value="permanent">Vĩnh viễn</option></select></div>
+    </div>
+    <div class="field"><label>SỐ THIẾT BỊ TỐI ĐA</label><input class="inp" id="keyMax" type="number" min="1" max="1000" value="1"></div>
+    <button class="btn full" onclick="createKey()">＋ TẠO KEY</button>
+    <div class="note" id="newKeyResult">KEY mới sẽ hiển thị tại đây.</div>
+    <div class="section-title">Danh sách KEY</div>
+    <button class="btn alt" onclick="loadKeys()">↻ TẢI DANH SÁCH</button>
+    <div class="adminlist" id="keyList"></div>
+   </section>
+
+   <section class="adminsection" id="admin-devices">
+    <div class="section-title">✦ Thiết bị đã kích hoạt</div>
+    <button class="btn alt" onclick="loadDevices()">↻ TẢI THIẾT BỊ</button>
+    <div class="adminlist" id="deviceList"></div>
+   </section>
+
+   <section class="adminsection" id="admin-ctv">
+    <div class="section-title">✦ Tạo tài khoản CTV</div>
+    <div class="field"><label>TÊN ĐĂNG NHẬP</label><input class="inp" id="ctvUser" placeholder="ten_ctv"></div>
+    <div class="field"><label>MẬT KHẨU</label><input class="inp" id="ctvPass" type="password" placeholder="Tối thiểu 6 ký tự"></div>
+    <div class="field"><label>SỐ NGÀY SỬ DỤNG</label><input class="inp" id="ctvDays" type="number" value="30" min="1"></div>
+    <div class="field"><label>GHI CHÚ</label><input class="inp" id="ctvNote" placeholder="Thông tin CTV"></div>
+    <div class="field"><label>QUYỀN ĐƯỢC PHÉP</label>
+     <label><input type="checkbox" id="permLive" checked> Live</label>
+     <label><input type="checkbox" id="permNotice" checked> Thông báo</label>
+     <label><input type="checkbox" id="permProfile" checked> Hồ sơ</label>
+    </div>
+    <button class="btn full" onclick="createCtv()">＋ TẠO CTV</button>
+    <div class="section-title">Danh sách CTV</div>
+    <button class="btn alt" onclick="loadCtvs()">↻ TẢI CTV</button>
+    <div class="adminlist" id="ctvList"></div>
+   </section>
+
+   <section class="adminsection" id="admin-settings">
+    <div class="section-title">✦ Cài đặt trang chủ</div>
+    <div class="field"><label>TÊN WEBSITE</label><input class="inp" id="siteName" value="HQuan.com"></div>
+    <div class="field"><label>THÔNG BÁO TRANG CHỦ</label><textarea class="inp" id="siteAnnouncement" rows="4" placeholder="Nhập thông báo..."></textarea></div>
+    <button class="btn full" onclick="saveSettings()">LƯU CÀI ĐẶT</button>
+   </section>
+   <button class="btn danger full" onclick="adminLogout()">ĐĂNG XUẤT ADMIN</button>
   </div>
-  <button onclick="createKey()">+ TẠO KEY</button>
-  <div class="status" id="newKeyResult">KEY mới sẽ hiển thị ở đây.</div>
-  <h2 style="margin-top:25px">Danh sách KEY</h2>
-  <button class="secondary" onclick="loadKeys()">Làm mới danh sách</button>
-  <div id="keyList"></div>
  </div>
+</div>
 
- <div id="admin-devices" class="panel adminTab hidden">
-  <h2>Thiết bị đã kích hoạt</h2>
-  <button class="secondary" onclick="loadDevices()">Làm mới thiết bị</button>
-  <div id="deviceList"></div>
- </div>
-
- <div id="admin-ctv" class="panel adminTab hidden">
-  <h2>Tạo tài khoản CTV</h2>
-  <div class="grid">
-   <div><label class="small">Tên đăng nhập</label><input id="ctvUser" placeholder="ctv01"></div>
-   <div><label class="small">Mật khẩu</label><input id="ctvPass" placeholder="Ít nhất 6 ký tự"></div>
-   <div><label class="small">Thời hạn (ngày)</label><input id="ctvDays" type="number" min="1" value="30"></div>
-  </div>
-  <label class="small">Ghi chú</label><input id="ctvNote" placeholder="Thông tin CTV">
-  <h3>Quyền được cấp</h3>
-  <label><input type="checkbox" id="permLive" checked style="width:auto"> Xem khu vực Live</label><br>
-  <label><input type="checkbox" id="permNotice" checked style="width:auto"> Xem thông báo</label><br>
-  <label><input type="checkbox" id="permProfile" checked style="width:auto"> Xem hồ sơ</label><br><br>
-  <button onclick="createCtv()">TẠO TÀI KHOẢN CTV</button>
-  <div id="ctvCreateResult" class="status"></div>
-  <h2 style="margin-top:25px">Danh sách CTV</h2>
-  <button class="secondary" onclick="loadCtv()">Làm mới CTV</button>
-  <div id="ctvList"></div>
- </div>
-
- <div id="admin-settings" class="panel adminTab hidden">
-  <h2>Cài đặt trang chủ</h2>
-  <label class="small">Tên website</label>
-  <input id="settingName" value="HQuan.com">
-  <label class="small">Thông báo trang chủ</label>
-  <textarea id="settingAnnouncement" placeholder="Nhập thông báo muốn hiển thị..."></textarea>
-  <button onclick="saveSettings()">LƯU CÀI ĐẶT</button>
-  <div id="settingResult" class="status"></div>
- </div>
-</section>
-
-<!-- CTV -->
-<section id="ctvPanel" class="panel hidden">
- <h1>KHU VỰC CỘNG TÁC VIÊN</h1>
- <p id="ctvWelcome"></p>
- <div id="ctvFeatures"></div>
- <button class="secondary" onclick="ctvLogout()">Đăng xuất CTV</button>
-</section>
-
-</main>
-<footer>HQUAN.COM • Hệ thống quản lý HQuan © 2026</footer>
+<footer>HQuan.com • Hệ thống quản lý truy cập</footer>
 
 <script>
-/* ===== CẤU HÌNH API ===== */
-const API = "https://hq-ba-khi-api.hikhikhakhamunly.workers.dev";
-const FEED_API = ""; // Để trống nếu API Live cũ chạy cùng tên miền trang web.
+const API="https://hq-ba-khi-api.hikhikhakhamunly.workers.dev";
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let device=localStorage.getItem("device_id");
+if(!device){
+ const b=crypto.getRandomValues(new Uint8Array(16));
+ device="HQD-"+[...b].map(x=>x.toString(16).padStart(2,"0")).join("").toUpperCase();
+ localStorage.setItem("device_id",device);
+}
+$("deviceId").value=device;
+let adminToken=sessionStorage.getItem("hq_admin_token")||"";
+let currentTab="all",currentFilter="",searchText="";
 
-/* ===== TIỆN ÍCH ===== */
-const $ = id => document.getElementById(id);
-const show = id => $(id).classList.remove("hidden");
-const hide = id => $(id).classList.add("hidden");
-const setStatus = (id,msg,type="") => {
-  $(id).textContent = msg;
-  $(id).className = "status" + (type ? " " + type : "");
-};
-async function api(path, options={}) {
-  const headers = {"Content-Type":"application/json",...(options.headers||{})};
-  const token = localStorage.getItem("hq_admin_token") || localStorage.getItem("hq_ctv_token");
-  if(token) headers.Authorization = "Bearer " + token;
-  const response = await fetch(API + path,{...options,headers});
-  let data;
-  try { data = await response.json(); }
-  catch { throw new Error("Máy chủ trả về dữ liệu không hợp lệ."); }
-  if(!response.ok || data.ok === false) throw new Error(data.error || "Có lỗi xảy ra.");
-  return data;
+async function api(path,options={}){
+ const headers={"Content-Type":"application/json"};
+ if(options.admin)headers.Authorization="Bearer "+adminToken;
+ const r=await fetch(API+path,{method:options.method||"GET",headers,body:options.body?JSON.stringify(options.body):undefined});
+ const d=await r.json().catch(()=>({error:"Máy chủ trả về dữ liệu không hợp lệ."}));
+ if(!r.ok||d.ok===false)throw new Error(d.error||"Có lỗi xảy ra.");
+ return d;
 }
-function showOnly(id) {
-  ["verifyPanel","homePanel","loginPanel","adminPanel","ctvPanel"].forEach(x=>hide(x));
-  show(id);
+function message(id,msg){$(id).textContent=msg}
+function copyDevice(){
+ navigator.clipboard.writeText(device).then(()=>message("gateMessage","Đã sao chép Device ID.")).catch(()=>message("gateMessage","Hãy chọn Device ID và sao chép thủ công."));
 }
-
-/* ===== DEVICE ID ===== */
-let deviceId = localStorage.getItem("hq_device_id");
-if(!deviceId) {
-  const bytes = crypto.getRandomValues(new Uint8Array(16));
-  deviceId = "HQD-" + Array.from(bytes,b=>b.toString(16).padStart(2,"0")).join("").toUpperCase();
-  localStorage.setItem("hq_device_id",deviceId);
+function enterSite(){
+ $("gateView").classList.add("hidden");
+ $("siteView").style.display="block";
+ document.body.classList.add("inside");
 }
-$("deviceId").textContent = deviceId;
-
-async function copyDevice() {
-  try {
-    await navigator.clipboard.writeText(deviceId);
-    setStatus("verifyStatus","Đã sao chép Device ID.","good");
-  } catch {
-    setStatus("verifyStatus","Không sao chép tự động được. Hãy chọn và sao chép Device ID.","bad");
-  }
+function leaveSite(){
+ $("siteView").style.display="none";
+ $("gateView").classList.remove("hidden");
 }
-
-let lockTimer = null;
-function showLock(seconds) {
-  clearInterval(lockTimer);
-  let left = Math.max(0,Number(seconds)||0);
-  const update = () => {
-    setStatus("verifyStatus",`THIẾT BỊ ĐANG BỊ KHÓA\nVui lòng đợi ${left} giây rồi thử lại.`,"bad");
-    $("activateBtn").disabled = left > 0;
-    if(left <= 0) {
-      clearInterval(lockTimer);
-      setStatus("verifyStatus","Đã hết thời gian khóa. Bạn có thể thử lại.","good");
-      $("activateBtn").disabled = false;
-    }
-    left--;
-  };
-  update();
-  lockTimer = setInterval(update,1000);
+async function activateKey(){
+ const key=$("keyInput").value.trim();
+ if(!key){message("gateMessage","Vui lòng nhập KEY.");return}
+ const btn=$("activateBtn");btn.disabled=true;btn.textContent="ĐANG XÁC MINH...";
+ message("gateMessage","Đang kết nối máy chủ và xác minh thiết bị...");
+ try{
+  const d=await api("/api/activate",{method:"POST",body:{key,deviceId:device}});
+  localStorage.setItem("hq_access_key",key.toUpperCase());
+  message("gateMessage","Xác minh thành công!");
+  enterSite();
+ }catch(e){message("gateMessage",e.message)}
+ finally{btn.disabled=false;btn.textContent="XÁC MINH VÀO WEBSITE"}
 }
-
-/* ===== XÁC MINH KEY ===== */
-async function activateDevice() {
-  const key = $("keyInput").value.trim().toUpperCase();
-  if(!key) return setStatus("verifyStatus","Bạn chưa nhập KEY.","bad");
-
-  $("activateBtn").disabled = true;
-  setStatus("verifyStatus","Đang kiểm tra KEY và xác minh thiết bị...");
-  try {
-    const data = await api("/api/activate",{
-      method:"POST",
-      body:JSON.stringify({key,deviceId})
-    });
-    localStorage.setItem("hq_access_key",key);
-    setStatus("verifyStatus","Đã xác minh thành công. Đang mở trang chủ...","good");
-    await new Promise(r=>setTimeout(r,500));
-    await enterHome();
-  } catch(e) {
-    const message = e.message || "Không thể xác minh.";
-    if(message.includes("5/5") || message.includes("khóa tạm thời")) {
-      showLock(300);
-    } else {
-      setStatus("verifyStatus",message,"bad");
-      $("activateBtn").disabled = false;
-    }
-  }
-}
-
-async function verifySavedDevice() {
-  const key = localStorage.getItem("hq_access_key");
-  if(!key) return showOnly("verifyPanel");
-  try {
-    await api("/api/verify",{
-      method:"POST",
-      body:JSON.stringify({key,deviceId})
-    });
-    await enterHome();
-  } catch {
-    localStorage.removeItem("hq_access_key");
-    showOnly("verifyPanel");
-    setStatus("verifyStatus","Chưa được cấp quyền hoặc KEY đã hết hạn. Vui lòng xác minh lại.");
-  }
-}
-
-async function enterHome() {
-  showOnly("homePanel");
-  await loadSettingsPublic();
-  loadFromBot();
-}
-
-/* ===== ĐĂNG NHẬP ===== */
-let loginMode = "admin";
-function showLogin(mode) {
-  loginMode = mode;
-  showOnly("loginPanel");
-  $("loginTitle").textContent = mode === "admin" ? "ĐĂNG NHẬP ADMIN" : "ĐĂNG NHẬP CỘNG TÁC VIÊN";
-  $("loginDescription").textContent = mode === "admin"
-    ? "Xác thực quản trị viên để mở bảng điều khiển."
-    : "Đăng nhập bằng tài khoản CTV được cấp.";
-  $("loginUser").value = "";
-  $("loginPass").value = "";
-  setStatus("loginStatus","Vui lòng nhập thông tin đăng nhập.");
-}
-function backToVerifyOrHome() {
-  if(localStorage.getItem("hq_access_key")) showOnly("homePanel");
-  else showOnly("verifyPanel");
-}
-async function submitLogin() {
-  const username = $("loginUser").value.trim();
-  const password = $("loginPass").value;
-  if(!username || !password) return setStatus("loginStatus","Vui lòng nhập đủ tài khoản và mật khẩu.","bad");
-
-  $("loginButton").disabled = true;
-  setStatus("loginStatus","Đang kết nối máy chủ...");
-  try {
-    await new Promise(r=>setTimeout(r,450));
-    setStatus("loginStatus","Đang xác thực tài khoản và thiết bị...");
-    const route = loginMode === "admin" ? "/api/admin/login" : "/api/ctv/login";
-    const data = await api(route,{
-      method:"POST",
-      body:JSON.stringify({username,password})
-    });
-    await new Promise(r=>setTimeout(r,450));
-
-    if(loginMode === "admin") {
-      localStorage.setItem("hq_admin_token",data.token);
-      localStorage.removeItem("hq_ctv_token");
-      setStatus("loginStatus","Đã xác minh thành công!\nTài khoản quản trị đã được xác thực. Đang mở Admin...","good");
-      await new Promise(r=>setTimeout(r,500));
-      showOnly("adminPanel");
-      adminTab("keys");
-      loadKeys();
-    } else {
-      localStorage.setItem("hq_ctv_token",data.token);
-      localStorage.removeItem("hq_admin_token");
-      setStatus("loginStatus","Đăng nhập CTV thành công. Đang mở khu vực CTV...","good");
-      await new Promise(r=>setTimeout(r,450));
-      await enterCtv();
-    }
-  } catch(e) {
-    setStatus("loginStatus",e.message,"bad");
-  } finally {
-    $("loginButton").disabled = false;
-  }
-}
-
-/* ===== ADMIN: TAB ===== */
-function adminTab(name,button) {
-  document.querySelectorAll(".adminTab").forEach(x=>hide(x.id));
-  show("admin-"+name);
-  document.querySelectorAll("[data-tab]").forEach(x=>x.classList.remove("active"));
-  if(button) button.classList.add("active");
-  else document.querySelector(`[data-tab="${name}"]`)?.classList.add("active");
-
-  if(name==="keys") loadKeys();
-  if(name==="devices") loadDevices();
-  if(name==="ctv") loadCtv();
-  if(name==="settings") loadSettings();
-}
-function adminLogout() {
-  localStorage.removeItem("hq_admin_token");
-  showOnly("homePanel");
-}
-
-/* ===== ADMIN: KEY ===== */
-function unitName(unit) {
-  return ({minute:"phút",hour:"giờ",day:"ngày",month:"tháng",permanent:"vĩnh viễn"})[unit] || unit;
-}
-async function createKey() {
-  try {
-    const unit = $("keyUnit").value;
-    const duration = unit==="permanent" ? 1 : Number($("keyDuration").value);
-    const data = await api("/api/admin/create",{
-      method:"POST",
-      body:JSON.stringify({
-        label:$("keyLabel").value,
-        duration,unit,
-        maxDevices:Number($("keyDevices").value)
-      })
-    });
-    $("newKeyResult").innerHTML = "";
-    const box = document.createElement("div");
-    box.textContent = "KEY mới: " + data.key;
-    $("newKeyResult").appendChild(box);
-    const copy = document.createElement("button");
-    copy.textContent = "Sao chép KEY";
-    copy.className = "secondary";
-    copy.onclick = () => navigator.clipboard.writeText(data.key);
-    $("newKeyResult").appendChild(copy);
-    await loadKeys();
-  } catch(e) {
-    setStatus("newKeyResult",e.message,"bad");
-  }
-}
-async function loadKeys() {
-  try {
-    const data = await api("/api/admin/list");
-    $("keyList").innerHTML = "";
-    if(!data.keys.length) {
-      $("keyList").textContent = "Chưa có KEY nào.";
-      return;
-    }
-    data.keys.forEach(k=>{
-      const item = document.createElement("div");
-      item.className = "listitem";
-      const status = k.status==="active" ? "Đang hoạt động" : k.status==="locked" ? "Đã khóa" : "Đã thu hồi";
-      const expiry = k.expiresAt ? new Date(k.expiresAt).toLocaleString("vi-VN") : "Vĩnh viễn";
-      item.innerHTML = `<b>${escapeHtml(k.key)}</b> <span class="badge">${escapeHtml(status)}</span>
-        <p>${escapeHtml(k.label||"Không có ghi chú")}</p>
-        <p class="small">Thời hạn: ${escapeHtml(k.duration||"")} • Hết hạn: ${escapeHtml(expiry)}</p>
-        <p class="small">Thiết bị: ${(k.devices||[]).length}/${k.maxDevices}</p>
-        <div class="row">
-          <button class="secondary" data-action="copy">Sao chép</button>
-          <button data-action="active">Mở khóa</button>
-          <button class="danger" data-action="locked">Khóa</button>
-          <button class="danger" data-action="revoked">Thu hồi</button>
-        </div>`;
-      item.querySelector('[data-action="copy"]').onclick=()=>navigator.clipboard.writeText(k.key);
-      item.querySelector('[data-action="active"]').onclick=()=>changeKeyStatus(k.key,"active");
-      item.querySelector('[data-action="locked"]').onclick=()=>changeKeyStatus(k.key,"locked");
-      item.querySelector('[data-action="revoked"]').onclick=()=>changeKeyStatus(k.key,"revoked");
-      $("keyList").appendChild(item);
-    });
-  } catch(e) {
-    $("keyList").textContent = e.message;
-  }
-}
-async function changeKeyStatus(key,status) {
-  if(!confirm("Xác nhận thay đổi trạng thái KEY này?")) return;
-  try {
-    await api("/api/admin/status",{
-      method:"POST",body:JSON.stringify({key,status})
-    });
-    loadKeys();
-  } catch(e) { alert(e.message); }
-}
-
-/* ===== ADMIN: THIẾT BỊ ===== */
-async function loadDevices() {
-  try {
-    const data = await api("/api/admin/devices");
-    $("deviceList").innerHTML = "";
-    if(!data.devices.length) {
-      $("deviceList").textContent = "Chưa có thiết bị nào.";
-      return;
-    }
-    data.devices.forEach(d=>{
-      const item = document.createElement("div");
-      item.className = "listitem";
-      item.innerHTML = `<b>${escapeHtml(d.deviceId)}</b>
-        <p>KEY: ${escapeHtml(d.key)}</p>
-        <p class="small">${escapeHtml(d.label||"")}</p>
-        <button class="danger">Gỡ thiết bị khỏi KEY</button>`;
-      item.querySelector("button").onclick=async()=>{
-        if(!confirm("Gỡ thiết bị này khỏi KEY?")) return;
-        try {
-          await api("/api/admin/device/remove",{
-            method:"POST",
-            body:JSON.stringify({key:d.key,deviceId:d.deviceId})
-          });
-          loadDevices();
-          loadKeys();
-        } catch(e) { alert(e.message); }
-      };
-      $("deviceList").appendChild(item);
-    });
-  } catch(e) { $("deviceList").textContent=e.message; }
-}
-
-/* ===== ADMIN: CTV ===== */
-function selectedPermissions() {
-  const p=[];
-  if($("permLive").checked) p.push("live");
-  if($("permNotice").checked) p.push("notice");
-  if($("permProfile").checked) p.push("profile");
-  return p;
-}
-async function createCtv() {
-  try {
-    const data = await api("/api/admin/ctv/create",{
-      method:"POST",
-      body:JSON.stringify({
-        username:$("ctvUser").value,
-        password:$("ctvPass").value,
-        days:Number($("ctvDays").value),
-        note:$("ctvNote").value,
-        permissions:selectedPermissions()
-      })
-    });
-    setStatus("ctvCreateResult","Đã tạo tài khoản CTV: "+data.account.username,"good");
-    $("ctvPass").value="";
-    loadCtv();
-  } catch(e) { setStatus("ctvCreateResult",e.message,"bad"); }
-}
-async function loadCtv() {
-  try {
-    const data=await api("/api/admin/ctv/list");
-    $("ctvList").innerHTML="";
-    if(!data.accounts.length) {
-      $("ctvList").textContent="Chưa có tài khoản CTV.";
-      return;
-    }
-    data.accounts.forEach(a=>{
-      const item=document.createElement("div");
-      item.className="listitem";
-      const expiry=a.expiresAt?new Date(a.expiresAt).toLocaleString("vi-VN"):"Không rõ";
-      item.innerHTML=`<b>${escapeHtml(a.username)}</b>
-        <span class="badge ${a.status==="active"?"green":"red"}">${a.status==="active"?"Đang hoạt động":"Đã khóa"}</span>
-        <p class="small">Hết hạn: ${escapeHtml(expiry)}</p>
-        <p class="small">Quyền: ${escapeHtml((a.permissions||[]).join(", ")||"Không có")}</p>
-        <div class="row">
-          <button data-do="toggle">${a.status==="active"?"Khóa CTV":"Mở khóa CTV"}</button>
-          <button class="secondary" data-do="perms">Cập nhật quyền</button>
-          <button class="danger" data-do="delete">Xóa CTV</button>
-        </div>`;
-      item.querySelector('[data-do="toggle"]').onclick=()=>updateCtv(a.username,{
-        status:a.status==="active"?"locked":"active"
-      });
-      item.querySelector('[data-do="perms"]').onclick=()=>{
-        const current=(a.permissions||[]).join(",");
-        const value=prompt("Nhập quyền, cách nhau bằng dấu phẩy: live, notice, profile",current);
-        if(value===null)return;
-        updateCtv(a.username,{permissions:value.split(",").map(x=>x.trim())});
-      };
-      item.querySelector('[data-do="delete"]').onclick=async()=>{
-        if(!confirm("Xóa tài khoản CTV "+a.username+"?"))return;
-        try {
-          await api("/api/admin/ctv/delete",{
-            method:"POST",body:JSON.stringify({username:a.username})
-          });
-          loadCtv();
-        } catch(e){alert(e.message)}
-      };
-      $("ctvList").appendChild(item);
-    });
-  } catch(e) { $("ctvList").textContent=e.message; }
-}
-async function updateCtv(username,changes) {
-  try {
-    await api("/api/admin/ctv/update",{
-      method:"POST",body:JSON.stringify({username,...changes})
-    });
-    loadCtv();
-  } catch(e){alert(e.message)}
-}
-
-/* ===== ADMIN: CÀI ĐẶT ===== */
-async function loadSettings() {
-  try {
-    const data=await api("/api/admin/settings");
-    $("settingName").value=data.settings.siteName||"HQuan.com";
-    $("settingAnnouncement").value=data.settings.announcement||"";
-  } catch(e) { setStatus("settingResult",e.message,"bad"); }
-}
-async function saveSettings() {
-  try {
-    const data=await api("/api/admin/settings",{
-      method:"POST",
-      body:JSON.stringify({
-        siteName:$("settingName").value,
-        announcement:$("settingAnnouncement").value
-      })
-    });
-    $("siteName").textContent=data.settings.siteName;
-    $("welcomeTitle").textContent="Chào mừng đến với "+data.settings.siteName;
-    $("announcement").textContent=data.settings.announcement;
-    setStatus("settingResult","Đã lưu cài đặt.","good");
-  } catch(e) { setStatus("settingResult",e.message,"bad"); }
-}
-async function loadSettingsPublic() {
-  try {
-    const response=await fetch(API+"/api/settings");
-    const data=await response.json();
-    if(data.ok) {
-      $("siteName").textContent=data.settings.siteName;
-      $("welcomeTitle").textContent="Chào mừng đến với "+data.settings.siteName;
-      $("announcement").textContent=data.settings.announcement;
-    }
-  } catch {}
-}
-
-/* ===== CTV ===== */
-async function enterCtv() {
-  try {
-    const data=await api("/api/ctv/me");
-    const a=data.account;
-    showOnly("ctvPanel");
-    $("ctvWelcome").textContent="Xin chào "+a.username+". Đây là khu vực CTV của bạn.";
-    $("ctvFeatures").innerHTML="";
-    const names={live:"Xem khu vực Live",notice:"Xem thông báo",profile:"Xem hồ sơ"};
-    (a.permissions||[]).forEach(p=>{
-      const div=document.createElement("div");
-      div.className="listitem";
-      div.textContent=names[p]||p;
-      $("ctvFeatures").appendChild(div);
-    });
-    if(!(a.permissions||[]).length) {
-      $("ctvFeatures").textContent="Tài khoản chưa được cấp chức năng.";
-    }
-  } catch(e) {
-    localStorage.removeItem("hq_ctv_token");
-    alert(e.message);
-    showOnly("loginPanel");
-  }
-}
-function ctvLogout() {
-  localStorage.removeItem("hq_ctv_token");
-  showOnly("homePanel");
-}
-
-/* ===== LIVE FEED CŨ ===== */
-const SALT=String.fromCharCode.apply(null,[83,104,111,112,76,105,110,107,95,83,104,105,101,108,100,95,118,50,95,57,102,56,100,50,101,52,97,55,99,49,98,53,48,54,50]);
-const hex=b=>Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,"0")).join("");
-const sha=async s=>hex(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s)));
-
-function webgl() {
-  try {
-    const c=document.createElement("canvas");
-    const gl=c.getContext("webgl")||c.getContext("experimental-webgl");
-    if(!gl)return{renderer:"none",vendor:"none"};
-    const d=gl.getExtension("WEBGL_debug_renderer_info");
-    if(!d)return{renderer:gl.getParameter(gl.RENDERER)||"generic",vendor:gl.getParameter(gl.VENDOR)||"generic"};
-    return {
-      renderer:gl.getParameter(d.UNMASKED_RENDERER_WEBGL)||"",
-      vendor:gl.getParameter(d.UNMASKED_VENDOR_WEBGL)||""
-    };
-  } catch { return {renderer:"err",vendor:"err"}; }
-}
-function canvasHash() {
-  try {
-    const c=document.createElement("canvas");c.width=200;c.height=40;
-    const x=c.getContext("2d");x.font="14px Arial";x.fillText("HQuan Live",4,20);
-    let h=0,s=c.toDataURL();
-    for(let i=0;i<s.length;i++){h=((h<<5)-h)+s.charCodeAt(i);h|=0}
-    return(h>>>0).toString(16);
-  } catch { return "err"; }
-}
-async function fingerprint() {
-  const g=webgl();
-  const t=navigator.maxTouchPoints||0;
-  const screenInfo=`${screen.width}x${screen.height}x${screen.colorDepth}x${devicePixelRatio||1}`;
-  return {
-    fp:await sha(`${g.renderer}#${g.vendor}#${canvasHash()}#${t}#${screenInfo}`),
-    gpu:g.renderer
-  };
-}
-async function signedHeaders() {
-  const ts=Date.now();
-  const nonce=Math.random().toString(36).slice(2,10)+ts.toString(36);
-  const {fp,gpu}=await fingerprint();
-  const sig=await sha(`${deviceId}:${ts}:${nonce}:${fp}:${gpu}:${SALT}`);
-  return {
-    ts,nonce,fp,gpu,
-    headers:{
-      "Content-Type":"application/json",
-      "x-device-id":deviceId,
-      "x-req-ts":String(ts),
-      "x-req-nonce":nonce,
-      "x-req-fp":fp,
-      "x-req-gpu":encodeURIComponent(gpu),
-      "x-req-sig":sig
-    }
-  };
-}
-async function decryptPayload(payload,ivHex,nonce) {
-  const key=await crypto.subtle.importKey(
-    "raw",
-    await crypto.subtle.digest("SHA-256",new TextEncoder().encode(`${SALT}:${nonce}:${deviceId}`)),
-    {name:"AES-CBC"},false,["decrypt"]
-  );
-  const iv=new Uint8Array(ivHex.match(/.{1,2}/g).map(x=>parseInt(x,16)));
-  const bin=atob(payload),bytes=new Uint8Array(bin.length);
-  for(let i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);
-  return JSON.parse(new TextDecoder().decode(
-    await crypto.subtle.decrypt({name:"AES-CBC",iv},key,bytes)
-  ));
-}
-
-const TAB_BY_CHAT={
- "-1003393920142":"ruong","-1003606511380":"ruong",
- "-1002889993912":"ruong","-1002914600740":"ruong",
- "-1003874158853":"treo","-1003337128065":"tui",
- "-1002601067327":"tui"
-};
-const TAB_BY_KEY={ruong_nho:"ruong",ruong_lon:"ruong",nhan_pham:"ruong",ruong_treo:"treo",tui:"tui"};
-function toMs(v) {
-  if(v==null||v==="")return 0;
-  if(typeof v==="number")return v<1e12?v*1000:v;
-  const n=Number(v);
-  if(!isNaN(n))return n<1e12?n*1000:n;
-  const d=Date.parse(v);
-  return isNaN(d)?0:d;
-}
-function mapItem(key,it) {
-  const chat=String(it.chat_id??it.chatId??it.group??"");
-  const type=TAB_BY_KEY[it.tab]||TAB_BY_KEY[it.group]||TAB_BY_CHAT[chat]||"ruong";
-  let openAt=toMs(it.open_at??it.openAt??it.start_at??it.start_time??it.time??it.ts??it.created_at);
-  if(!openAt&&it.remaining!=null)openAt=Date.now()+Number(it.remaining)*1000;
-  const h=String(it.tt_id||it.handle||"").replace(/^@+/,"");
-  return {
-    key,name:it.name||it.title||(h&&h!=="không"?"@"+h:"H.Quan"),
-    country:String(it.country||it.region||it.cc||"").toUpperCase().slice(0,3),
-    type,xu:Number(it.xu??it.coins??it.coin??it.amount??0)||0,
-    box:it.box??it.slots??"",ratio:Number(it.ratio)||0,openAt,
-    hot:!!(it.hot||it.is_hot)
-  };
-}
-let liveItems=[];
-async function loadFromBot() {
-  try {
-    const s=await signedHeaders();
-    const base=FEED_API||location.origin;
-    const response=await fetch(base+"/api/v2/feed/stream",{
-      method:"POST",headers:s.headers,
-      body:JSON.stringify({device_id:deviceId,ts:s.ts,nonce:s.nonce,fp:s.fp,gpu:s.gpu,sig:s.sig})
-    });
-    if(response.status===403) {
-      $("botStatus").textContent="Máy chủ Live chưa cấp quyền cho thiết bị.";
-      return;
-    }
-    if(!response.ok)throw new Error("Không kết nối được máy chủ Live.");
-    let data=await response.json();
-    if(!data||!data.success)throw new Error("Dữ liệu Live không hợp lệ.");
-    if(data.encrypted&&data.payload&&data.iv)data=await decryptPayload(data.payload,data.iv,s.nonce);
-    const links=data.links||{};
-    liveItems=Object.keys(links).map(k=>mapItem(k,links[k]));
-    $("botStatus").textContent="Đã kết nối dữ liệu Live.";
-    renderLive();
-  } catch(e) {
-    $("botStatus").textContent="Chưa lấy được dữ liệu Live: "+e.message;
-  }
-}
-async function openLive(key,button) {
-  button.disabled=true;
-  try {
-    const s=await signedHeaders();
-    const base=FEED_API||location.origin;
-    const response=await fetch(base+"/api/v2/feed/claim-link",{
-      method:"POST",keepalive:true,headers:s.headers,
-      body:JSON.stringify({device_id:deviceId,shop_id:key,ts:s.ts,nonce:s.nonce,fp:s.fp,gpu:s.gpu,sig:s.sig})
-    });
-    const data=await response.json();
-    if(response.ok&&data.url)location.href=data.url;
-    else if(response.ok&&data.room_id)location.href="snssdk1180://live?room_id="+encodeURIComponent(data.room_id);
-    else alert(data.error||"Link Live không khả dụng.");
-  } catch(e) {
-    alert("Lỗi kết nối máy chủ Live: "+e.message);
-  } finally {
-    button.disabled=false;
-  }
-}
-function renderLive() {
-  const filter=$("liveFilter").value;
-  const query=$("liveSearch").value.trim().toLowerCase();
-  const list=liveItems.filter(x=>
-    (filter==="all"||x.type===filter) &&
-    (x.name+x.country+x.xu).toLowerCase().includes(query)
-  ).sort((a,b)=>a.openAt-b.openAt);
-
-  $("liveTotal").textContent=liveItems.length;
-  $("liveActive").textContent=liveItems.filter(x=>x.openAt-Date.now()<=60000).length;
-  $("liveList").innerHTML="";
-
-  if(!list.length) {
-    $("liveList").textContent="Chưa có Live phù hợp.";
-    return;
-  }
-
-  list.forEach(item=>{
-    const card=document.createElement("div");
-    card.className="livecard";
-    const picture=document.createElement("div");
-    picture.className="livepic";
-    picture.textContent=item.type==="ruong"?"🧰":item.type==="tui"?"🎒":"⏳";
-
-    const info=document.createElement("div");
-    const title=document.createElement("h3");
-    title.textContent=item.name;
-    const detail=document.createElement("p");
-    detail.textContent=`${item.country} • ${item.xu} Xu • Ratio ${item.ratio||"-"}`;
-    const time=document.createElement("p");
-    const seconds=Math.max(0,Math.ceil((item.openAt-Date.now())/1000));
-    time.textContent=`Mở sau: ${Math.floor(seconds/60)}:${String(seconds%60).padStart(2,"0")}`;
-    info.append(title,detail,time);
-
-    const btn=document.createElement("button");
-    btn.textContent="MỞ LIVE";
-    btn.onclick=()=>openLive(item.key,btn);
-    card.append(picture,info,btn);
-    $("liveList").appendChild(card);
-  });
-}
-function escapeHtml(value) {
-  return String(value??"").replace(/[&<>"']/g,c=>({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  })[c]);
-}
-
-/* ===== THOÁT / KHỞI ĐỘNG ===== */
-function logoutDevice() {
+async function verifySaved(){
+ const key=localStorage.getItem("hq_access_key");
+ if(!key)return;
+ try{
+  await api("/api/verify",{method:"POST",body:{key,deviceId:device}});
+  enterSite();
+ }catch(e){
   localStorage.removeItem("hq_access_key");
-  showOnly("verifyPanel");
-  setStatus("verifyStatus","Bạn đã thoát khỏi thiết bị.");
+  message("gateMessage","KEY không còn hiệu lực: "+e.message);
+ }
 }
-async function init() {
-  const adminToken=localStorage.getItem("hq_admin_token");
-  if(adminToken) {
-    try {
-      await api("/api/admin/list");
-      showOnly("adminPanel");
-      adminTab("keys");
-      loadKeys();
-      return;
-    } catch {
-      localStorage.removeItem("hq_admin_token");
-    }
-  }
-
-  const ctvToken=localStorage.getItem("hq_ctv_token");
-  if(ctvToken) {
-    try { await enterCtv(); return; }
-    catch { localStorage.removeItem("hq_ctv_token"); }
-  }
-
-  await verifySavedDevice();
+function openAdmin(){
+ $("adminView").style.display="block";
+ $("adminLogin").classList.remove("hidden");
+ $("adminDashboard").classList.add("hidden");
 }
-init();
-setInterval(()=>{if(!$("homePanel").classList.contains("hidden"))loadFromBot()},15000);
+function closeAdmin(){$("adminView").style.display="none"}
+async function adminSignIn(){
+ message("adminLoginMessage","Đang xác thực tài khoản...");
+ try{
+  const d=await api("/api/admin/login",{method:"POST",body:{username:$("adminUser").value.trim(),password:$("adminPass").value}});
+  adminToken=d.token;sessionStorage.setItem("hq_admin_token",adminToken);
+  $("adminLogin").classList.add("hidden");$("adminDashboard").classList.remove("hidden");
+  await loadKeys();
+ }catch(e){message("adminLoginMessage",e.message)}
+}
+function adminLogout(){
+ adminToken="";sessionStorage.removeItem("hq_admin_token");
+ $("adminDashboard").classList.add("hidden");$("adminLogin").classList.remove("hidden");
+}
+document.querySelectorAll("[data-admin-tab]").forEach(b=>b.onclick=()=>{
+ document.querySelectorAll("[data-admin-tab]").forEach(x=>x.classList.toggle("active",x===b));
+ document.querySelectorAll(".adminsection").forEach(x=>x.classList.toggle("active",x.id==="admin-"+b.dataset.adminTab));
+});
+async function createKey(){
+ try{
+  const unit=$("keyUnit").value;
+  const d=await api("/api/admin/create",{method:"POST",admin:true,body:{
+   label:$("keyLabel").value,duration:unit==="permanent"?1:Number($("keyDuration").value),
+   unit,maxDevices:Number($("keyMax").value)
+  }});
+  message("newKeyResult","KEY: "+d.key+" — Hãy sao chép và lưu lại.");
+  await loadKeys();
+ }catch(e){message("newKeyResult",e.message)}
+}
+async function loadKeys(){
+ try{
+  const d=await api("/api/admin/list",{admin:true});
+  $("keyList").innerHTML=d.keys.map(k=>`
+   <div class="item">
+    <b>${esc(k.key)}</b><br>${esc(k.label||"Không có ghi chú")}<br>
+    Trạng thái: ${esc(k.status)}<br>
+    Thiết bị: ${(k.devices||[]).length}/${k.maxDevices}<br>
+    Hạn: ${k.expiresAt?new Date(k.expiresAt).toLocaleString("vi-VN"):"Vĩnh viễn"}
+    <div class="item-actions">
+     <button class="btn alt" onclick="setKeyStatus('${esc(k.key)}','${k.status==="active"?"locked":"active"}')">${k.status==="active"?"KHÓA":"MỞ KHÓA"}</button>
+     <button class="btn danger" onclick="setKeyStatus('${esc(k.key)}','revoked')">THU HỒI</button>
+    </div>
+   </div>`).join("")||'<div class="note">Chưa có KEY.</div>';
+ }catch(e){$("keyList").textContent=e.message}
+}
+async function setKeyStatus(key,status){
+ if(!confirm("Xác nhận đổi trạng thái KEY?"))return;
+ try{await api("/api/admin/status",{method:"POST",admin:true,body:{key,status}});await loadKeys()}
+ catch(e){alert(e.message)}
+}
+async function loadDevices(){
+ try{
+  const d=await api("/api/admin/devices",{admin:true});
+  $("deviceList").innerHTML=d.devices.map(x=>`
+   <div class="item"><b>${esc(x.deviceId)}</b><br>KEY: ${esc(x.key)}<br>${esc(x.label)}
+   <div class="item-actions"><button class="btn danger" onclick="removeDevice('${esc(x.key)}','${esc(x.deviceId)}')">GỠ THIẾT BỊ</button></div></div>
+  `).join("")||'<div class="note">Chưa có thiết bị.</div>';
+ }catch(e){$("deviceList").textContent=e.message}
+}
+async function removeDevice(key,deviceId){
+ if(!confirm("Gỡ thiết bị khỏi KEY này?"))return;
+ try{await api("/api/admin/device/remove",{method:"POST",admin:true,body:{key,deviceId}});await loadDevices();await loadKeys()}
+ catch(e){alert(e.message)}
+}
+async function createCtv(){
+ const permissions=[];
+ if($("permLive").checked)permissions.push("live");
+ if($("permNotice").checked)permissions.push("notice");
+ if($("permProfile").checked)permissions.push("profile");
+ try{
+  await api("/api/admin/ctv/create",{method:"POST",admin:true,body:{
+   username:$("ctvUser").value,password:$("ctvPass").value,
+   days:Number($("ctvDays").value),note:$("ctvNote").value,permissions
+  }});
+  alert("Đã tạo tài khoản CTV.");await loadCtvs();
+ }catch(e){alert(e.message)}
+}
+async function loadCtvs(){
+ try{
+  const d=await api("/api/admin/ctv/list",{admin:true});
+  $("ctvList").innerHTML=d.accounts.map(a=>`
+   <div class="item"><b>${esc(a.username)}</b><br>Trạng thái: ${esc(a.status)}<br>
+   Quyền: ${esc((a.permissions||[]).join(", "))}<br>
+   Hết hạn: ${a.expiresAt?new Date(a.expiresAt).toLocaleString("vi-VN"):"—"}
+   <div class="item-actions">
+    <button class="btn alt" onclick="updateCtv('${esc(a.username)}','${a.status==="active"?"locked":"active"}')">${a.status==="active"?"KHÓA":"MỞ KHÓA"}</button>
+    <button class="btn danger" onclick="deleteCtv('${esc(a.username)}')">XÓA CTV</button>
+   </div></div>`).join("")||'<div class="note">Chưa có CTV.</div>';
+ }catch(e){$("ctvList").textContent=e.message}
+}
+async function updateCtv(username,status){
+ try{await api("/api/admin/ctv/update",{method:"POST",admin:true,body:{username,status}});await loadCtvs()}
+ catch(e){alert(e.message)}
+}
+async function deleteCtv(username){
+ if(!confirm("Xóa tài khoản CTV này?"))return;
+ try{await api("/api/admin/ctv/delete",{method:"POST",admin:true,body:{username}});await loadCtvs()}
+ catch(e){alert(e.message)}
+}
+async function loadSettings(){
+ try{
+  const d=await api("/api/admin/settings",{admin:true});
+  $("siteName").value=d.settings.siteName||"HQuan.com";
+  $("siteAnnouncement").value=d.settings.announcement||"";
+ }catch(e){alert(e.message)}
+}
+async function saveSettings(){
+ try{
+  await api("/api/admin/settings",{method:"POST",admin:true,body:{
+   siteName:$("siteName").value,announcement:$("siteAnnouncement").value
+  }});
+  alert("Đã lưu thông báo và tên website.");
+ }catch(e){alert(e.message)}
+}
+function selectTab(tab){
+ currentTab=tab;
+ document.querySelectorAll("[data-tab]").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
+}
+document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>selectTab(b.dataset.tab));
+document.querySelectorAll("[data-filter]").forEach(b=>b.onclick=()=>{
+ b.classList.toggle("active");
+ currentFilter=b.classList.contains("active")?b.dataset.filter:"";
+});
+function showHome(){selectTab("all")}
+function showNotice(){alert("Thông báo sẽ hiển thị tại đây khi được quản trị viên cập nhật.")}
+$("keyUnit").addEventListener("change",()=>{
+ $("keyDuration").disabled=$("keyUnit").value==="permanent";
+});
+verifySaved();
 </script>
 </body>
 </html>
