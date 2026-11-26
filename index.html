@@ -285,9 +285,59 @@ button,input{font:inherit}
   .admin-group small{font-size:11.5px}
 }
 
+
+/* ===== NEON COLOR CYCLE - NO CENTER SPINNER ===== */
+@keyframes neonHue{0%{filter:hue-rotate(0deg)}100%{filter:hue-rotate(360deg)}}
+@keyframes neonText{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes neonGlow{0%,100%{box-shadow:0 0 7px #18dfff55,0 0 18px #2563eb22}50%{box-shadow:0 0 13px #ff3cac88,0 0 28px #8b5cf688}}
+@keyframes tickerSlide{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
+.hd,.stats,.lh,.admin-group,.ban,.chip,.search,.tab,.card,.sort,.nv .bt{animation:neonGlow 7s ease-in-out infinite}
+.hd{border-image:linear-gradient(90deg,#00e5ff,#8b5cf6,#ff3cac,#ffb020,#00e5ff) 1}
+.hd h1,.ban b,.lh h3{background:linear-gradient(90deg,#39e7ff,#b18cff,#ff6cb5,#ffd166,#39e7ff);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:neonText 8s linear infinite}
+.g{filter:drop-shadow(0 0 5px #36cfff66)}
+.tab,.chip,.search,.stats,.lh,.admin-group,.card{border-color:transparent;outline:1px solid #278bff66}
+.tab.on,.chip.on{outline:1px solid #ff4fc8;box-shadow:0 0 12px #278bff66,0 0 18px #ff4fc833}
+/* Popup thông báo */
+.notice-overlay{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:18px;background:#02040bdc;backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px)}
+.notice-box{width:min(100%,480px);max-height:min(82vh,720px);overflow:auto;position:relative;border-radius:22px;padding:1.5px;background:linear-gradient(125deg,#00e5ff,#8b5cf6,#ff3cac,#ffb020,#00e5ff);background-size:300% 300%;animation:neonText 9s linear infinite,neonGlow 4s ease-in-out infinite}
+.notice-inner{border-radius:20px;background:linear-gradient(155deg,#171923,#0a1024 75%);overflow:hidden}
+.notice-head{display:flex;align-items:center;gap:10px;padding:17px 19px;border-bottom:1px solid #ffffff18}
+.notice-icon{width:39px;height:39px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(135deg,#ff8a00,#ff286f,#8b5cf6);font-size:20px;box-shadow:0 0 18px #ff3cac66}
+.notice-head strong{font-size:17px;font-weight:900;letter-spacing:.3px;background:linear-gradient(90deg,#ffb15e,#ff5c9c,#8bdcff);background-clip:text;-webkit-background-clip:text;color:transparent}
+.notice-close{margin-left:auto;border:0;background:#ffffff12;color:#dbeafe;width:32px;height:32px;border-radius:10px;font-size:21px;cursor:pointer}
+.notice-body{padding:18px 19px 15px;color:#e6eaf5;font-size:14px;line-height:1.7}
+.notice-welcome{font-size:18px;font-weight:900;line-height:1.4;margin-bottom:10px;background:linear-gradient(90deg,#fff,#73e5ff,#d6a6ff,#ff9fc9);background-clip:text;-webkit-background-clip:text;color:transparent}
+.notice-ticker{height:34px;overflow:hidden;border-radius:10px;background:#ffffff09;border:1px solid #ffffff16;margin:12px 0 16px;display:flex;align-items:center}
+.notice-ticker span{white-space:nowrap;display:inline-block;min-width:max-content;animation:tickerSlide 13s linear infinite;font-size:16px;letter-spacing:8px}
+.notice-section{margin-top:13px;padding:12px 13px;border-radius:13px;background:linear-gradient(110deg,#ffffff0b,#ffffff04);border:1px solid #ffffff13}
+.notice-section b{display:block;color:#77e6ff;font-size:13px;letter-spacing:.35px;margin-bottom:5px}
+.notice-section p{margin:0;color:#d8deed}
+.notice-contact{display:inline-flex;align-items:center;gap:7px;margin-top:8px;padding:9px 12px;border-radius:10px;text-decoration:none;color:#75efff;background:#082a45;border:1px solid #1689b5;font-weight:800;overflow-wrap:anywhere}
+.notice-foot{padding:0 19px 18px}
+.notice-ok{width:100%;border:0;border-radius:12px;padding:13px 16px;color:white;font-weight:900;font-size:14px;cursor:pointer;background:linear-gradient(100deg,#ff7a18,#ff287b,#8b5cf6,#18bde9);background-size:220% 100%;animation:neonText 7s linear infinite;box-shadow:0 5px 20px #ff287b35}
+.notice-overlay[hidden]{display:none}
+@media(max-width:390px){.notice-overlay{padding:12px}.notice-body{padding:15px;font-size:13px}.notice-welcome{font-size:17px}.notice-head{padding:14px 15px}}
+@media(prefers-reduced-motion:reduce){.hd,.stats,.lh,.admin-group,.ban,.chip,.search,.tab,.card,.sort,.nv .bt,.hd h1,.ban b,.lh h3,.notice-box,.notice-ticker span,.notice-ok{animation:none!important}}
+
 </style>
 </head>
 <body>
+
+<div class="notice-overlay" id="noticeOverlay" role="dialog" aria-modal="true" aria-labelledby="noticeTitle">
+  <div class="notice-box"><div class="notice-inner">
+    <div class="notice-head"><div class="notice-icon">📢</div><strong id="noticeTitle">THÔNG BÁO</strong><button class="notice-close" type="button" aria-label="Đóng thông báo" onclick="closeNotice()">×</button></div>
+    <div class="notice-body">
+      <div class="notice-welcome">AD HQuan xin chào 500 ae nhé! 🔥</div>
+      <div class="notice-ticker" aria-label="Hiệu ứng biểu tượng"><span>⚡ ✨ 🔥 💎 🚀 🎯 ⚡ ✨ 🔥 💎 🚀 🎯</span></div>
+      <div class="notice-section"><b>📌 THÔNG TIN WEB</b><p>Hiện tại web chưa chạy được vì nhát làm 😂</p></div>
+      <div class="notice-section"><b>🤝 TUYỂN NGƯỜI LÀM WEB CHUNG</b><p>Yêu cầu biết lập trình và bot Telegram.</p></div>
+      <div class="notice-section"><b>👥 CỘNG TÁC VIÊN</b><p>Hiện tại chưa có CTV nào hết nhé, nào xong thì tuyển.</p></div>
+      <div class="notice-section"><b>💬 LIÊN HỆ ADMIN</b><a class="notice-contact" href="https://zalo.me/g/jkzddczpzuo1qld12po7" target="_blank" rel="noopener noreferrer">Mở nhóm Zalo Admin ↗</a></div>
+    </div>
+    <div class="notice-foot"><button class="notice-ok" type="button" onclick="closeNotice()">ĐÃ HIỂU — VÀO WEBSITE</button></div>
+  </div></div>
+</div>
+
 <div class="app">
 
 <div class="hd">
@@ -355,6 +405,9 @@ button,input{font:inherit}
 </div></nav>
 
 <script>
+function closeNotice(){const el=document.getElementById('noticeOverlay');if(el)el.hidden=true}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeNotice()});
+
 /* ================= LẤY DỮ LIỆU TỪ BOT (cùng API với trang cũ) ================= */
 const SALT=String.fromCharCode.apply(null,[83,104,111,112,76,105,110,107,95,83,104,105,101,108,100,95,118,50,95,57,102,56,100,50,101,52,97,55,99,49,98,53,48,54,50]);
 const hex=b=>Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('');
