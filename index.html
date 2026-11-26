@@ -2,513 +2,880 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>HQuan.com</title>
 <style>
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0}
-html,body{background:#050a1c;color:#fff;font-family:-apple-system,"SF Pro Text","Segoe UI",Roboto,sans-serif;overflow-x:hidden}
-body{min-height:100vh;background:radial-gradient(circle at 0 45%,#0b3a8a33,transparent 45%),#050a1c}
-.app{max-width:480px;margin:0 auto;padding:0 12px}
-svg{display:block;flex:none}
-.cut{--k:12px;position:relative;background:var(--b,#3a7bff);clip-path:polygon(var(--k) 0,100% 0,100% calc(100% - var(--k)),calc(100% - var(--k)) 100%,0 100%,0 var(--k))}
-.cut::before{content:"";position:absolute;inset:1.5px;background:var(--f,#08123a);clip-path:polygon(calc(var(--k) - 1px) 0,100% 0,100% calc(100% - var(--k) + 1px),calc(100% - var(--k) + 1px) 100%,0 100%,0 calc(var(--k) - 1px))}
-.cut>*{position:relative;z-index:1}
-.g{filter:drop-shadow(0 0 5px var(--b,#3a7bff))}
-.hd{margin:0 -12px;padding:calc(env(safe-area-inset-top,0px) + 14px) 14px 8px;background:linear-gradient(110deg,#0b1f5e,#07112f 70%,#10176a);border-bottom:2px solid #1b49c8}
-.hd-top{display:flex;gap:11px;align-items:center}
-.logo{width:58px;height:58px;border-radius:50%;flex:none;display:grid;place-items:center;background:radial-gradient(circle at 40% 30%,#4aa0ff,#0c2c92);border:3px solid #5ab6ff;box-shadow:0 0 18px #2f8bff,inset 0 0 10px #8fd0ff88}
-.hd h1{font-size:31px;font-weight:900;line-height:1;letter-spacing:-.3px;background:linear-gradient(#fff 30%,#7fd6ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 6px #2f8bff)}
-.hd p{margin:3px 0 5px;font-size:11.5px;color:#dbe7ff}
-.pill{display:inline-flex;align-items:center;gap:6px;padding:2px 12px 2px 8px;border-radius:99px;background:#09163f;border:1px solid #1d3f9a;font-size:11.5px;font-weight:700;color:#7dffb0}
-.pill i{width:8px;height:8px;border-radius:50%;background:#2ee86b;box-shadow:0 0 7px #2ee86b}
-.pill.off{color:#ff8a8a}.pill.off i{background:#ff4d4f;box-shadow:0 0 7px #ff4d4f}
-.feat{display:flex;gap:9px;margin-top:8px;font-size:11px;color:#d0e0ff;align-items:center}
-.feat .d{opacity:.6}
-.tabs{display:grid;grid-template-columns:1.6fr 1.3fr 1fr 1.04fr;gap:5px;margin-top:12px}
-.tab{height:58px;cursor:pointer;--k:10px}
-.tab>.in{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:14px;font-weight:700;line-height:1.2;gap:1px}
-.tab small{font-size:12.5px;font-weight:600;opacity:.8}
-.tab .ic{font-size:22px;line-height:1}
-.t-all{--b:#58b0ff;--f:linear-gradient(135deg,#2a6bff,#1a2fb0)}
-.t-all>.in{flex-direction:row;gap:9px;text-align:left;font-size:16px}
-.t-ru{--b:#8b4be0;--f:#0b1236;color:#c9a0ff}
-.t-tu{--b:#1fd0c8;--f:#08143a;color:#8ff5ef}
-.t-tr{--b:#d19a1f;--f:#14130e;color:#ffc94d}
-.tab:not(.t-all){opacity:.92}.tab.on{opacity:1}
-.row{display:flex;gap:7px;margin-top:9px}
-.chip{flex:1;height:28px;border-radius:99px;border:1.5px solid #1d55e0;background:#091233;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;gap:5px;cursor:pointer;white-space:nowrap;box-shadow:0 0 8px #2f6bff55}
-.chip em{font-style:normal;opacity:.8;font-weight:500}
-.chip.on{background:#13308f;border-color:#58b0ff}
-.row2 .chip{flex:none;padding:0 11px;height:27px;font-size:12.5px}
-.search{flex:1;min-width:0;display:flex;align-items:center;gap:6px;padding:0 10px;height:27px;border-radius:99px;border:1.5px solid #1d6fd8;background:#091233;color:#7fb4ff}
-.search input{flex:1;min-width:0;background:none;border:0;outline:0;color:#fff;font-size:12px}
-.search input::placeholder{color:#7f9cc8}
-.stats{display:flex;align-items:center;margin-top:9px;height:38px;border-radius:12px;border:1px solid #17306f;background:#09112e}
-.st{flex:1;display:flex;align-items:center;justify-content:center;gap:9px;font-size:10.5px;color:#b8c8ea;white-space:nowrap}
-.st+.st{border-left:1px solid #1d2f66}
-.st b{display:block;font-size:17px;color:#25b8ff;line-height:1.1}
-.st.f b{color:#2ee86b}
-.lh{margin-top:10px;height:49px;--k:10px;--b:#2a62e8;--f:#08102c}
-.lh>.in{height:100%;display:flex;align-items:center;gap:8px;padding:0 10px 0 12px}
-.lh .l{display:flex;gap:9px;align-items:center;flex:1;min-width:0}
-.lh h3{font-size:14.5px;white-space:nowrap;line-height:1.2}
-.lh small{font-size:10.5px;color:#a9bbe0;white-space:nowrap;display:block;line-height:1.2}.lh small b{color:#fff;font-size:11.5px}
-.sort{display:flex;align-items:center;gap:5px;padding:0 8px;height:27px;border-radius:9px;border:1.5px solid #a24be0;background:#0c1030;font-size:12px;white-space:nowrap;flex:none}
-#list{display:flex;flex-direction:column;gap:8px;margin-top:8px}
-.c0{--b:#3a7bff}.c1{--b:#1fe0e8}.c2{--b:#b24bff}
-.card{min-height:118px;padding:10px;display:grid;grid-template-columns:96px minmax(0,1fr) 92px;gap:8px;--k:12px;--f:linear-gradient(135deg,#0b1744,#070f30)}
-.th{position:relative;border-radius:9px;overflow:hidden;height:92px;display:flex;align-items:flex-end;justify-content:center;align-self:center}
-.t0{background:linear-gradient(#1a0f48,#4a2a8a 55%,#14224a)}
-.t1{background:linear-gradient(#4a6aa8,#f5883a 60%,#1a2a5a)}
-.t2{background:linear-gradient(#3b3a8a,#d4608a 60%,#1a2050)}
-.hot{position:absolute;left:0;top:0;z-index:2;background:linear-gradient(90deg,#ff2c55,#ff5a3c);font-size:10px;font-weight:900;padding:2px 8px;border-radius:0 0 8px 0}
-.play{position:absolute;top:22px;left:50%;margin-left:-14px;width:28px;height:28px;border-radius:50%;background:#000b;display:grid;place-items:center;font-size:11px}
-.cd{width:calc(100% - 8px);margin-bottom:4px;height:36px;border-radius:10px;background:#0a1544ee;border:1.5px solid #2f7bff;display:flex;align-items:center;justify-content:center;gap:4px;color:#5ab0ff}
-.cd .n{font-size:17px;font-weight:800;line-height:1;color:#fff;font-variant-numeric:tabular-nums}
-.cd .l{font-size:9.5px;font-weight:700;color:#25d0ff;margin-top:2px}
-.cd.warn{border-color:#ff5a3c}
-.mid{min-width:0;display:flex;flex-direction:column;justify-content:center}
-.nm{display:flex;align-items:center;gap:5px;min-width:0}
-.nm b{font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.fl{font-size:9.5px;font-weight:700;padding:2px 6px;border-radius:99px;border:1px solid #3b5aa8;background:#0a1233;white-space:nowrap}
-.tag{align-self:flex-start;margin:4px 0;padding:1px 9px;border-radius:7px;background:#0e3a8a55;border:1.5px solid #2f7bff;color:#5ab0ff;font-weight:800;font-size:11px}
-.tag.tui{border-color:#1fd0c8;color:#7ff3ee;background:#0a3a4a55}.tag.treo{border-color:#d19a1f;color:#ffc94d;background:#3a2a0a55}
-.xu{display:flex;align-items:center;gap:5px;color:#ffa726;font-weight:800;font-size:13.5px;white-space:nowrap}
-.coin{width:15px;height:15px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#9aa5b8 55%,#4a5370);flex:none}
-.mid ul{margin-top:4px;list-style:none;font-size:12px;line-height:1.4;color:#eaf0ff;white-space:nowrap}
-.mid li::before{content:"•";margin-right:6px;color:#8fa6d8}
-.rt{display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:6px}
-.dots{align-self:flex-end;color:#a9bbe0;font-weight:900;font-size:13px;line-height:.6;letter-spacing:1px;padding-top:4px}
-.open{width:100%;height:36px;border-radius:11px;border:1.5px solid #7fa8ff;color:#fff;font-weight:900;font-size:12px;display:flex;align-items:center;justify-content:center;gap:4px;cursor:pointer;white-space:nowrap;background:linear-gradient(90deg,#2f5bff,#6a4bff);box-shadow:0 0 10px #5a6bff99}
-.open.pu{background:linear-gradient(90deg,#8a3dea,#c04bff);border-color:#d79bff}
-.open:disabled{opacity:.6}
-.clk{width:27px;height:27px;border-radius:50%;border:2px solid #5ab0ff;display:grid;place-items:center;background:#08102c;box-shadow:0 0 8px #2f7bff}
-.empty{text-align:center;color:#8fa6d8;padding:24px 0;font-size:13px}
-.ban{margin:12px -12px 0;height:52px;position:relative;overflow:hidden;background:linear-gradient(90deg,#140a38,#07102e 55%,#0a2a6a)}
-.ban b{position:absolute;left:34px;top:7px;font:italic 800 17px/1 Georgia,serif;color:#9a7bff;text-shadow:0 0 10px #7a5bff}
-.ban span{position:absolute;left:40px;top:29px;font-style:italic;font-size:11px;color:#d6c8ff}
-.ban i{position:absolute;right:-40px;top:2px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,#4a8bff88,#0a1a4a 62%,transparent 64%)}
-.sp{height:calc(70px + env(safe-area-inset-bottom,0px))}
-nav{position:fixed;left:0;right:0;bottom:0;z-index:10;background:#050a1c;border-top:1px solid #17306f;padding-bottom:env(safe-area-inset-bottom,0px)}
-.nv{max-width:480px;margin:0 auto;height:54px;display:flex;align-items:center}
-.nv a{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;color:#c4d2f0;position:relative;cursor:pointer}
-.nv a.on{color:#3b9bff;font-weight:700}
-.nv .ct{flex:1.1;height:100%}
-.ct .bt{position:absolute;left:50%;top:-24px;margin-left:-27px;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 40% 30%,#4aa0ff,#0c2c92);border:3px solid #5ab6ff;box-shadow:0 0 0 4px #0b1a5a,0 0 22px #2f8bff}
-.rd::after{content:"";position:absolute;top:-1px;left:calc(50% + 6px);width:8px;height:8px;border-radius:50%;background:#ff3b3b}
-
-
-/* ===== RESPONSIVE: ĐIỆN THOẠI + MÁY TÍNH ===== */
-.app{
-  width:100%;
-  max-width:480px;
-  margin-inline:auto;
-}
-img,video,canvas{max-width:100%}
-button,input{font:inherit}
-#list{min-width:0}
-.card{min-width:0}
-.mid,.rt{min-width:0}
-.nm b{min-width:0}
-
-/* Điện thoại nhỏ */
-@media (max-width:380px){
-  .app{padding-left:9px;padding-right:9px}
-  .hd{margin-left:-9px;margin-right:-9px;padding-left:11px;padding-right:11px}
-  .hd h1{font-size:26px}
-  .logo{width:50px;height:50px}
-  .hd p{font-size:10.5px}
-  .feat{gap:6px;font-size:10px}
-  .tabs{gap:4px}
-  .tab{height:53px}
-  .tab>.in{font-size:12px}
-  .tab small{font-size:11px}
-  .tab .ic{font-size:19px}
-  .t-all>.in{gap:5px;font-size:13px}
-  .t-all svg{width:24px;height:24px}
-  .row{gap:5px}
-  .chip{font-size:11px}
-  .row2 .chip{padding:0 7px;font-size:10.5px}
-  .search{padding:0 7px}
-  .search input{font-size:10.5px}
-  .card{grid-template-columns:76px minmax(0,1fr) 76px;gap:6px;padding:8px}
-  .th{height:82px}
-  .nm b{font-size:13px}
-  .fl{font-size:8.5px}
-  .tag{font-size:10px}
-  .xu{font-size:11.5px}
-  .mid ul{font-size:10.5px}
-  .open{font-size:10px}
-}
-
-/* Tablet và màn hình vừa */
-@media (min-width:600px) and (max-width:899px){
-  .app{max-width:760px;padding-left:20px;padding-right:20px}
-  .hd{margin-left:-20px;margin-right:-20px;padding-left:22px;padding-right:22px}
-  .tabs,.row,.stats,.lh{max-width:720px;margin-left:auto;margin-right:auto}
-  .tabs{margin-top:16px}
-  .row{margin-top:11px}
-  .stats{margin-top:11px}
-  .lh{margin-top:13px}
-  #list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-  .card{grid-template-columns:82px minmax(0,1fr) 82px;gap:7px}
-  .th{height:88px}
-  .ban{margin-top:18px}
-  .nv{max-width:760px}
-}
-
-/* Máy tính / laptop */
-@media (min-width:900px){
-  body{background:
-    radial-gradient(ellipse at 15% 25%,#123b8b55,transparent 36%),
-    radial-gradient(ellipse at 85% 70%,#172c7950,transparent 38%),
-    #030817}
-  .app{
-    max-width:1180px;
-    padding:0 30px;
-  }
-  .hd{
-    margin:0 -30px;
-    padding:22px 34px 15px;
-    border-bottom-width:3px;
-  }
-  .hd-top{max-width:1120px;margin:0 auto;gap:16px}
-  .logo{width:66px;height:66px}
-  .hd h1{font-size:36px}
-  .hd p{font-size:13px}
-  .pill{font-size:12px;padding:4px 13px}
-  .feat{max-width:1120px;margin:10px auto 0;font-size:12px}
-  .tabs{
-    max-width:760px;
-    margin:18px auto 0;
-    gap:9px;
-  }
-  .tab{height:66px}
-  .tab>.in{font-size:16px}
-  .tab small{font-size:13px}
-  .tab .ic{font-size:25px}
-  .t-all>.in{font-size:18px}
-  .t-all svg{width:34px;height:34px}
-  .row{
-    max-width:760px;
-    margin:12px auto 0;
-    gap:9px;
-  }
-  .chip{height:34px;font-size:14px}
-  .row2 .chip{height:34px;font-size:13px;padding:0 14px}
-  .search{height:34px;padding:0 12px}
-  .search input{font-size:13px}
-  .stats{
-    max-width:760px;
-    height:48px;
-    margin:13px auto 0;
-  }
-  .st{font-size:12px}
-  .st b{font-size:20px}
-  .lh{
-    max-width:1120px;
-    height:56px;
-    margin:16px auto 0;
-  }
-  .lh>.in{padding:0 16px}
-  .lh h3{font-size:16px}
-  .lh small{font-size:12px}
-  .sort{height:32px;font-size:13px;padding:0 12px}
-  #list{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:14px;
-    margin-top:14px;
-  }
-  .card{
-    min-height:136px;
-    grid-template-columns:112px minmax(0,1fr) 112px;
-    gap:12px;
-    padding:12px;
-  }
-  .th{height:108px}
-  .nm b{font-size:16px}
-  .fl{font-size:10px}
-  .tag{font-size:12px;margin:5px 0}
-  .xu{font-size:14px}
-  .mid ul{font-size:13px}
-  .open{height:40px;font-size:13px}
-  .clk{width:30px;height:30px}
-  .ban{
-    max-width:1120px;
-    margin:18px auto 0;
-    height:64px;
-  }
-  .ban b{font-size:20px;left:40px;top:9px}
-  .ban span{font-size:12px;left:46px;top:36px}
-  .sp{height:calc(88px + env(safe-area-inset-bottom,0px))}
-  nav{background:#04091bF2;backdrop-filter:blur(12px)}
-  .nv{
-    max-width:1120px;
-    height:66px;
-  }
-  .nv a{font-size:12px;gap:4px}
-  .ct .bt{width:58px;height:58px;margin-left:-29px;top:-22px}
-}
-
-/* Màn hình rất rộng: thẻ live chia 3 cột */
-@media (min-width:1250px){
-  .app{max-width:1320px}
-  .hd{margin-left:calc((1180px - 100vw)/2 - 30px);margin-right:calc((1180px - 100vw)/2 - 30px)}
-  #list{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .card{grid-template-columns:96px minmax(0,1fr) 96px}
-  .th{height:96px}
-  .nv{max-width:1260px}
-}
-
-
-/* Nút vào nhóm Telegram quản trị */
-.admin-group{
-  display:flex;align-items:center;gap:11px;width:100%;max-width:760px;
-  min-height:54px;margin:11px auto 0;padding:9px 13px;
-  border:1px solid #2877e8;border-radius:13px;color:#fff;text-decoration:none;
-  background:linear-gradient(105deg,#10265f,#091333 72%,#111c50);
-  box-shadow:0 0 12px #246bff33,inset 0 0 12px #1d4ed822;
-}
-.admin-group:active{transform:scale(.99)}
-.admin-group .tg-icon{
-  width:36px;height:36px;flex:none;border-radius:50%;display:grid;place-items:center;
-  background:linear-gradient(145deg,#54b8ff,#1260d8);box-shadow:0 0 12px #299cff77;
-}
-.admin-group .ag-copy{min-width:0;flex:1}
-.admin-group b{display:block;font-size:13px;line-height:1.25}
-.admin-group small{display:block;margin-top:3px;color:#a9c9ff;font-size:10.5px}
-.admin-group .ag-go{font-size:19px;color:#80caff}
-@media(min-width:900px){
-  .admin-group{max-width:760px;min-height:60px;margin-top:14px;padding:11px 16px}
-  .admin-group b{font-size:14px}
-  .admin-group small{font-size:11.5px}
-}
-
-
-/* ===== NEON COLOR CYCLE - NO CENTER SPINNER ===== */
-@keyframes neonHue{0%{filter:hue-rotate(0deg)}100%{filter:hue-rotate(360deg)}}
-@keyframes neonText{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-@keyframes neonGlow{0%,100%{box-shadow:0 0 7px #18dfff55,0 0 18px #2563eb22}50%{box-shadow:0 0 13px #ff3cac88,0 0 28px #8b5cf688}}
-@keyframes tickerSlide{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
-.hd,.stats,.lh,.admin-group,.ban,.chip,.search,.tab,.card,.sort,.nv .bt{animation:neonGlow 7s ease-in-out infinite}
-.hd{border-image:linear-gradient(90deg,#00e5ff,#8b5cf6,#ff3cac,#ffb020,#00e5ff) 1}
-.hd h1,.ban b,.lh h3{background:linear-gradient(90deg,#39e7ff,#b18cff,#ff6cb5,#ffd166,#39e7ff);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:neonText 8s linear infinite}
-.g{filter:drop-shadow(0 0 5px #36cfff66)}
-.tab,.chip,.search,.stats,.lh,.admin-group,.card{border-color:transparent;outline:1px solid #278bff66}
-.tab.on,.chip.on{outline:1px solid #ff4fc8;box-shadow:0 0 12px #278bff66,0 0 18px #ff4fc833}
-/* Popup thông báo */
-.notice-overlay{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:18px;background:#02040bdc;backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px)}
-.notice-box{width:min(100%,480px);max-height:min(82vh,720px);overflow:auto;position:relative;border-radius:22px;padding:1.5px;background:linear-gradient(125deg,#00e5ff,#8b5cf6,#ff3cac,#ffb020,#00e5ff);background-size:300% 300%;animation:neonText 9s linear infinite,neonGlow 4s ease-in-out infinite}
-.notice-inner{border-radius:20px;background:linear-gradient(155deg,#171923,#0a1024 75%);overflow:hidden}
-.notice-head{display:flex;align-items:center;gap:10px;padding:17px 19px;border-bottom:1px solid #ffffff18}
-.notice-icon{width:39px;height:39px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(135deg,#ff8a00,#ff286f,#8b5cf6);font-size:20px;box-shadow:0 0 18px #ff3cac66}
-.notice-head strong{font-size:17px;font-weight:900;letter-spacing:.3px;background:linear-gradient(90deg,#ffb15e,#ff5c9c,#8bdcff);background-clip:text;-webkit-background-clip:text;color:transparent}
-.notice-close{margin-left:auto;border:0;background:#ffffff12;color:#dbeafe;width:32px;height:32px;border-radius:10px;font-size:21px;cursor:pointer}
-.notice-body{padding:18px 19px 15px;color:#e6eaf5;font-size:14px;line-height:1.7}
-.notice-welcome{font-size:18px;font-weight:900;line-height:1.4;margin-bottom:10px;background:linear-gradient(90deg,#fff,#73e5ff,#d6a6ff,#ff9fc9);background-clip:text;-webkit-background-clip:text;color:transparent}
-.notice-ticker{height:34px;overflow:hidden;border-radius:10px;background:#ffffff09;border:1px solid #ffffff16;margin:12px 0 16px;display:flex;align-items:center}
-.notice-ticker span{white-space:nowrap;display:inline-block;min-width:max-content;animation:tickerSlide 13s linear infinite;font-size:16px;letter-spacing:8px}
-.notice-section{margin-top:13px;padding:12px 13px;border-radius:13px;background:linear-gradient(110deg,#ffffff0b,#ffffff04);border:1px solid #ffffff13}
-.notice-section b{display:block;color:#77e6ff;font-size:13px;letter-spacing:.35px;margin-bottom:5px}
-.notice-section p{margin:0;color:#d8deed}
-.notice-contact{display:inline-flex;align-items:center;gap:7px;margin-top:8px;padding:9px 12px;border-radius:10px;text-decoration:none;color:#75efff;background:#082a45;border:1px solid #1689b5;font-weight:800;overflow-wrap:anywhere}
-.notice-foot{padding:0 19px 18px}
-.notice-ok{width:100%;border:0;border-radius:12px;padding:13px 16px;color:white;font-weight:900;font-size:14px;cursor:pointer;background:linear-gradient(100deg,#ff7a18,#ff287b,#8b5cf6,#18bde9);background-size:220% 100%;animation:neonText 7s linear infinite;box-shadow:0 5px 20px #ff287b35}
-.notice-overlay[hidden]{display:none}
-@media(max-width:390px){.notice-overlay{padding:12px}.notice-body{padding:15px;font-size:13px}.notice-welcome{font-size:17px}.notice-head{padding:14px 15px}}
-@media(prefers-reduced-motion:reduce){.hd,.stats,.lh,.admin-group,.ban,.chip,.search,.tab,.card,.sort,.nv .bt,.hd h1,.ban b,.lh h3,.notice-box,.notice-ticker span,.notice-ok{animation:none!important}}
-
+:root{--bg:#05091a;--panel:#0b1530;--line:#214b85;--blue:#258cff;--cyan:#32e5ff;--purple:#a65cff}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 20% 0%,#123b8055,transparent 40%),var(--bg);color:#edf6ff;font-family:Arial,sans-serif;min-height:100vh}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer;border:0;border-radius:10px;padding:12px 16px;background:linear-gradient(100deg,#1769e9,#19bfe9);color:white;font-weight:800}
+button:disabled{opacity:.55;cursor:not-allowed}
+button.secondary{background:#142746;border:1px solid #31577e;color:#d9edff}
+button.danger{background:#9c2946;color:white}
+input,select,textarea{width:100%;padding:13px;margin:7px 0 12px;border:1px solid #294c75;border-radius:10px;background:#071126;color:white;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--cyan);box-shadow:0 0 12px #32e5ff30}
+textarea{min-height:90px;resize:vertical}
+header{position:sticky;top:0;z-index:20;background:#071126ee;border-bottom:1px solid #1d4780;backdrop-filter:blur(12px)}
+.head{max-width:1180px;margin:auto;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand{font-size:26px;font-weight:1000;letter-spacing:1px;background:linear-gradient(90deg,#fff,#48dfff,#a88cff);color:transparent;background-clip:text}
+.sub{font-size:11px;color:#9bb6d7;margin-top:4px}
+.wrap{max-width:1180px;margin:28px auto;padding:0 18px}
+.panel{background:linear-gradient(145deg,#101e3b,#091329);border:1px solid #204a79;border-radius:17px;padding:22px;margin-bottom:17px;box-shadow:0 10px 35px #0003}
+h1{font-size:27px;margin:0 0 9px}
+h2{font-size:19px;color:#65dfff;margin:0 0 13px}
+h3{font-size:15px;color:#b9d8ff;margin:18px 0 8px}
+p,.muted{color:#a6bad4;line-height:1.6}
+.small{font-size:12px;color:#91a9c6}
+.hidden{display:none!important}
+.status{padding:12px;border-radius:10px;background:#071126;border:1px solid #294a72;color:#b9eaff;white-space:pre-line;margin-top:10px;overflow-wrap:anywhere}
+.status.good{border-color:#1d9465;color:#8fffc6}
+.status.bad{border-color:#a93d54;color:#ffabb8}
+.device{padding:13px;border:1px dashed #3388c9;border-radius:10px;background:#061127;color:#5fe5ff;overflow-wrap:anywhere}
+.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+.row>*{flex:1;min-width:130px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.stat{background:#071329;border:1px solid #1c426d;border-radius:12px;padding:16px}
+.stat b{display:block;color:#4bdfff;font-size:25px;margin-bottom:5px}
+.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{background:#142746;border:1px solid #2b4e77}
+.tabs button.active{background:linear-gradient(100deg,#1769e9,#19bfe9)}
+.listitem{padding:14px;background:#071329;border:1px solid #1c426d;border-radius:12px;margin:9px 0;overflow-wrap:anywhere}
+.listitem b{color:#e9f7ff}
+.badge{display:inline-block;padding:4px 8px;border-radius:20px;background:#153a61;color:#7cddff;font-size:11px;font-weight:bold;margin:3px}
+.badge.green{background:#123b2e;color:#7effbd}
+.badge.red{background:#4a1d2c;color:#ff9bad}
+.livegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.livecard{background:#09172e;border:1px solid #245080;border-radius:14px;padding:14px;display:grid;grid-template-columns:75px 1fr;gap:12px}
+.livepic{height:75px;border-radius:11px;background:linear-gradient(145deg,#5035a0,#126b9c);display:grid;place-items:center;font-size:27px}
+.livecard h3{margin:0 0 5px;color:#fff}
+.livecard p{margin:4px 0;font-size:12px}
+.livecard button{grid-column:1/-1}
+footer{text-align:center;padding:30px;color:#617c9d;font-size:12px}
+@media(max-width:600px){.wrap{margin:17px auto;padding:0 11px}.panel{padding:17px}.head{padding:12px}.brand{font-size:22px}h1{font-size:23px}}
 </style>
 </head>
 <body>
 
-<div class="notice-overlay" id="noticeOverlay" role="dialog" aria-modal="true" aria-labelledby="noticeTitle">
-  <div class="notice-box"><div class="notice-inner">
-    <div class="notice-head"><div class="notice-icon">📢</div><strong id="noticeTitle">THÔNG BÁO</strong><button class="notice-close" type="button" aria-label="Đóng thông báo" onclick="closeNotice()">×</button></div>
-    <div class="notice-body">
-      <div class="notice-welcome">AD HQuan xin chào 500 ae nhé! 🔥</div>
-      <div class="notice-ticker" aria-label="Hiệu ứng biểu tượng"><span>⚡ ✨ 🔥 💎 🚀 🎯 ⚡ ✨ 🔥 💎 🚀 🎯</span></div>
-      <div class="notice-section"><b>📌 THÔNG TIN WEB</b><p>Hiện tại web chưa chạy được vì nhát làm 😂</p></div>
-      <div class="notice-section"><b>🤝 TUYỂN NGƯỜI LÀM WEB CHUNG</b><p>Yêu cầu biết lập trình và bot Telegram.</p></div>
-      <div class="notice-section"><b>👥 CỘNG TÁC VIÊN</b><p>Hiện tại chưa có CTV nào hết nhé, nào xong thì tuyển.</p></div>
-      <div class="notice-section"><b>💬 LIÊN HỆ ADMIN</b><a class="notice-contact" href="https://zalo.me/g/jkzddczpzuo1qld12po7" target="_blank" rel="noopener noreferrer">Mở nhóm Zalo Admin ↗</a></div>
-    </div>
-    <div class="notice-foot"><button class="notice-ok" type="button" onclick="closeNotice()">ĐÃ HIỂU — VÀO WEBSITE</button></div>
-  </div></div>
-</div>
-
-<div class="app">
-
-<div class="hd">
-  <div class="hd-top">
-    <div class="logo"><svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M21.5 3.2 2.6 10.5c-.9.4-.9 1.1-.2 1.3l4.8 1.5 1.9 5.9c.2.6.4.8.9.8s.7-.2 1-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.3-1.6zM9 13.5l9.1-5.7c.4-.3.8-.1.5.2l-7.6 6.9-.3 3.3-1.7-4.7z"/></svg></div>
-    <div><h1>HQuan.com</h1><p>Hệ thống săn rương &amp; tín hiệu Live thời gian thực</p><span class="pill" id="pill"><i></i><span id="pillTx">Bot Telegram: Đang kết nối</span></span></div>
+<header>
+ <div class="head">
+  <div>
+   <div class="brand" id="siteName">HQuan.com</div>
+   <div class="sub">Hệ thống Live • Xác minh thiết bị • Quản trị</div>
   </div>
-  <div class="feat"><svg width="20" height="20" viewBox="0 0 24 24" fill="#2f8bff"><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5" stroke="#fff" stroke-width="2" fill="none"/></svg><span>Nhanh hơn</span><span class="d">•</span><span>Chính xác hơn</span><span class="d">•</span><span>Ổn định hơn</span></div>
-</div>
+  <button class="secondary" onclick="showLogin('admin')">ADMIN</button>
+ </div>
+</header>
 
-<div class="tabs">
-  <div class="g" style="--b:#58b0ff"><div class="tab cut t-all on" data-tab="all"><div class="in"><svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M21.5 3.2 2.6 10.5c-.9.4-.9 1.1-.2 1.3l4.8 1.5 1.9 5.9c.2.6.4.8.9.8s.7-.2 1-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.3-1.6z"/></svg><div>Tất cả<br><small id="n-all">(0)</small></div></div></div></div>
-  <div class="g" style="--b:#8b4be0"><div class="tab cut t-ru" data-tab="ruong"><div class="in"><span class="ic">🧰</span>Rương<small id="n-ruong">(0)</small></div></div></div>
-  <div class="g" style="--b:#1fd0c8"><div class="tab cut t-tu" data-tab="tui"><div class="in"><span class="ic">🎒</span>Túi<small id="n-tui">(0)</small></div></div></div>
-  <div class="g" style="--b:#d19a1f"><div class="tab cut t-tr" data-tab="treo"><div class="in"><span class="ic">⏳</span>Treo<small id="n-treo">(0)</small></div></div></div>
-</div>
+<main class="wrap">
 
-<div class="row">
-  <div class="chip" data-r="1">Ratio 1 <em id="r1">(0)</em></div>
-  <div class="chip" data-r="2">Ratio 2 <em id="r2">(0)</em></div>
-  <div class="chip" data-r="3">Ratio 3 <em id="r3">(0)</em></div>
-</div>
-<div class="row row2">
-  <div class="chip" data-r="ge2"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25d0ff"><path d="M6 3h12l4 6-10 12L2 9z"/></svg>Ratio ≥ 2</div>
-  <div class="chip" data-r="xu20"><span style="font-size:14px">🪙</span>XU ≥ 20</div>
-  <label class="search"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" placeholder="Tìm @tên, xu, quốc gia..."></label>
-</div>
+<!-- XÁC MINH THIẾT BỊ -->
+<section id="verifyPanel" class="panel">
+ <h1>Xác minh thiết bị</h1>
+ <p>Thiết bị cần được cấp quyền bằng KEY trước khi vào hệ thống.</p>
+ <h2>Thiết bị của bạn</h2>
+ <div class="device" id="deviceId">Đang tạo Device ID...</div>
+ <div class="row">
+  <button class="secondary" onclick="copyDevice()">Sao chép Device ID</button>
+  <button class="secondary" onclick="showLogin('admin')">Đăng nhập Admin</button>
+ </div>
+ <h2 style="margin-top:22px">Nhập KEY truy cập</h2>
+ <input id="keyInput" placeholder="Ví dụ: HQ-XXXXXXXX..." autocomplete="off">
+ <button id="activateBtn" onclick="activateDevice()">XÁC MINH VÀO WEBSITE</button>
+ <div class="status" id="verifyStatus">Trạng thái: Chưa được cấp quyền.</div>
+ <p class="small">Nếu chưa có KEY, hãy liên hệ quản trị viên để được cấp quyền.</p>
+</section>
 
-<div class="stats">
-  <div class="st"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2f8bff"><rect x="3" y="12" width="4" height="9" rx="1"/><rect x="10" y="6" width="4" height="15" rx="1"/><rect x="17" y="9" width="4" height="12" rx="1"/></svg><div>Tổng live<b id="tot">0</b></div></div>
-  <div class="st f"><span style="font-size:22px;line-height:1">🔥</span><div>Đang hoạt động<b id="act">0</b></div></div>
-</div>
+<!-- TRANG CHỦ -->
+<section id="homePanel" class="hidden">
+ <div class="panel">
+  <h1 id="welcomeTitle">Chào mừng đến với HQuan.com</h1>
+  <p id="announcement">Chào mừng bạn đến với hệ thống HQuan!</p>
+  <div class="grid">
+   <div class="stat"><b id="liveTotal">0</b><span class="small">Tổng Live</span></div>
+   <div class="stat"><b id="liveActive">0</b><span class="small">Đang hoạt động</span></div>
+   <div class="stat"><b id="deviceState">Đã xác minh</b><span class="small">Trạng thái thiết bị</span></div>
+  </div>
+ </div>
 
-<div class="g" style="--b:#2a62e8">
-<a class="admin-group" href="https://t.me/+wpNV65xUHB1mZDY1" target="_blank" rel="noopener noreferrer" aria-label="Tham gia nhóm Telegram Admin Web">
-  <span class="tg-icon">
-    <svg width="21" height="21" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
-      <path d="M21.5 3.2 2.6 10.5c-.9.4-.9 1.1-.2 1.3l4.8 1.5 1.9 5.9c.2.6.4.8.9.8s.7-.2 1-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.3-1.6zM9 13.5l9.1-5.7c.4-.3.8-.1.5.2l-7.6 6.9-.3 3.3-1.7-4.7z"/>
-    </svg>
-  </span>
-  <span class="ag-copy">
-    <b>NHÓM TELEGRAM ADMIN WEB</b>
-    <small>Tham gia nhóm • Hỗ trợ và thông báo</small>
-  </span>
-  <span class="ag-go">›</span>
-</a>
+ <div class="panel">
+  <div class="row">
+   <div><h2>Danh sách Live</h2><p class="small">Dữ liệu cập nhật từ máy chủ bot.</p></div>
+   <button class="secondary" onclick="loadFromBot()">Làm mới Live</button>
+  </div>
+  <div class="row">
+   <select id="liveFilter" onchange="renderLive()">
+    <option value="all">Tất cả Live</option>
+    <option value="ruong">Rương</option>
+    <option value="tui">Túi</option>
+    <option value="treo">Treo</option>
+   </select>
+   <input id="liveSearch" placeholder="Tìm tên / quốc gia..." oninput="renderLive()">
+  </div>
+  <div class="status" id="botStatus">Đang kết nối bot...</div>
+  <div id="liveList" class="livegrid" style="margin-top:13px">
+   <div class="listitem">Đang tải dữ liệu...</div>
+  </div>
+ </div>
 
-<div class="lh cut"><div class="in">
-  <div class="l"><svg width="22" height="22" viewBox="0 0 24 24" stroke="#7fb4ff" stroke-width="2.5" stroke-linecap="round"><path d="M3 6h18M3 12h13M3 18h8"/></svg><div><h3>Danh sách Live</h3><small>Cập nhật liên tục • <b id="clock">--:--:--</b></small></div></div>
-  <div class="sort"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c9a0ff" stroke-width="2" stroke-linejoin="round"><path d="M3 4h18l-7 8v6l-4 2v-8z"/></svg>Sắp theo giờ <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 9l7 7 7-7"/></svg></div>
-</div></div></div>
+ <div class="panel">
+  <h2>Khu vực thành viên</h2>
+  <div class="row">
+   <button onclick="showLogin('ctv')">Đăng nhập CTV</button>
+   <button class="secondary" onclick="showLogin('admin')">Đăng nhập Admin</button>
+   <button class="secondary" onclick="logoutDevice()">Thoát thiết bị</button>
+  </div>
+ </div>
+</section>
 
-<div id="list"><div class="empty">Đang tải danh sách live...</div></div>
+<!-- ĐĂNG NHẬP ADMIN / CTV -->
+<section id="loginPanel" class="panel hidden">
+ <h1 id="loginTitle">Đăng nhập</h1>
+ <p id="loginDescription">Nhập thông tin tài khoản.</p>
+ <input id="loginUser" placeholder="Tên đăng nhập" autocomplete="username">
+ <input id="loginPass" type="password" placeholder="Mật khẩu" autocomplete="current-password">
+ <div class="row">
+  <button id="loginButton" onclick="submitLogin()">ĐĂNG NHẬP</button>
+  <button class="secondary" onclick="backToVerifyOrHome()">Quay lại</button>
+ </div>
+ <div class="status" id="loginStatus"></div>
+</section>
 
-<div class="ban"><b>HQuan.com</b><span>Săn nhanh – Tối ưu – Hiệu quả</span><i></i></div>
-<div class="sp"></div>
-</div>
+<!-- ADMIN -->
+<section id="adminPanel" class="hidden">
+ <div class="panel">
+  <h1>TRUNG TÂM QUẢN TRỊ HQUAN</h1>
+  <p>Quản lý KEY, thiết bị, cộng tác viên và nội dung trang chủ.</p>
+  <div class="tabs">
+   <button class="active" data-tab="keys" onclick="adminTab('keys',this)">Quản lý KEY</button>
+   <button data-tab="devices" onclick="adminTab('devices',this)">Thiết bị</button>
+   <button data-tab="ctv" onclick="adminTab('ctv',this)">Cộng tác viên</button>
+   <button data-tab="settings" onclick="adminTab('settings',this)">Cài đặt web</button>
+   <button class="secondary" onclick="adminLogout()">Đăng xuất</button>
+  </div>
+ </div>
 
-<nav><div class="nv">
-  <a class="on"><svg width="23" height="23" viewBox="0 0 24 24" fill="currentColor"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Trang chủ</a>
-  <a><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5 3.5-5 3.5z" fill="currentColor"/></svg>Live</a>
-  <a class="ct" onclick="loadFromBot()"><div class="bt"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M21.5 3.2 2.6 10.5c-.9.4-.9 1.1-.2 1.3l4.8 1.5 1.9 5.9c.2.6.4.8.9.8s.7-.2 1-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.3-1.6z"/></svg></div></a>
-  <a class="rd"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10 20a2 2 0 0 0 4 0"/></svg>Thông báo</a>
-  <a><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.5"/><circle cx="12" cy="12" r="8" stroke-width="3.5" stroke-dasharray="3 2.2"/></svg>Cài đặt</a>
-</div></nav>
+ <div id="admin-keys" class="panel adminTab">
+  <h2>Tạo KEY mới</h2>
+  <label class="small">Tên / ghi chú KEY</label>
+  <input id="keyLabel" placeholder="Ví dụ: Khách hàng A">
+  <div class="grid">
+   <div><label class="small">Thời hạn</label><input id="keyDuration" type="number" min="1" value="30"></div>
+   <div><label class="small">Đơn vị</label>
+    <select id="keyUnit">
+     <option value="minute">Phút</option><option value="hour">Giờ</option>
+     <option value="day" selected>Ngày</option><option value="month">Tháng</option>
+     <option value="permanent">Vĩnh viễn</option>
+    </select>
+   </div>
+   <div><label class="small">Số thiết bị được phép</label><input id="keyDevices" type="number" min="1" value="1"></div>
+  </div>
+  <button onclick="createKey()">+ TẠO KEY</button>
+  <div class="status" id="newKeyResult">KEY mới sẽ hiển thị ở đây.</div>
+  <h2 style="margin-top:25px">Danh sách KEY</h2>
+  <button class="secondary" onclick="loadKeys()">Làm mới danh sách</button>
+  <div id="keyList"></div>
+ </div>
+
+ <div id="admin-devices" class="panel adminTab hidden">
+  <h2>Thiết bị đã kích hoạt</h2>
+  <button class="secondary" onclick="loadDevices()">Làm mới thiết bị</button>
+  <div id="deviceList"></div>
+ </div>
+
+ <div id="admin-ctv" class="panel adminTab hidden">
+  <h2>Tạo tài khoản CTV</h2>
+  <div class="grid">
+   <div><label class="small">Tên đăng nhập</label><input id="ctvUser" placeholder="ctv01"></div>
+   <div><label class="small">Mật khẩu</label><input id="ctvPass" placeholder="Ít nhất 6 ký tự"></div>
+   <div><label class="small">Thời hạn (ngày)</label><input id="ctvDays" type="number" min="1" value="30"></div>
+  </div>
+  <label class="small">Ghi chú</label><input id="ctvNote" placeholder="Thông tin CTV">
+  <h3>Quyền được cấp</h3>
+  <label><input type="checkbox" id="permLive" checked style="width:auto"> Xem khu vực Live</label><br>
+  <label><input type="checkbox" id="permNotice" checked style="width:auto"> Xem thông báo</label><br>
+  <label><input type="checkbox" id="permProfile" checked style="width:auto"> Xem hồ sơ</label><br><br>
+  <button onclick="createCtv()">TẠO TÀI KHOẢN CTV</button>
+  <div id="ctvCreateResult" class="status"></div>
+  <h2 style="margin-top:25px">Danh sách CTV</h2>
+  <button class="secondary" onclick="loadCtv()">Làm mới CTV</button>
+  <div id="ctvList"></div>
+ </div>
+
+ <div id="admin-settings" class="panel adminTab hidden">
+  <h2>Cài đặt trang chủ</h2>
+  <label class="small">Tên website</label>
+  <input id="settingName" value="HQuan.com">
+  <label class="small">Thông báo trang chủ</label>
+  <textarea id="settingAnnouncement" placeholder="Nhập thông báo muốn hiển thị..."></textarea>
+  <button onclick="saveSettings()">LƯU CÀI ĐẶT</button>
+  <div id="settingResult" class="status"></div>
+ </div>
+</section>
+
+<!-- CTV -->
+<section id="ctvPanel" class="panel hidden">
+ <h1>KHU VỰC CỘNG TÁC VIÊN</h1>
+ <p id="ctvWelcome"></p>
+ <div id="ctvFeatures"></div>
+ <button class="secondary" onclick="ctvLogout()">Đăng xuất CTV</button>
+</section>
+
+</main>
+<footer>HQUAN.COM • Hệ thống quản lý HQuan © 2026</footer>
 
 <script>
-function closeNotice(){const el=document.getElementById('noticeOverlay');if(el)el.hidden=true}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeNotice()});
+/* ===== CẤU HÌNH API ===== */
+const API = "https://hq-ba-khi-api.hikhikhakhamunly.workers.dev";
+const FEED_API = ""; // Để trống nếu API Live cũ chạy cùng tên miền trang web.
 
-/* ================= LẤY DỮ LIỆU TỪ BOT (cùng API với trang cũ) ================= */
-const SALT=String.fromCharCode.apply(null,[83,104,111,112,76,105,110,107,95,83,104,105,101,108,100,95,118,50,95,57,102,56,100,50,101,52,97,55,99,49,98,53,48,54,50]);
-const hex=b=>Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('');
-const sha=async s=>hex(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)));
-let deviceId=localStorage.getItem('device_id');
-if(!deviceId){deviceId='device_'+'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,c=>{const r=Math.random()*16|0;return(c=='x'?r:(r&3|8)).toString(16)});localStorage.setItem('device_id',deviceId)}
-function webgl(){try{const c=document.createElement('canvas'),gl=c.getContext('webgl')||c.getContext('experimental-webgl');if(!gl)return{renderer:'none',vendor:'none'};const d=gl.getExtension('WEBGL_debug_renderer_info');if(!d)return{renderer:(gl.getParameter(gl.RENDERER)||'generic').trim(),vendor:(gl.getParameter(gl.VENDOR)||'generic').trim()};return{renderer:(gl.getParameter(d.UNMASKED_RENDERER_WEBGL)||'').trim(),vendor:(gl.getParameter(d.UNMASKED_VENDOR_WEBGL)||'').trim()}}catch(e){return{renderer:'err',vendor:'err'}}}
-function canvasHash(){try{const cv=document.createElement('canvas');cv.width=200;cv.height=40;const x=cv.getContext('2d');if(!x)return'no-ctx';x.textBaseline='top';x.font='14px Arial';x.fillStyle='#f60';x.fillRect(125,1,62,20);x.fillStyle='#069';x.fillText('TikTokLive!AntiScrape#99',2,15);x.fillStyle='rgba(102, 204, 0, 0.7)';x.fillText('TikTokLive!AntiScrape#99',4,17);const u=cv.toDataURL();let h=0;for(let i=0;i<u.length;i++){h=((h<<5)-h)+u.charCodeAt(i);h|=0}return(h>>>0).toString(16)}catch(e){return'err'}}
-async function fingerprint(){const g=webgl(),t=navigator.maxTouchPoints||(navigator.msMaxTouchPoints||0),s=`${screen.width}x${screen.height}x${screen.colorDepth}x${window.devicePixelRatio||1}`;return{fp:await sha(`${g.renderer}#${g.vendor}#${canvasHash()}#${t}#${s}`),gpu:g.renderer}}
-async function signedHeaders(){const ts=Date.now(),nonce=Math.random().toString(36).substring(2,10)+ts.toString(36),{fp,gpu}=await fingerprint(),sig=await sha(`${deviceId}:${ts}:${nonce}:${fp}:${gpu}:${SALT}`);return{ts,nonce,fp,gpu,sig,headers:{'Content-Type':'application/json','x-device-id':deviceId,'x-req-ts':String(ts),'x-req-nonce':nonce,'x-req-fp':fp,'x-req-gpu':encodeURIComponent(gpu),'x-req-sig':sig}}}
-async function decryptPayload(p,ivHex,nonce){const key=await crypto.subtle.importKey('raw',await crypto.subtle.digest('SHA-256',new TextEncoder().encode(`${SALT}:${nonce}:${deviceId}`)),{name:'AES-CBC'},false,['decrypt']);const iv=new Uint8Array(ivHex.match(/.{1,2}/g).map(b=>parseInt(b,16)));const bin=atob(p),by=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)by[i]=bin.charCodeAt(i);return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-CBC',iv},key,by)))}
-
-/* ================= CHUYỂN DỮ LIỆU BOT -> THẺ LIVE =================
-   Nếu tên field của bot khác, chỉ cần sửa hàm mapItem bên dưới. */
-const TAB_BY_CHAT={'-1003393920142':'ruong','-1003606511380':'ruong','-1002889993912':'ruong','-1002914600740':'ruong','-1003874158853':'treo','-1003337128065':'tui','-1002601067327':'tui'};
-const TAB_BY_KEY={ruong_nho:'ruong',ruong_lon:'ruong',nhan_pham:'ruong',ruong_treo:'treo',tui:'tui'};
-function toMs(v){if(v==null||v==='')return 0;if(typeof v==='number')return v<1e12?v*1000:v;const n=Number(v);if(!isNaN(n))return n<1e12?n*1000:n;const d=Date.parse(v);return isNaN(d)?0:d}
-function mapItem(key,it){
-  const chat=String(it.chat_id??it.chatId??it.group??'');
-  const type=TAB_BY_KEY[it.tab]||TAB_BY_KEY[it.group]||TAB_BY_CHAT[chat]||'ruong';
-  let openAt=toMs(it.open_at??it.openAt??it.start_at??it.start_time??it.time??it.ts??it.created_at);
-  if(!openAt&&it.remaining!=null)openAt=Date.now()+Number(it.remaining)*1000;
-  const h=String(it.tt_id||it.handle||'').replace(/^@+/,'');
-  return{key,name:it.name||it.title||(h&&h!=='không'?'@'+h:'H.Quan'),country:String(it.country||it.region||it.cc||'').toUpperCase().slice(0,3),
-    type,xu:Number(it.xu??it.coins??it.coin??it.amount??0)||0,box:it.box??it.slots??'',ratio:Number(it.ratio)||0,openAt,hot:!!(it.hot||it.is_hot)};
+/* ===== TIỆN ÍCH ===== */
+const $ = id => document.getElementById(id);
+const show = id => $(id).classList.remove("hidden");
+const hide = id => $(id).classList.add("hidden");
+const setStatus = (id,msg,type="") => {
+  $(id).textContent = msg;
+  $(id).className = "status" + (type ? " " + type : "");
+};
+async function api(path, options={}) {
+  const headers = {"Content-Type":"application/json",...(options.headers||{})};
+  const token = localStorage.getItem("hq_admin_token") || localStorage.getItem("hq_ctv_token");
+  if(token) headers.Authorization = "Bearer " + token;
+  const response = await fetch(API + path,{...options,headers});
+  let data;
+  try { data = await response.json(); }
+  catch { throw new Error("Máy chủ trả về dữ liệu không hợp lệ."); }
+  if(!response.ok || data.ok === false) throw new Error(data.error || "Có lỗi xảy ra.");
+  return data;
 }
-async function loadFromBot(){
-  try{
-    const s=await signedHeaders();
-    const res=await fetch('/api/v2/feed/stream',{method:'POST',headers:s.headers,body:JSON.stringify({device_id:deviceId,ts:s.ts,nonce:s.nonce,fp:s.fp,gpu:s.gpu,sig:s.sig})});
-    if(res.status===403){setBot(false,'Chưa được cấp quyền');items=[];render();return}
-    if(!res.ok)throw 0;
-    let j=await res.json();if(!j||!j.success)throw 0;
-    if(j.encrypted&&j.payload&&j.iv)j=await decryptPayload(j.payload,j.iv,s.nonce);
-    const links=j.links||{};
-    items=Object.keys(links).map(k=>mapItem(k,links[k]));
-    setBot(true,'Bot Telegram: Đang kết nối');render();
-  }catch(e){
-    if(!/^https?:$/.test(location.protocol)){demo();return}   // xem thử ngoài server
-    setBot(false,'Bot Telegram: Mất kết nối');
+function showOnly(id) {
+  ["verifyPanel","homePanel","loginPanel","adminPanel","ctvPanel"].forEach(x=>hide(x));
+  show(id);
+}
+
+/* ===== DEVICE ID ===== */
+let deviceId = localStorage.getItem("hq_device_id");
+if(!deviceId) {
+  const bytes = crypto.getRandomValues(new Uint8Array(16));
+  deviceId = "HQD-" + Array.from(bytes,b=>b.toString(16).padStart(2,"0")).join("").toUpperCase();
+  localStorage.setItem("hq_device_id",deviceId);
+}
+$("deviceId").textContent = deviceId;
+
+async function copyDevice() {
+  try {
+    await navigator.clipboard.writeText(deviceId);
+    setStatus("verifyStatus","Đã sao chép Device ID.","good");
+  } catch {
+    setStatus("verifyStatus","Không sao chép tự động được. Hãy chọn và sao chép Device ID.","bad");
   }
 }
-function demo(){const n=Date.now();items=[{key:'a1',name:'H.Quan',country:'ĐE',type:'ruong',xu:20,box:16,ratio:1.2,openAt:n+18000,hot:true},{key:'a2',name:'H.Quan',country:'BR',type:'ruong',xu:20,box:16,ratio:1.2,openAt:n+19000},{key:'a3',name:'H.Quan',country:'MD',type:'ruong',xu:20,box:16,ratio:1.2,openAt:n+25000}];render()}
-function setBot(ok,t){$('#pill').classList.toggle('off',!ok);$('#pillTx').textContent=t}
 
-/* ================= MỞ LIVE (claim từ server như cũ) ================= */
-async function openLive(key,btn){
-  if(typeof openDeeplink==='function')return openDeeplink(key,btn);
-  btn.disabled=true;
-  try{
+let lockTimer = null;
+function showLock(seconds) {
+  clearInterval(lockTimer);
+  let left = Math.max(0,Number(seconds)||0);
+  const update = () => {
+    setStatus("verifyStatus",`THIẾT BỊ ĐANG BỊ KHÓA\nVui lòng đợi ${left} giây rồi thử lại.`,"bad");
+    $("activateBtn").disabled = left > 0;
+    if(left <= 0) {
+      clearInterval(lockTimer);
+      setStatus("verifyStatus","Đã hết thời gian khóa. Bạn có thể thử lại.","good");
+      $("activateBtn").disabled = false;
+    }
+    left--;
+  };
+  update();
+  lockTimer = setInterval(update,1000);
+}
+
+/* ===== XÁC MINH KEY ===== */
+async function activateDevice() {
+  const key = $("keyInput").value.trim().toUpperCase();
+  if(!key) return setStatus("verifyStatus","Bạn chưa nhập KEY.","bad");
+
+  $("activateBtn").disabled = true;
+  setStatus("verifyStatus","Đang kiểm tra KEY và xác minh thiết bị...");
+  try {
+    const data = await api("/api/activate",{
+      method:"POST",
+      body:JSON.stringify({key,deviceId})
+    });
+    localStorage.setItem("hq_access_key",key);
+    setStatus("verifyStatus","Đã xác minh thành công. Đang mở trang chủ...","good");
+    await new Promise(r=>setTimeout(r,500));
+    await enterHome();
+  } catch(e) {
+    const message = e.message || "Không thể xác minh.";
+    if(message.includes("5/5") || message.includes("khóa tạm thời")) {
+      showLock(300);
+    } else {
+      setStatus("verifyStatus",message,"bad");
+      $("activateBtn").disabled = false;
+    }
+  }
+}
+
+async function verifySavedDevice() {
+  const key = localStorage.getItem("hq_access_key");
+  if(!key) return showOnly("verifyPanel");
+  try {
+    await api("/api/verify",{
+      method:"POST",
+      body:JSON.stringify({key,deviceId})
+    });
+    await enterHome();
+  } catch {
+    localStorage.removeItem("hq_access_key");
+    showOnly("verifyPanel");
+    setStatus("verifyStatus","Chưa được cấp quyền hoặc KEY đã hết hạn. Vui lòng xác minh lại.");
+  }
+}
+
+async function enterHome() {
+  showOnly("homePanel");
+  await loadSettingsPublic();
+  loadFromBot();
+}
+
+/* ===== ĐĂNG NHẬP ===== */
+let loginMode = "admin";
+function showLogin(mode) {
+  loginMode = mode;
+  showOnly("loginPanel");
+  $("loginTitle").textContent = mode === "admin" ? "ĐĂNG NHẬP ADMIN" : "ĐĂNG NHẬP CỘNG TÁC VIÊN";
+  $("loginDescription").textContent = mode === "admin"
+    ? "Xác thực quản trị viên để mở bảng điều khiển."
+    : "Đăng nhập bằng tài khoản CTV được cấp.";
+  $("loginUser").value = "";
+  $("loginPass").value = "";
+  setStatus("loginStatus","Vui lòng nhập thông tin đăng nhập.");
+}
+function backToVerifyOrHome() {
+  if(localStorage.getItem("hq_access_key")) showOnly("homePanel");
+  else showOnly("verifyPanel");
+}
+async function submitLogin() {
+  const username = $("loginUser").value.trim();
+  const password = $("loginPass").value;
+  if(!username || !password) return setStatus("loginStatus","Vui lòng nhập đủ tài khoản và mật khẩu.","bad");
+
+  $("loginButton").disabled = true;
+  setStatus("loginStatus","Đang kết nối máy chủ...");
+  try {
+    await new Promise(r=>setTimeout(r,450));
+    setStatus("loginStatus","Đang xác thực tài khoản và thiết bị...");
+    const route = loginMode === "admin" ? "/api/admin/login" : "/api/ctv/login";
+    const data = await api(route,{
+      method:"POST",
+      body:JSON.stringify({username,password})
+    });
+    await new Promise(r=>setTimeout(r,450));
+
+    if(loginMode === "admin") {
+      localStorage.setItem("hq_admin_token",data.token);
+      localStorage.removeItem("hq_ctv_token");
+      setStatus("loginStatus","Đã xác minh thành công!\nTài khoản quản trị đã được xác thực. Đang mở Admin...","good");
+      await new Promise(r=>setTimeout(r,500));
+      showOnly("adminPanel");
+      adminTab("keys");
+      loadKeys();
+    } else {
+      localStorage.setItem("hq_ctv_token",data.token);
+      localStorage.removeItem("hq_admin_token");
+      setStatus("loginStatus","Đăng nhập CTV thành công. Đang mở khu vực CTV...","good");
+      await new Promise(r=>setTimeout(r,450));
+      await enterCtv();
+    }
+  } catch(e) {
+    setStatus("loginStatus",e.message,"bad");
+  } finally {
+    $("loginButton").disabled = false;
+  }
+}
+
+/* ===== ADMIN: TAB ===== */
+function adminTab(name,button) {
+  document.querySelectorAll(".adminTab").forEach(x=>hide(x.id));
+  show("admin-"+name);
+  document.querySelectorAll("[data-tab]").forEach(x=>x.classList.remove("active"));
+  if(button) button.classList.add("active");
+  else document.querySelector(`[data-tab="${name}"]`)?.classList.add("active");
+
+  if(name==="keys") loadKeys();
+  if(name==="devices") loadDevices();
+  if(name==="ctv") loadCtv();
+  if(name==="settings") loadSettings();
+}
+function adminLogout() {
+  localStorage.removeItem("hq_admin_token");
+  showOnly("homePanel");
+}
+
+/* ===== ADMIN: KEY ===== */
+function unitName(unit) {
+  return ({minute:"phút",hour:"giờ",day:"ngày",month:"tháng",permanent:"vĩnh viễn"})[unit] || unit;
+}
+async function createKey() {
+  try {
+    const unit = $("keyUnit").value;
+    const duration = unit==="permanent" ? 1 : Number($("keyDuration").value);
+    const data = await api("/api/admin/create",{
+      method:"POST",
+      body:JSON.stringify({
+        label:$("keyLabel").value,
+        duration,unit,
+        maxDevices:Number($("keyDevices").value)
+      })
+    });
+    $("newKeyResult").innerHTML = "";
+    const box = document.createElement("div");
+    box.textContent = "KEY mới: " + data.key;
+    $("newKeyResult").appendChild(box);
+    const copy = document.createElement("button");
+    copy.textContent = "Sao chép KEY";
+    copy.className = "secondary";
+    copy.onclick = () => navigator.clipboard.writeText(data.key);
+    $("newKeyResult").appendChild(copy);
+    await loadKeys();
+  } catch(e) {
+    setStatus("newKeyResult",e.message,"bad");
+  }
+}
+async function loadKeys() {
+  try {
+    const data = await api("/api/admin/list");
+    $("keyList").innerHTML = "";
+    if(!data.keys.length) {
+      $("keyList").textContent = "Chưa có KEY nào.";
+      return;
+    }
+    data.keys.forEach(k=>{
+      const item = document.createElement("div");
+      item.className = "listitem";
+      const status = k.status==="active" ? "Đang hoạt động" : k.status==="locked" ? "Đã khóa" : "Đã thu hồi";
+      const expiry = k.expiresAt ? new Date(k.expiresAt).toLocaleString("vi-VN") : "Vĩnh viễn";
+      item.innerHTML = `<b>${escapeHtml(k.key)}</b> <span class="badge">${escapeHtml(status)}</span>
+        <p>${escapeHtml(k.label||"Không có ghi chú")}</p>
+        <p class="small">Thời hạn: ${escapeHtml(k.duration||"")} • Hết hạn: ${escapeHtml(expiry)}</p>
+        <p class="small">Thiết bị: ${(k.devices||[]).length}/${k.maxDevices}</p>
+        <div class="row">
+          <button class="secondary" data-action="copy">Sao chép</button>
+          <button data-action="active">Mở khóa</button>
+          <button class="danger" data-action="locked">Khóa</button>
+          <button class="danger" data-action="revoked">Thu hồi</button>
+        </div>`;
+      item.querySelector('[data-action="copy"]').onclick=()=>navigator.clipboard.writeText(k.key);
+      item.querySelector('[data-action="active"]').onclick=()=>changeKeyStatus(k.key,"active");
+      item.querySelector('[data-action="locked"]').onclick=()=>changeKeyStatus(k.key,"locked");
+      item.querySelector('[data-action="revoked"]').onclick=()=>changeKeyStatus(k.key,"revoked");
+      $("keyList").appendChild(item);
+    });
+  } catch(e) {
+    $("keyList").textContent = e.message;
+  }
+}
+async function changeKeyStatus(key,status) {
+  if(!confirm("Xác nhận thay đổi trạng thái KEY này?")) return;
+  try {
+    await api("/api/admin/status",{
+      method:"POST",body:JSON.stringify({key,status})
+    });
+    loadKeys();
+  } catch(e) { alert(e.message); }
+}
+
+/* ===== ADMIN: THIẾT BỊ ===== */
+async function loadDevices() {
+  try {
+    const data = await api("/api/admin/devices");
+    $("deviceList").innerHTML = "";
+    if(!data.devices.length) {
+      $("deviceList").textContent = "Chưa có thiết bị nào.";
+      return;
+    }
+    data.devices.forEach(d=>{
+      const item = document.createElement("div");
+      item.className = "listitem";
+      item.innerHTML = `<b>${escapeHtml(d.deviceId)}</b>
+        <p>KEY: ${escapeHtml(d.key)}</p>
+        <p class="small">${escapeHtml(d.label||"")}</p>
+        <button class="danger">Gỡ thiết bị khỏi KEY</button>`;
+      item.querySelector("button").onclick=async()=>{
+        if(!confirm("Gỡ thiết bị này khỏi KEY?")) return;
+        try {
+          await api("/api/admin/device/remove",{
+            method:"POST",
+            body:JSON.stringify({key:d.key,deviceId:d.deviceId})
+          });
+          loadDevices();
+          loadKeys();
+        } catch(e) { alert(e.message); }
+      };
+      $("deviceList").appendChild(item);
+    });
+  } catch(e) { $("deviceList").textContent=e.message; }
+}
+
+/* ===== ADMIN: CTV ===== */
+function selectedPermissions() {
+  const p=[];
+  if($("permLive").checked) p.push("live");
+  if($("permNotice").checked) p.push("notice");
+  if($("permProfile").checked) p.push("profile");
+  return p;
+}
+async function createCtv() {
+  try {
+    const data = await api("/api/admin/ctv/create",{
+      method:"POST",
+      body:JSON.stringify({
+        username:$("ctvUser").value,
+        password:$("ctvPass").value,
+        days:Number($("ctvDays").value),
+        note:$("ctvNote").value,
+        permissions:selectedPermissions()
+      })
+    });
+    setStatus("ctvCreateResult","Đã tạo tài khoản CTV: "+data.account.username,"good");
+    $("ctvPass").value="";
+    loadCtv();
+  } catch(e) { setStatus("ctvCreateResult",e.message,"bad"); }
+}
+async function loadCtv() {
+  try {
+    const data=await api("/api/admin/ctv/list");
+    $("ctvList").innerHTML="";
+    if(!data.accounts.length) {
+      $("ctvList").textContent="Chưa có tài khoản CTV.";
+      return;
+    }
+    data.accounts.forEach(a=>{
+      const item=document.createElement("div");
+      item.className="listitem";
+      const expiry=a.expiresAt?new Date(a.expiresAt).toLocaleString("vi-VN"):"Không rõ";
+      item.innerHTML=`<b>${escapeHtml(a.username)}</b>
+        <span class="badge ${a.status==="active"?"green":"red"}">${a.status==="active"?"Đang hoạt động":"Đã khóa"}</span>
+        <p class="small">Hết hạn: ${escapeHtml(expiry)}</p>
+        <p class="small">Quyền: ${escapeHtml((a.permissions||[]).join(", ")||"Không có")}</p>
+        <div class="row">
+          <button data-do="toggle">${a.status==="active"?"Khóa CTV":"Mở khóa CTV"}</button>
+          <button class="secondary" data-do="perms">Cập nhật quyền</button>
+          <button class="danger" data-do="delete">Xóa CTV</button>
+        </div>`;
+      item.querySelector('[data-do="toggle"]').onclick=()=>updateCtv(a.username,{
+        status:a.status==="active"?"locked":"active"
+      });
+      item.querySelector('[data-do="perms"]').onclick=()=>{
+        const current=(a.permissions||[]).join(",");
+        const value=prompt("Nhập quyền, cách nhau bằng dấu phẩy: live, notice, profile",current);
+        if(value===null)return;
+        updateCtv(a.username,{permissions:value.split(",").map(x=>x.trim())});
+      };
+      item.querySelector('[data-do="delete"]').onclick=async()=>{
+        if(!confirm("Xóa tài khoản CTV "+a.username+"?"))return;
+        try {
+          await api("/api/admin/ctv/delete",{
+            method:"POST",body:JSON.stringify({username:a.username})
+          });
+          loadCtv();
+        } catch(e){alert(e.message)}
+      };
+      $("ctvList").appendChild(item);
+    });
+  } catch(e) { $("ctvList").textContent=e.message; }
+}
+async function updateCtv(username,changes) {
+  try {
+    await api("/api/admin/ctv/update",{
+      method:"POST",body:JSON.stringify({username,...changes})
+    });
+    loadCtv();
+  } catch(e){alert(e.message)}
+}
+
+/* ===== ADMIN: CÀI ĐẶT ===== */
+async function loadSettings() {
+  try {
+    const data=await api("/api/admin/settings");
+    $("settingName").value=data.settings.siteName||"HQuan.com";
+    $("settingAnnouncement").value=data.settings.announcement||"";
+  } catch(e) { setStatus("settingResult",e.message,"bad"); }
+}
+async function saveSettings() {
+  try {
+    const data=await api("/api/admin/settings",{
+      method:"POST",
+      body:JSON.stringify({
+        siteName:$("settingName").value,
+        announcement:$("settingAnnouncement").value
+      })
+    });
+    $("siteName").textContent=data.settings.siteName;
+    $("welcomeTitle").textContent="Chào mừng đến với "+data.settings.siteName;
+    $("announcement").textContent=data.settings.announcement;
+    setStatus("settingResult","Đã lưu cài đặt.","good");
+  } catch(e) { setStatus("settingResult",e.message,"bad"); }
+}
+async function loadSettingsPublic() {
+  try {
+    const response=await fetch(API+"/api/settings");
+    const data=await response.json();
+    if(data.ok) {
+      $("siteName").textContent=data.settings.siteName;
+      $("welcomeTitle").textContent="Chào mừng đến với "+data.settings.siteName;
+      $("announcement").textContent=data.settings.announcement;
+    }
+  } catch {}
+}
+
+/* ===== CTV ===== */
+async function enterCtv() {
+  try {
+    const data=await api("/api/ctv/me");
+    const a=data.account;
+    showOnly("ctvPanel");
+    $("ctvWelcome").textContent="Xin chào "+a.username+". Đây là khu vực CTV của bạn.";
+    $("ctvFeatures").innerHTML="";
+    const names={live:"Xem khu vực Live",notice:"Xem thông báo",profile:"Xem hồ sơ"};
+    (a.permissions||[]).forEach(p=>{
+      const div=document.createElement("div");
+      div.className="listitem";
+      div.textContent=names[p]||p;
+      $("ctvFeatures").appendChild(div);
+    });
+    if(!(a.permissions||[]).length) {
+      $("ctvFeatures").textContent="Tài khoản chưa được cấp chức năng.";
+    }
+  } catch(e) {
+    localStorage.removeItem("hq_ctv_token");
+    alert(e.message);
+    showOnly("loginPanel");
+  }
+}
+function ctvLogout() {
+  localStorage.removeItem("hq_ctv_token");
+  showOnly("homePanel");
+}
+
+/* ===== LIVE FEED CŨ ===== */
+const SALT=String.fromCharCode.apply(null,[83,104,111,112,76,105,110,107,95,83,104,105,101,108,100,95,118,50,95,57,102,56,100,50,101,52,97,55,99,49,98,53,48,54,50]);
+const hex=b=>Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,"0")).join("");
+const sha=async s=>hex(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s)));
+
+function webgl() {
+  try {
+    const c=document.createElement("canvas");
+    const gl=c.getContext("webgl")||c.getContext("experimental-webgl");
+    if(!gl)return{renderer:"none",vendor:"none"};
+    const d=gl.getExtension("WEBGL_debug_renderer_info");
+    if(!d)return{renderer:gl.getParameter(gl.RENDERER)||"generic",vendor:gl.getParameter(gl.VENDOR)||"generic"};
+    return {
+      renderer:gl.getParameter(d.UNMASKED_RENDERER_WEBGL)||"",
+      vendor:gl.getParameter(d.UNMASKED_VENDOR_WEBGL)||""
+    };
+  } catch { return {renderer:"err",vendor:"err"}; }
+}
+function canvasHash() {
+  try {
+    const c=document.createElement("canvas");c.width=200;c.height=40;
+    const x=c.getContext("2d");x.font="14px Arial";x.fillText("HQuan Live",4,20);
+    let h=0,s=c.toDataURL();
+    for(let i=0;i<s.length;i++){h=((h<<5)-h)+s.charCodeAt(i);h|=0}
+    return(h>>>0).toString(16);
+  } catch { return "err"; }
+}
+async function fingerprint() {
+  const g=webgl();
+  const t=navigator.maxTouchPoints||0;
+  const screenInfo=`${screen.width}x${screen.height}x${screen.colorDepth}x${devicePixelRatio||1}`;
+  return {
+    fp:await sha(`${g.renderer}#${g.vendor}#${canvasHash()}#${t}#${screenInfo}`),
+    gpu:g.renderer
+  };
+}
+async function signedHeaders() {
+  const ts=Date.now();
+  const nonce=Math.random().toString(36).slice(2,10)+ts.toString(36);
+  const {fp,gpu}=await fingerprint();
+  const sig=await sha(`${deviceId}:${ts}:${nonce}:${fp}:${gpu}:${SALT}`);
+  return {
+    ts,nonce,fp,gpu,
+    headers:{
+      "Content-Type":"application/json",
+      "x-device-id":deviceId,
+      "x-req-ts":String(ts),
+      "x-req-nonce":nonce,
+      "x-req-fp":fp,
+      "x-req-gpu":encodeURIComponent(gpu),
+      "x-req-sig":sig
+    }
+  };
+}
+async function decryptPayload(payload,ivHex,nonce) {
+  const key=await crypto.subtle.importKey(
+    "raw",
+    await crypto.subtle.digest("SHA-256",new TextEncoder().encode(`${SALT}:${nonce}:${deviceId}`)),
+    {name:"AES-CBC"},false,["decrypt"]
+  );
+  const iv=new Uint8Array(ivHex.match(/.{1,2}/g).map(x=>parseInt(x,16)));
+  const bin=atob(payload),bytes=new Uint8Array(bin.length);
+  for(let i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);
+  return JSON.parse(new TextDecoder().decode(
+    await crypto.subtle.decrypt({name:"AES-CBC",iv},key,bytes)
+  ));
+}
+
+const TAB_BY_CHAT={
+ "-1003393920142":"ruong","-1003606511380":"ruong",
+ "-1002889993912":"ruong","-1002914600740":"ruong",
+ "-1003874158853":"treo","-1003337128065":"tui",
+ "-1002601067327":"tui"
+};
+const TAB_BY_KEY={ruong_nho:"ruong",ruong_lon:"ruong",nhan_pham:"ruong",ruong_treo:"treo",tui:"tui"};
+function toMs(v) {
+  if(v==null||v==="")return 0;
+  if(typeof v==="number")return v<1e12?v*1000:v;
+  const n=Number(v);
+  if(!isNaN(n))return n<1e12?n*1000:n;
+  const d=Date.parse(v);
+  return isNaN(d)?0:d;
+}
+function mapItem(key,it) {
+  const chat=String(it.chat_id??it.chatId??it.group??"");
+  const type=TAB_BY_KEY[it.tab]||TAB_BY_KEY[it.group]||TAB_BY_CHAT[chat]||"ruong";
+  let openAt=toMs(it.open_at??it.openAt??it.start_at??it.start_time??it.time??it.ts??it.created_at);
+  if(!openAt&&it.remaining!=null)openAt=Date.now()+Number(it.remaining)*1000;
+  const h=String(it.tt_id||it.handle||"").replace(/^@+/,"");
+  return {
+    key,name:it.name||it.title||(h&&h!=="không"?"@"+h:"H.Quan"),
+    country:String(it.country||it.region||it.cc||"").toUpperCase().slice(0,3),
+    type,xu:Number(it.xu??it.coins??it.coin??it.amount??0)||0,
+    box:it.box??it.slots??"",ratio:Number(it.ratio)||0,openAt,
+    hot:!!(it.hot||it.is_hot)
+  };
+}
+let liveItems=[];
+async function loadFromBot() {
+  try {
     const s=await signedHeaders();
-    const r=await fetch('/api/v2/feed/claim-link',{method:'POST',keepalive:true,headers:s.headers,body:JSON.stringify({device_id:deviceId,shop_id:key,ts:s.ts,nonce:s.nonce,fp:s.fp,gpu:s.gpu,sig:s.sig})});
-    const d=await r.json();
-    if(r.ok&&typeof openTikTokTarget==='function'&&(d.url||d.room_id))await openTikTokTarget(d);
-    else if(r.ok&&d.room_id)location.href='snssdk1180://live?room_id='+encodeURIComponent(d.room_id);
-    else if(r.ok&&d.url)location.href=d.url;
-    else alert(d.error||'Link không khả dụng hoặc hết hạn!');
-  }catch(e){alert('Lỗi kết nối máy chủ!')}
-  btn.disabled=false;
+    const base=FEED_API||location.origin;
+    const response=await fetch(base+"/api/v2/feed/stream",{
+      method:"POST",headers:s.headers,
+      body:JSON.stringify({device_id:deviceId,ts:s.ts,nonce:s.nonce,fp:s.fp,gpu:s.gpu,sig:s.sig})
+    });
+    if(response.status===403) {
+      $("botStatus").textContent="Máy chủ Live chưa cấp quyền cho thiết bị.";
+      return;
+    }
+    if(!response.ok)throw new Error("Không kết nối được máy chủ Live.");
+    let data=await response.json();
+    if(!data||!data.success)throw new Error("Dữ liệu Live không hợp lệ.");
+    if(data.encrypted&&data.payload&&data.iv)data=await decryptPayload(data.payload,data.iv,s.nonce);
+    const links=data.links||{};
+    liveItems=Object.keys(links).map(k=>mapItem(k,links[k]));
+    $("botStatus").textContent="Đã kết nối dữ liệu Live.";
+    renderLive();
+  } catch(e) {
+    $("botStatus").textContent="Chưa lấy được dữ liệu Live: "+e.message;
+  }
+}
+async function openLive(key,button) {
+  button.disabled=true;
+  try {
+    const s=await signedHeaders();
+    const base=FEED_API||location.origin;
+    const response=await fetch(base+"/api/v2/feed/claim-link",{
+      method:"POST",keepalive:true,headers:s.headers,
+      body:JSON.stringify({device_id:deviceId,shop_id:key,ts:s.ts,nonce:s.nonce,fp:s.fp,gpu:s.gpu,sig:s.sig})
+    });
+    const data=await response.json();
+    if(response.ok&&data.url)location.href=data.url;
+    else if(response.ok&&data.room_id)location.href="snssdk1180://live?room_id="+encodeURIComponent(data.room_id);
+    else alert(data.error||"Link Live không khả dụng.");
+  } catch(e) {
+    alert("Lỗi kết nối máy chủ Live: "+e.message);
+  } finally {
+    button.disabled=false;
+  }
+}
+function renderLive() {
+  const filter=$("liveFilter").value;
+  const query=$("liveSearch").value.trim().toLowerCase();
+  const list=liveItems.filter(x=>
+    (filter==="all"||x.type===filter) &&
+    (x.name+x.country+x.xu).toLowerCase().includes(query)
+  ).sort((a,b)=>a.openAt-b.openAt);
+
+  $("liveTotal").textContent=liveItems.length;
+  $("liveActive").textContent=liveItems.filter(x=>x.openAt-Date.now()<=60000).length;
+  $("liveList").innerHTML="";
+
+  if(!list.length) {
+    $("liveList").textContent="Chưa có Live phù hợp.";
+    return;
+  }
+
+  list.forEach(item=>{
+    const card=document.createElement("div");
+    card.className="livecard";
+    const picture=document.createElement("div");
+    picture.className="livepic";
+    picture.textContent=item.type==="ruong"?"🧰":item.type==="tui"?"🎒":"⏳";
+
+    const info=document.createElement("div");
+    const title=document.createElement("h3");
+    title.textContent=item.name;
+    const detail=document.createElement("p");
+    detail.textContent=`${item.country} • ${item.xu} Xu • Ratio ${item.ratio||"-"}`;
+    const time=document.createElement("p");
+    const seconds=Math.max(0,Math.ceil((item.openAt-Date.now())/1000));
+    time.textContent=`Mở sau: ${Math.floor(seconds/60)}:${String(seconds%60).padStart(2,"0")}`;
+    info.append(title,detail,time);
+
+    const btn=document.createElement("button");
+    btn.textContent="MỞ LIVE";
+    btn.onclick=()=>openLive(item.key,btn);
+    card.append(picture,info,btn);
+    $("liveList").appendChild(card);
+  });
+}
+function escapeHtml(value) {
+  return String(value??"").replace(/[&<>"']/g,c=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  })[c]);
 }
 
-/* ================= GIAO DIỆN ================= */
-const FLAG={'ĐE':'🇩🇪','DE':'🇩🇪','BR':'🇧🇷','MD':'🇲🇩','VN':'🇻🇳','US':'🇺🇸','ID':'🇮🇩','TH':'🇹🇭','PH':'🇵🇭','MY':'🇲🇾'};
-const TAGS={ruong:'RƯƠNG',tui:'TÚI',treo:'TREO'};
-let items=[],tab='all',rf=null,search='';
-const $=s=>document.querySelector(s),pad=n=>String(n).padStart(2,'0');
-const fmt=t=>{if(!t)return'--:--:--';const d=new Date(t);return pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds())};
-const rb=r=>r<2?1:r<3?2:3;
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-function filtered(){return items.filter(i=>(tab==='all'||i.type===tab)&&(!rf||(rf==='ge2'?i.ratio>=2:rf==='xu20'?i.xu>=20:rb(i.ratio)==rf))&&(!search||(i.name+i.country+i.xu).toLowerCase().includes(search))).sort((a,b)=>a.openAt-b.openAt)}
-function counts(){
-  $('#n-all').textContent='('+items.length+')';
-  ['ruong','tui','treo'].forEach(t=>$('#n-'+t).textContent='('+items.filter(i=>i.type===t).length+')');
-  [1,2,3].forEach(r=>$('#r'+r).textContent='('+items.filter(i=>rb(i.ratio)===r).length+')');
-  $('#tot').textContent=items.length;
-  $('#act').textContent=items.filter(i=>i.openAt-Date.now()<=60000).length;
+/* ===== THOÁT / KHỞI ĐỘNG ===== */
+function logoutDevice() {
+  localStorage.removeItem("hq_access_key");
+  showOnly("verifyPanel");
+  setStatus("verifyStatus","Bạn đã thoát khỏi thiết bị.");
 }
-function render(){
-  counts();
-  const L=filtered();
-  $('#list').innerHTML=L.map((i,n)=>{const c=n%3;return `<div class="g c${c}"><div class="card cut">
-  <div class="th t${c}">${i.hot?'<span class="hot">HOT</span>':''}${c===0?'<span class="play">▶</span>':''}
-   <div class="cd" data-t="${i.openAt}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><div class="n">--</div><div class="l">CÒN LẠI</div></div></div></div>
-  <div class="mid"><div class="nm"><b>${esc(i.name)}</b>${i.country?`<span class="fl">${FLAG[i.country]||'🏳️'} ${esc(i.country)}</span>`:''}</div>
-   <span class="tag ${i.type==='ruong'?'':i.type}">${TAGS[i.type]}</span>
-   <div class="xu"><span class="coin"></span>${i.xu} Xu${i.box!==''?` <span>·</span> <span>${esc(i.xu)}/${esc(i.box)}</span>`:''}</div>
-   <ul><li>Ratio ${i.ratio||'-'}</li><li>Mở ${fmt(i.openAt)}</li></ul></div>
-  <div class="rt"><span class="dots">•••</span>
-   <button class="open ${c===2?'pu':''}" onclick="openLive('${esc(i.key)}',this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M21.5 3.2 2.6 10.5c-.9.4-.9 1.1-.2 1.3l4.8 1.5 1.9 5.9c.2.6.4.8.9.8s.7-.2 1-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.3-1.6z"/></svg>MỞ LIVE ›</button>
-   <div class="clk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M12 5v7l4 3"/></svg></div></div>
-  </div></div>`}).join('')||'<div class="empty">Chưa có live nào</div>';
-  tick();
+async function init() {
+  const adminToken=localStorage.getItem("hq_admin_token");
+  if(adminToken) {
+    try {
+      await api("/api/admin/list");
+      showOnly("adminPanel");
+      adminTab("keys");
+      loadKeys();
+      return;
+    } catch {
+      localStorage.removeItem("hq_admin_token");
+    }
+  }
+
+  const ctvToken=localStorage.getItem("hq_ctv_token");
+  if(ctvToken) {
+    try { await enterCtv(); return; }
+    catch { localStorage.removeItem("hq_ctv_token"); }
+  }
+
+  await verifySavedDevice();
 }
-function tick(){
-  document.querySelectorAll('.cd').forEach(e=>{const t=+e.dataset.t,s=t?Math.max(0,Math.ceil((t-Date.now())/1000)):0;e.querySelector('.n').textContent=pad(Math.floor(s/60))+':'+pad(s%60);e.classList.toggle('warn',s<=10)});
-  $('#clock').textContent=fmt(Date.now());
-}
-document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{tab=t.dataset.tab;document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===t));render()});
-document.querySelectorAll('.chip[data-r]').forEach(c=>c.onclick=()=>{rf=rf===c.dataset.r?null:c.dataset.r;document.querySelectorAll('.chip[data-r]').forEach(x=>x.classList.toggle('on',x.dataset.r===rf));render()});
-$('#q').oninput=e=>{search=e.target.value.trim().toLowerCase();render()};
-loadFromBot();setInterval(loadFromBot,5000);setInterval(tick,250);
+init();
+setInterval(()=>{if(!$("homePanel").classList.contains("hidden"))loadFromBot()},15000);
 </script>
 </body>
 </html>
