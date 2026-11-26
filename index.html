@@ -96,6 +96,171 @@ nav{position:fixed;left:0;right:0;bottom:0;z-index:10;background:#050a1c;border-
 .nv .ct{flex:1.1;height:100%}
 .ct .bt{position:absolute;left:50%;top:-24px;margin-left:-27px;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 40% 30%,#4aa0ff,#0c2c92);border:3px solid #5ab6ff;box-shadow:0 0 0 4px #0b1a5a,0 0 22px #2f8bff}
 .rd::after{content:"";position:absolute;top:-1px;left:calc(50% + 6px);width:8px;height:8px;border-radius:50%;background:#ff3b3b}
+
+
+/* ===== RESPONSIVE: ĐIỆN THOẠI + MÁY TÍNH ===== */
+.app{
+  width:100%;
+  max-width:480px;
+  margin-inline:auto;
+}
+img,video,canvas{max-width:100%}
+button,input{font:inherit}
+#list{min-width:0}
+.card{min-width:0}
+.mid,.rt{min-width:0}
+.nm b{min-width:0}
+
+/* Điện thoại nhỏ */
+@media (max-width:380px){
+  .app{padding-left:9px;padding-right:9px}
+  .hd{margin-left:-9px;margin-right:-9px;padding-left:11px;padding-right:11px}
+  .hd h1{font-size:26px}
+  .logo{width:50px;height:50px}
+  .hd p{font-size:10.5px}
+  .feat{gap:6px;font-size:10px}
+  .tabs{gap:4px}
+  .tab{height:53px}
+  .tab>.in{font-size:12px}
+  .tab small{font-size:11px}
+  .tab .ic{font-size:19px}
+  .t-all>.in{gap:5px;font-size:13px}
+  .t-all svg{width:24px;height:24px}
+  .row{gap:5px}
+  .chip{font-size:11px}
+  .row2 .chip{padding:0 7px;font-size:10.5px}
+  .search{padding:0 7px}
+  .search input{font-size:10.5px}
+  .card{grid-template-columns:76px minmax(0,1fr) 76px;gap:6px;padding:8px}
+  .th{height:82px}
+  .nm b{font-size:13px}
+  .fl{font-size:8.5px}
+  .tag{font-size:10px}
+  .xu{font-size:11.5px}
+  .mid ul{font-size:10.5px}
+  .open{font-size:10px}
+}
+
+/* Tablet và màn hình vừa */
+@media (min-width:600px) and (max-width:899px){
+  .app{max-width:760px;padding-left:20px;padding-right:20px}
+  .hd{margin-left:-20px;margin-right:-20px;padding-left:22px;padding-right:22px}
+  .tabs,.row,.stats,.lh{max-width:720px;margin-left:auto;margin-right:auto}
+  .tabs{margin-top:16px}
+  .row{margin-top:11px}
+  .stats{margin-top:11px}
+  .lh{margin-top:13px}
+  #list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .card{grid-template-columns:82px minmax(0,1fr) 82px;gap:7px}
+  .th{height:88px}
+  .ban{margin-top:18px}
+  .nv{max-width:760px}
+}
+
+/* Máy tính / laptop */
+@media (min-width:900px){
+  body{background:
+    radial-gradient(ellipse at 15% 25%,#123b8b55,transparent 36%),
+    radial-gradient(ellipse at 85% 70%,#172c7950,transparent 38%),
+    #030817}
+  .app{
+    max-width:1180px;
+    padding:0 30px;
+  }
+  .hd{
+    margin:0 -30px;
+    padding:22px 34px 15px;
+    border-bottom-width:3px;
+  }
+  .hd-top{max-width:1120px;margin:0 auto;gap:16px}
+  .logo{width:66px;height:66px}
+  .hd h1{font-size:36px}
+  .hd p{font-size:13px}
+  .pill{font-size:12px;padding:4px 13px}
+  .feat{max-width:1120px;margin:10px auto 0;font-size:12px}
+  .tabs{
+    max-width:760px;
+    margin:18px auto 0;
+    gap:9px;
+  }
+  .tab{height:66px}
+  .tab>.in{font-size:16px}
+  .tab small{font-size:13px}
+  .tab .ic{font-size:25px}
+  .t-all>.in{font-size:18px}
+  .t-all svg{width:34px;height:34px}
+  .row{
+    max-width:760px;
+    margin:12px auto 0;
+    gap:9px;
+  }
+  .chip{height:34px;font-size:14px}
+  .row2 .chip{height:34px;font-size:13px;padding:0 14px}
+  .search{height:34px;padding:0 12px}
+  .search input{font-size:13px}
+  .stats{
+    max-width:760px;
+    height:48px;
+    margin:13px auto 0;
+  }
+  .st{font-size:12px}
+  .st b{font-size:20px}
+  .lh{
+    max-width:1120px;
+    height:56px;
+    margin:16px auto 0;
+  }
+  .lh>.in{padding:0 16px}
+  .lh h3{font-size:16px}
+  .lh small{font-size:12px}
+  .sort{height:32px;font-size:13px;padding:0 12px}
+  #list{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:14px;
+    margin-top:14px;
+  }
+  .card{
+    min-height:136px;
+    grid-template-columns:112px minmax(0,1fr) 112px;
+    gap:12px;
+    padding:12px;
+  }
+  .th{height:108px}
+  .nm b{font-size:16px}
+  .fl{font-size:10px}
+  .tag{font-size:12px;margin:5px 0}
+  .xu{font-size:14px}
+  .mid ul{font-size:13px}
+  .open{height:40px;font-size:13px}
+  .clk{width:30px;height:30px}
+  .ban{
+    max-width:1120px;
+    margin:18px auto 0;
+    height:64px;
+  }
+  .ban b{font-size:20px;left:40px;top:9px}
+  .ban span{font-size:12px;left:46px;top:36px}
+  .sp{height:calc(88px + env(safe-area-inset-bottom,0px))}
+  nav{background:#04091bF2;backdrop-filter:blur(12px)}
+  .nv{
+    max-width:1120px;
+    height:66px;
+  }
+  .nv a{font-size:12px;gap:4px}
+  .ct .bt{width:58px;height:58px;margin-left:-29px;top:-22px}
+}
+
+/* Màn hình rất rộng: thẻ live chia 3 cột */
+@media (min-width:1250px){
+  .app{max-width:1320px}
+  .hd{margin-left:calc((1180px - 100vw)/2 - 30px);margin-right:calc((1180px - 100vw)/2 - 30px)}
+  #list{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .card{grid-template-columns:96px minmax(0,1fr) 96px}
+  .th{height:96px}
+  .nv{max-width:1260px}
+}
+
 </style>
 </head>
 <body>
