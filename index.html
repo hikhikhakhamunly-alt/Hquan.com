@@ -261,6 +261,30 @@ button,input{font:inherit}
   .nv{max-width:1260px}
 }
 
+
+/* Nút vào nhóm Telegram quản trị */
+.admin-group{
+  display:flex;align-items:center;gap:11px;width:100%;max-width:760px;
+  min-height:54px;margin:11px auto 0;padding:9px 13px;
+  border:1px solid #2877e8;border-radius:13px;color:#fff;text-decoration:none;
+  background:linear-gradient(105deg,#10265f,#091333 72%,#111c50);
+  box-shadow:0 0 12px #246bff33,inset 0 0 12px #1d4ed822;
+}
+.admin-group:active{transform:scale(.99)}
+.admin-group .tg-icon{
+  width:36px;height:36px;flex:none;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(145deg,#54b8ff,#1260d8);box-shadow:0 0 12px #299cff77;
+}
+.admin-group .ag-copy{min-width:0;flex:1}
+.admin-group b{display:block;font-size:13px;line-height:1.25}
+.admin-group small{display:block;margin-top:3px;color:#a9c9ff;font-size:10.5px}
+.admin-group .ag-go{font-size:19px;color:#80caff}
+@media(min-width:900px){
+  .admin-group{max-width:760px;min-height:60px;margin-top:14px;padding:11px 16px}
+  .admin-group b{font-size:14px}
+  .admin-group small{font-size:11.5px}
+}
+
 </style>
 </head>
 <body>
@@ -297,7 +321,21 @@ button,input{font:inherit}
   <div class="st f"><span style="font-size:22px;line-height:1">🔥</span><div>Đang hoạt động<b id="act">0</b></div></div>
 </div>
 
-<div class="g" style="--b:#2a62e8"><div class="lh cut"><div class="in">
+<div class="g" style="--b:#2a62e8">
+<a class="admin-group" href="https://t.me/+wpNV65xUHB1mZDY1" target="_blank" rel="noopener noreferrer" aria-label="Tham gia nhóm Telegram Admin Web">
+  <span class="tg-icon">
+    <svg width="21" height="21" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+      <path d="M21.5 3.2 2.6 10.5c-.9.4-.9 1.1-.2 1.3l4.8 1.5 1.9 5.9c.2.6.4.8.9.8s.7-.2 1-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.3-1.6zM9 13.5l9.1-5.7c.4-.3.8-.1.5.2l-7.6 6.9-.3 3.3-1.7-4.7z"/>
+    </svg>
+  </span>
+  <span class="ag-copy">
+    <b>NHÓM TELEGRAM ADMIN WEB</b>
+    <small>Tham gia nhóm • Hỗ trợ và thông báo</small>
+  </span>
+  <span class="ag-go">›</span>
+</a>
+
+<div class="lh cut"><div class="in">
   <div class="l"><svg width="22" height="22" viewBox="0 0 24 24" stroke="#7fb4ff" stroke-width="2.5" stroke-linecap="round"><path d="M3 6h18M3 12h13M3 18h8"/></svg><div><h3>Danh sách Live</h3><small>Cập nhật liên tục • <b id="clock">--:--:--</b></small></div></div>
   <div class="sort"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c9a0ff" stroke-width="2" stroke-linejoin="round"><path d="M3 4h18l-7 8v6l-4 2v-8z"/></svg>Sắp theo giờ <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 9l7 7 7-7"/></svg></div>
 </div></div></div>
