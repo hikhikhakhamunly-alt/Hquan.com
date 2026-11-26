@@ -3,454 +3,243 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>HQuan.com</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HQuan.com - Hệ thống tìm rương Xu</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-:root{--bg:#050a1c;--panel:#081333;--blue:#328bff;--cyan:#26d8ff;--purple:#a24bff;--gold:#ffc94d;--line:#1b49a0}
-body{background:radial-gradient(circle at 10% 20%,#123b8b44,transparent 38%),radial-gradient(circle at 90% 80%,#30206b33,transparent 35%),#030817;color:#fff;font-family:Arial, sans-serif;min-height:100vh;overflow-x:hidden}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-.hidden{display:none!important}
-.wrap{max-width:1120px;margin:auto;padding:0 16px}
-header{padding:17px 16px 13px;background:linear-gradient(110deg,#0b1f5e,#07112f 70%,#10176a);border-bottom:2px solid #1b49c8;box-shadow:0 5px 25px #126bff22}
-.head{max-width:1120px;margin:auto;display:flex;align-items:center;gap:13px}
-.logo{width:57px;height:57px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 40% 30%,#4aa0ff,#0c2c92);border:3px solid #5ab6ff;box-shadow:0 0 18px #2f8bff}
-.logo svg{width:28px}
-.brand h1{font-size:30px;font-weight:950;background:linear-gradient(#fff,#7fd6ff);color:transparent;background-clip:text;filter:drop-shadow(0 0 7px #2f8bff)}
-.brand p{font-size:11px;color:#dbe7ff;margin-top:4px}
-.status{display:inline-flex;align-items:center;gap:7px;border:1px solid #1d3f9a;background:#09163f;border-radius:30px;padding:5px 11px;margin-top:6px;color:#7dffb0;font-size:11px}
-.dot{width:7px;height:7px;border-radius:50%;background:#2ee86b;box-shadow:0 0 8px #2ee86b}
-.hero{padding:34px 0 24px;text-align:center}
-.eyebrow{color:#70caff;font-size:11px;letter-spacing:3px;font-weight:bold}
-.hero h2{font-size:clamp(32px,7vw,58px);font-weight:1000;margin:13px 0;background:linear-gradient(90deg,#fff,#64caff,#a98aff);color:transparent;background-clip:text;text-shadow:0 0 30px #238aff33}
-.hero p{color:#a9c2e9;font-size:14px;line-height:1.7;max-width:620px;margin:auto}
-.actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:22px}
-.btn{border:1px solid #438fff;border-radius:11px;padding:12px 18px;background:linear-gradient(100deg,#176bff,#12bfe8);color:#fff;font-weight:900;box-shadow:0 0 17px #168dff44}
-.btn.alt{background:#101d43;border-color:#315b9d}
-.btn.danger{background:linear-gradient(100deg,#9d2852,#e04d65);border-color:#ff7795}
-.btn:disabled{opacity:.55;cursor:wait}
-.section-title{font-size:19px;font-weight:900;margin:22px 0 12px}
-.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.feature{padding:17px;border:1px solid #1b4c99;background:linear-gradient(145deg,#0d1c43,#070e24);border-radius:14px;box-shadow:inset 0 0 18px #167bff0d}
-.feature .emoji{font-size:25px}
-.feature b{display:block;margin:9px 0 5px}
-.feature p{color:#91a9d0;font-size:12px;line-height:1.6}
-.panel{border:1px solid #2878e8;border-radius:17px;background:linear-gradient(145deg,#101d43,#070e25);box-shadow:0 0 30px #176bff25;padding:20px}
-.gate{max-width:520px;margin:25px auto 50px}
-.panel-title{text-align:center;font-size:25px;font-weight:1000;background:linear-gradient(90deg,#36eaff,#a78bfa,#ff66bd);color:transparent;background-clip:text}
-.panel-sub{text-align:center;color:#9dbce9;font-size:11px;letter-spacing:2px;margin:7px 0 20px}
-.field{margin:13px 0}
-.field label{display:block;color:#67e5ff;font-weight:800;font-size:12px;margin-bottom:7px}
-.inp{width:100%;border:1px solid #235eae;border-radius:10px;background:#050d22;color:white;padding:13px;outline:none}
-.inp:focus{border-color:#38dfff;box-shadow:0 0 12px #168dff55}
-.inp::placeholder{color:#637da8}
-.full{width:100%;margin-top:9px}
-.note{padding:11px;border:1px solid #244b86;background:#07132d;color:#bdeaff;border-radius:9px;font-size:12px;line-height:1.6;margin-top:12px;overflow-wrap:anywhere}
-.small{text-align:center;color:#718bb6;font-size:10px;margin-top:15px}
-#gateView{padding:0 15px}
-#siteView{display:none}
-.topline{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 0;color:#a9c9ff;font-size:12px}
-.tabs{display:grid;grid-template-columns:1.6fr 1.2fr 1fr 1fr;gap:7px;margin:12px 0}
-.tab{height:59px;border:1px solid #2459a9;border-radius:10px;background:#091333;color:#d5e6ff;font-weight:900}
-.tab.active{background:linear-gradient(135deg,#2a6bff,#1a2fb0);border-color:#58b0ff;box-shadow:0 0 15px #2f6bff55}
-.tab.ruong{border-color:#8b4be0;color:#c9a0ff}
-.tab.tui{border-color:#1fd0c8;color:#8ff5ef}
-.tab.treo{border-color:#d19a1f;color:#ffc94d}
-.filters{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}
-.chip{border:1px solid #2459a9;border-radius:30px;background:#091233;color:#bcd8ff;padding:8px 13px;font-size:12px}
-.chip.active{background:#173c92;border-color:#58b0ff;color:white}
-.search{flex:1;min-width:130px}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
-.stat{padding:12px;border:1px solid #17306f;border-radius:11px;background:#09112e;color:#a9c9ff;font-size:11px}
-.stat strong{display:block;color:#25b8ff;font-size:22px;margin-top:5px}
-.list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
-.livecard{display:grid;grid-template-columns:80px 1fr;gap:12px;padding:12px;border:1px solid #2865c7;border-radius:13px;background:linear-gradient(135deg,#0b1744,#070f30)}
-.livepic{height:82px;border-radius:9px;background:linear-gradient(#1a0f48,#4a2a8a 55%,#14224a);display:grid;place-items:center;font-size:27px}
-.liveinfo{min-width:0}
-.liveinfo b{font-size:14px}
-.liveinfo p{font-size:11px;color:#9db8e6;margin-top:7px;line-height:1.5}
-.liveinfo .btn{padding:8px 12px;font-size:11px;margin-top:8px}
-.empty{text-align:center;color:#8fa6d8;padding:28px 10px;border:1px dashed #244b86;border-radius:12px;grid-column:1/-1;font-size:13px}
-.banner{margin:22px 0;padding:17px;border:1px solid #234f9d;border-radius:12px;background:linear-gradient(90deg,#140a38,#07102e 55%,#0a2a6a);color:#c9baff}
-nav{position:fixed;bottom:0;left:0;right:0;background:#050a1cf2;border-top:1px solid #17306f;z-index:20;backdrop-filter:blur(12px);padding-bottom:env(safe-area-inset-bottom)}
-.navinner{max-width:600px;margin:auto;height:59px;display:flex;align-items:center;justify-content:space-around}
-.navinner button{background:none;border:0;color:#a9c2e9;font-size:11px;display:grid;gap:3px;justify-items:center}
-.navinner button span{font-size:19px}
-.navinner button.active{color:#45aaff}
-.bottomspace{height:85px}
-#adminView{display:none;position:fixed;inset:0;z-index:50;overflow:auto;background:#030817f7;padding:16px}
-.adminbox{max-width:900px;margin:20px auto 50px}
-.adminhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:15px}
-.adminnav{display:flex;gap:7px;flex-wrap:wrap;margin:15px 0}
-.adminnav button{padding:9px 13px;border:1px solid #285a9f;border-radius:9px;background:#0a1736;color:#cce4ff;font-weight:bold;font-size:12px}
-.adminnav button.active{background:#174a9e;border-color:#4abaff}
-.adminsection{display:none}
-.adminsection.active{display:block}
-.adminlist{display:grid;gap:9px;margin-top:12px}
-.item{padding:13px;border:1px solid #244c89;border-radius:11px;background:#08152f;font-size:12px;overflow-wrap:anywhere}
-.item b{color:#73dfff}
-.item-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
-.item-actions button{padding:7px 10px;font-size:11px}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-footer{text-align:center;color:#617ba5;font-size:10px;padding:20px 0 100px}
-@media(max-width:650px){
- .wrap{padding:0 11px}.feature-grid{grid-template-columns:1fr}
- .hero{padding:25px 0 17px}.hero p{font-size:12px}
- .list{grid-template-columns:1fr}.tabs{gap:4px}
- .tab{height:54px;font-size:12px}.panel{padding:16px}
- .brand h1{font-size:26px}.stats{gap:6px}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--blue:#168bff;--cyan:#00d9ff}
+body{
+ min-height:100vh;padding:22px 15px;
+ display:flex;justify-content:center;align-items:center;
+ font-family:Arial,sans-serif;color:#edf6ff;
+ background:
+ radial-gradient(ellipse at 50% 0%,#153c68 0%,transparent 55%),
+ linear-gradient(145deg,#050914,#0b1425 55%,#050914);
 }
-@media(min-width:900px){.hero{padding:50px 0 30px}.gate{margin-top:38px}.feature{padding:22px}.livecard{grid-template-columns:100px 1fr}.livepic{height:100px}}
+.container{width:100%;max-width:450px}
+.card{
+ padding:25px 21px;border-radius:23px;
+ background:linear-gradient(145deg,#14243a,#091321);
+ border:1px solid #1765a0;
+ box-shadow:0 0 35px #008cff20,0 20px 60px #0008;
+}
+.notice{
+ padding:14px;border-radius:13px;margin-bottom:25px;
+ background:#102640;border:1px solid #245b89;
+}
+.notice-top{display:flex;justify-content:space-between;align-items:center}
+.notice-top b{color:#65d9ff;font-size:14px}
+.close{border:0;background:none;color:#a9c7e2;font-size:23px;cursor:pointer}
+.notice p{font-size:13px;line-height:1.6;color:#c4d8eb;margin-top:10px}
+.notice button.ok{
+ margin-top:10px;width:100%;padding:9px;border:0;border-radius:8px;
+ background:#164b78;color:white;font-weight:bold;cursor:pointer;
+}
+.brand{text-align:center;margin:12px 0 23px}
+.logo{
+ width:70px;height:70px;margin:0 auto 13px;border-radius:22px;
+ display:grid;place-items:center;font-size:34px;
+ background:linear-gradient(135deg,#087aff,#00d9ed);
+ box-shadow:0 0 28px #008cff65;
+}
+.brand h1{font-size:27px;font-weight:900;letter-spacing:.5px}
+.brand h1 span{color:#28caff}
+.brand p{font-size:13px;color:#a5bad2;line-height:1.7;margin-top:9px}
+.brand strong{color:#55d5ff}
+.social{display:flex;gap:10px;margin-bottom:23px}
+.social a{
+ flex:1;text-decoration:none;text-align:center;padding:12px 5px;
+ border:1px solid #285276;border-radius:10px;
+ background:#10243b;color:#bdeaff;font-size:12px;font-weight:bold;
+}
+.social a:hover{border-color:#00cfff;background:#123454}
+.heading{font-size:14px;font-weight:bold;margin:15px 0 10px;color:#dceeff}
+input{
+ width:100%;height:49px;padding:0 14px;border-radius:10px;
+ border:1px solid #294966;background:#071321;color:white;
+ outline:none;font-size:14px;
+}
+input:focus{border-color:#00bfff;box-shadow:0 0 0 3px #008cff20}
+.activate{
+ width:100%;height:49px;margin-top:12px;border:0;border-radius:10px;
+ background:linear-gradient(100deg,#087aff,#00bce8);
+ color:white;font-size:14px;font-weight:900;cursor:pointer;
+ box-shadow:0 5px 20px #008cff30;
+}
+.activate:disabled{opacity:.6;cursor:wait}
+.device{
+ margin-top:20px;padding:14px;border-radius:12px;
+ background:#081523;border:1px solid #263f5b;
+}
+.device-label{font-size:12px;color:#93acc8;margin-bottom:10px}
+.device-row{display:flex;align-items:center;gap:8px}
+.device-id{
+ flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;
+ white-space:nowrap;font-family:monospace;font-size:12px;color:#5edaff;
+}
+.copy{
+ padding:9px 11px;border-radius:8px;border:1px solid #28628d;
+ background:#102b45;color:#c5ecff;font-size:12px;cursor:pointer;
+}
+.enter{
+ display:block;margin-top:15px;padding:14px;text-align:center;
+ border-radius:10px;text-decoration:none;font-weight:bold;font-size:13px;
+ color:white;background:linear-gradient(100deg,#087aff,#00bce8);
+}
+.status{text-align:center;min-height:20px;margin-top:13px;font-size:12px;line-height:1.5;color:#a9c3df}
+.status.error{color:#ff8585}
+.status.success{color:#4de5a0}
+.footer{text-align:center;margin-top:20px;color:#7189a4;font-size:11px;line-height:1.8}
+.hidden{display:none!important}
+@media(max-width:360px){.card{padding:20px 15px}.brand h1{font-size:23px}}
 </style>
 </head>
 <body>
+<div class="container">
+<div class="card">
 
-<header>
- <div class="head">
-  <div class="logo">
-   <svg viewBox="0 0 24 24" fill="white"><path d="M21.5 3.2 2.6 10.5c-.9.4-.9 1.1-.2 1.3l4.8 1.5 1.9 5.9c.2.6.4.8.9.8s.7-.2 1-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.3-1.6z"/></svg>
+ <div class="notice" id="notice">
+  <div class="notice-top">
+   <b>📢 Thông Báo Hệ Thống</b>
+   <button class="close" onclick="hideNotice()">×</button>
   </div>
-  <div class="brand">
-   <h1>HQuan.com</h1>
-   <p>Hệ thống săn rương & tín hiệu Live</p>
-   <span class="status"><i class="dot"></i> HỆ THỐNG HQUAN</span>
+  <p>
+   HQuan.com xin chào mọi người! Chào mừng bạn đến với hệ thống.
+   Vui lòng đọc thông báo và nhập KEY để sử dụng.
+  </p>
+  <button class="ok" onclick="hideNotice()">Đã hiểu / Tiếp tục</button>
+ </div>
+
+ <header class="brand">
+  <div class="logo">⚡</div>
+  <h1>HQuan<span>.com</span></h1>
+  <p>
+   Hệ thống tìm kiếm và quản lý link TikTok LIVE<br>
+   <strong>Giao diện HQuan.com · Hoạt động bằng KEY</strong>
+  </p>
+ </header>
+
+ <div class="social">
+  <a href="#" id="zaloLink">💬 Nhóm Zalo</a>
+  <a href="#" id="telegramLink">✈️ Nhóm Telegram</a>
+ </div>
+
+ <div class="heading">🔑 Nhập Mã Key Kích Hoạt Thiết Bị:</div>
+ <input id="keyInput" placeholder="Nhập KEY của bạn..." autocomplete="off">
+ <button class="activate" id="activateBtn" onclick="activateKey()">⚡ KÍCH HOẠT</button>
+
+ <div class="device">
+  <div class="device-label">🖥️ Mã Thiết Bị (Device ID)</div>
+  <div class="device-row">
+   <div class="device-id" id="deviceId">Đang tạo...</div>
+   <button class="copy" onclick="copyDevice()">Sao chép</button>
   </div>
  </div>
-</header>
 
-<!-- TRANG NGOÀI -->
-<main id="gateView">
- <section class="wrap">
-  <div class="hero">
-   <div class="eyebrow">WELCOME TO HQUAN SYSTEM</div>
-   <h2>HỆ THỐNG HQUAN</h2>
-   <p>Nền tảng theo dõi tín hiệu Live với giao diện trực quan, tối ưu trên điện thoại và máy tính. Vui lòng xác minh thiết bị bằng KEY để truy cập.</p>
-   <div class="actions">
-    <button class="btn" onclick="document.getElementById('keyPanel').scrollIntoView({behavior:'smooth'})">✦ KÍCH HOẠT KEY</button>
-    <button class="btn alt" onclick="openAdmin()">⚙ ADMIN</button>
-   </div>
-  </div>
-  <div class="feature-grid">
-   <div class="feature"><div class="emoji">🧰</div><b>RƯƠNG</b><p>Khu vực theo dõi tín hiệu rương và thông tin phiên Live.</p></div>
-   <div class="feature"><div class="emoji">🎒</div><b>TÚI</b><p>Phân loại tín hiệu theo từng nhóm nội dung.</p></div>
-   <div class="feature"><div class="emoji">⏳</div><b>TREO</b><p>Khu vực hiển thị các mục đang chờ cập nhật.</p></div>
-  </div>
-  <div class="gate panel" id="keyPanel">
-   <div class="panel-title">HQuan.com</div>
-   <div class="panel-sub">DEVICE AUTHENTICATION</div>
-   <div class="field"><label>DEVICE ID CỦA THIẾT BỊ</label><input class="inp" id="deviceId" readonly></div>
-   <button class="btn alt full" onclick="copyDevice()">▣ SAO CHÉP DEVICE ID</button>
-   <div class="field"><label>NHẬP KEY TRUY CẬP</label><input class="inp" id="keyInput" placeholder="HQ-XXXXXXXXXXXXXXXX" autocomplete="off"></div>
-   <button class="btn full" id="activateBtn" onclick="activateKey()">XÁC MINH VÀO WEBSITE</button>
-   <div class="note" id="gateMessage">Trạng thái: Chưa được cấp quyền.</div>
-   <div class="small">HQuan.com • Hệ thống xác minh thiết bị</div>
-  </div>
- </section>
-</main>
+ <a class="enter hidden" id="enterLink" href="#">
+  🚀 VÀO HỆ THỐNG HQUAN.COM
+ </a>
 
-<!-- TRANG TRONG -->
-<main id="siteView">
- <div class="wrap">
-  <div class="topline"><span>✦ HỆ THỐNG LIVE</span><span id="memberStatus">Thiết bị đã xác minh</span></div>
-  <div class="tabs">
-   <button class="tab active" data-tab="all">✦ Tất cả<br><small id="countAll">(0)</small></button>
-   <button class="tab ruong" data-tab="ruong">🧰 Rương<br><small id="countRuong">(0)</small></button>
-   <button class="tab tui" data-tab="tui">🎒 Túi<br><small id="countTui">(0)</small></button>
-   <button class="tab treo" data-tab="treo">⏳ Treo<br><small id="countTreo">(0)</small></button>
-  </div>
-  <div class="filters">
-   <button class="chip" data-filter="1">Ratio 1</button>
-   <button class="chip" data-filter="2">Ratio 2</button>
-   <button class="chip" data-filter="3">Ratio 3</button>
-   <button class="chip" data-filter="xu20">Xu ≥ 20</button>
-   <input class="inp search" id="searchInput" placeholder="Tìm kiếm...">
-  </div>
-  <div class="stats">
-   <div class="stat">TỔNG LIVE<strong id="totalLive">0</strong></div>
-   <div class="stat">TRẠNG THÁI<strong style="color:#ffc94d">ĐANG CHỜ API</strong></div>
-  </div>
-  <div class="section-title">✦ Danh sách Live</div>
-  <div class="note">Giao diện Live đã sẵn sàng. Chưa kết nối API Live theo yêu cầu của bạn.</div>
-  <div class="list" id="liveList">
-   <div class="empty">Chưa kết nối dữ liệu Live.<br>Rương / Túi / Treo sẽ hiển thị tại đây khi tích hợp API.</div>
-  </div>
-  <div class="banner"><b>HQuan.com</b><br><small>Săn nhanh • Tối ưu • Hiệu quả</small></div>
- </div>
- <div class="bottomspace"></div>
- <nav><div class="navinner">
-  <button class="active" onclick="showHome()"><span>⌂</span>Trang chủ</button>
-  <button onclick="selectTab('all')"><span>▶</span>Live</button>
-  <button onclick="showNotice()"><span>♢</span>Thông báo</button>
-  <button onclick="openAdmin()"><span>⚙</span>ADMIN</button>
- </div></nav>
-</main>
+ <div class="status" id="status"></div>
 
-<!-- ADMIN -->
-<div id="adminView">
- <div class="adminbox panel">
-  <div class="adminhead">
-   <div><div class="panel-title">HQuan ADMIN</div><div class="panel-sub">CONTROL CENTER</div></div>
-   <button class="btn alt" onclick="closeAdmin()">ĐÓNG ✕</button>
-  </div>
-  <div id="adminLogin">
-   <div class="field"><label>TÀI KHOẢN ADMIN</label><input class="inp" id="adminUser" placeholder="Username"></div>
-   <div class="field"><label>MẬT KHẨU ADMIN</label><input class="inp" id="adminPass" type="password" placeholder="Password"></div>
-   <button class="btn full" onclick="adminSignIn()">ĐĂNG NHẬP ADMIN</button>
-   <div class="note" id="adminLoginMessage">Đăng nhập bằng tài khoản đã cấu hình trong Cloudflare Worker.</div>
-  </div>
-  <div id="adminDashboard" class="hidden">
-   <div class="adminnav">
-    <button class="active" data-admin-tab="keys">QUẢN LÝ KEY</button>
-    <button data-admin-tab="devices">THIẾT BỊ</button>
-    <button data-admin-tab="ctv">CỘNG TÁC VIÊN</button>
-    <button data-admin-tab="settings">THÔNG BÁO WEB</button>
-   </div>
-
-   <section class="adminsection active" id="admin-keys">
-    <div class="section-title">✦ Tạo KEY mới</div>
-    <div class="field"><label>TÊN / GHI CHÚ KEY</label><input class="inp" id="keyLabel" placeholder="Ví dụ: Khách hàng A"></div>
-    <div class="row2">
-     <div class="field"><label>THỜI HẠN</label><input class="inp" id="keyDuration" type="number" min="1" value="30"></div>
-     <div class="field"><label>ĐƠN VỊ</label><select class="inp" id="keyUnit"><option value="day">Ngày</option><option value="hour">Giờ</option><option value="minute">Phút</option><option value="month">Tháng</option><option value="permanent">Vĩnh viễn</option></select></div>
-    </div>
-    <div class="field"><label>SỐ THIẾT BỊ TỐI ĐA</label><input class="inp" id="keyMax" type="number" min="1" max="1000" value="1"></div>
-    <button class="btn full" onclick="createKey()">＋ TẠO KEY</button>
-    <div class="note" id="newKeyResult">KEY mới sẽ hiển thị tại đây.</div>
-    <div class="section-title">Danh sách KEY</div>
-    <button class="btn alt" onclick="loadKeys()">↻ TẢI DANH SÁCH</button>
-    <div class="adminlist" id="keyList"></div>
-   </section>
-
-   <section class="adminsection" id="admin-devices">
-    <div class="section-title">✦ Thiết bị đã kích hoạt</div>
-    <button class="btn alt" onclick="loadDevices()">↻ TẢI THIẾT BỊ</button>
-    <div class="adminlist" id="deviceList"></div>
-   </section>
-
-   <section class="adminsection" id="admin-ctv">
-    <div class="section-title">✦ Tạo tài khoản CTV</div>
-    <div class="field"><label>TÊN ĐĂNG NHẬP</label><input class="inp" id="ctvUser" placeholder="ten_ctv"></div>
-    <div class="field"><label>MẬT KHẨU</label><input class="inp" id="ctvPass" type="password" placeholder="Tối thiểu 6 ký tự"></div>
-    <div class="field"><label>SỐ NGÀY SỬ DỤNG</label><input class="inp" id="ctvDays" type="number" value="30" min="1"></div>
-    <div class="field"><label>GHI CHÚ</label><input class="inp" id="ctvNote" placeholder="Thông tin CTV"></div>
-    <div class="field"><label>QUYỀN ĐƯỢC PHÉP</label>
-     <label><input type="checkbox" id="permLive" checked> Live</label>
-     <label><input type="checkbox" id="permNotice" checked> Thông báo</label>
-     <label><input type="checkbox" id="permProfile" checked> Hồ sơ</label>
-    </div>
-    <button class="btn full" onclick="createCtv()">＋ TẠO CTV</button>
-    <div class="section-title">Danh sách CTV</div>
-    <button class="btn alt" onclick="loadCtvs()">↻ TẢI CTV</button>
-    <div class="adminlist" id="ctvList"></div>
-   </section>
-
-   <section class="adminsection" id="admin-settings">
-    <div class="section-title">✦ Cài đặt trang chủ</div>
-    <div class="field"><label>TÊN WEBSITE</label><input class="inp" id="siteName" value="HQuan.com"></div>
-    <div class="field"><label>THÔNG BÁO TRANG CHỦ</label><textarea class="inp" id="siteAnnouncement" rows="4" placeholder="Nhập thông báo..."></textarea></div>
-    <button class="btn full" onclick="saveSettings()">LƯU CÀI ĐẶT</button>
-   </section>
-   <button class="btn danger full" onclick="adminLogout()">ĐĂNG XUẤT ADMIN</button>
-  </div>
- </div>
+ <footer class="footer">
+  © 2026 HQuan.com · All Rights Reserved<br>
+  Hệ thống quản lý KEY và thiết bị
+ </footer>
+</div>
 </div>
 
-<footer>HQuan.com • Hệ thống quản lý truy cập</footer>
-
 <script>
-const API="https://hq-ba-khi-api.hikhikhakhamunly.workers.dev";
-const $=id=>document.getElementById(id);
-const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-let device=localStorage.getItem("device_id");
-if(!device){
- const b=crypto.getRandomValues(new Uint8Array(16));
- device="HQD-"+[...b].map(x=>x.toString(16).padStart(2,"0")).join("").toUpperCase();
- localStorage.setItem("device_id",device);
-}
-$("deviceId").value=device;
-let adminToken=sessionStorage.getItem("hq_admin_token")||"";
-let currentTab="all",currentFilter="",searchText="";
+const API_BASE_URL="https://hq-ba-khi-api.hikhikhakhamunly.workers.dev";
 
-async function api(path,options={}){
- const headers={"Content-Type":"application/json"};
- if(options.admin)headers.Authorization="Bearer "+adminToken;
- const r=await fetch(API+path,{method:options.method||"GET",headers,body:options.body?JSON.stringify(options.body):undefined});
- const d=await r.json().catch(()=>({error:"Máy chủ trả về dữ liệu không hợp lệ."}));
- if(!r.ok||d.ok===false)throw new Error(d.error||"Có lỗi xảy ra.");
- return d;
+/* Có link nhóm thì thay # bằng link thật */
+const ZALO_LINK="#";
+const TELEGRAM_LINK="#";
+
+/* Chưa tích hợp LIVE API */
+const HOME_SYSTEM_URL="#";
+
+const $=id=>document.getElementById(id);
+
+let deviceId=localStorage.getItem("hq_device_id");
+if(!deviceId){
+ const bytes=new Uint8Array(16);
+ crypto.getRandomValues(bytes);
+ deviceId="HQD-"+Array.from(bytes).map(x=>x.toString(16).padStart(2,"0")).join("").toUpperCase();
+ localStorage.setItem("hq_device_id",deviceId);
 }
-function message(id,msg){$(id).textContent=msg}
-function copyDevice(){
- navigator.clipboard.writeText(device).then(()=>message("gateMessage","Đã sao chép Device ID.")).catch(()=>message("gateMessage","Hãy chọn Device ID và sao chép thủ công."));
+$("deviceId").textContent=deviceId;
+$("zaloLink").href=ZALO_LINK;
+$("telegramLink").href=TELEGRAM_LINK;
+$("enterLink").href=HOME_SYSTEM_URL;
+
+function hideNotice(){
+ $("notice").classList.add("hidden");
 }
-function enterSite(){
- $("gateView").classList.add("hidden");
- $("siteView").style.display="block";
- document.body.classList.add("inside");
+function message(text,type=""){
+ $("status").textContent=text;
+ $("status").className="status "+type;
 }
-function leaveSite(){
- $("siteView").style.display="none";
- $("gateView").classList.remove("hidden");
+async function request(path,data){
+ const res=await fetch(API_BASE_URL+path,{
+  method:"POST",
+  headers:{"Content-Type":"application/json"},
+  body:JSON.stringify(data)
+ });
+ const result=await res.json().catch(()=>({}));
+ if(!res.ok||result.ok===false){
+  throw new Error(result.error||result.message||"Không thể kết nối máy chủ");
+ }
+ return result;
 }
 async function activateKey(){
  const key=$("keyInput").value.trim();
- if(!key){message("gateMessage","Vui lòng nhập KEY.");return}
- const btn=$("activateBtn");btn.disabled=true;btn.textContent="ĐANG XÁC MINH...";
- message("gateMessage","Đang kết nối máy chủ và xác minh thiết bị...");
+ if(!key){
+  message("⚠️ Bạn chưa nhập KEY.","error");
+  return;
+ }
+ const btn=$("activateBtn");
+ btn.disabled=true;
+ btn.textContent="ĐANG XÁC THỰC...";
+ message("Đang kiểm tra KEY...");
  try{
-  const d=await api("/api/activate",{method:"POST",body:{key,deviceId:device}});
-  localStorage.setItem("hq_access_key",key.toUpperCase());
-  message("gateMessage","Xác minh thành công!");
-  enterSite();
- }catch(e){message("gateMessage",e.message)}
- finally{btn.disabled=false;btn.textContent="XÁC MINH VÀO WEBSITE"}
+  const result=await request("/api/activate",{key,deviceId});
+  localStorage.setItem("hq_access_key",key);
+  $("enterLink").classList.remove("hidden");
+  message(result.message||"Kích hoạt KEY thành công!","success");
+ }catch(e){
+  message("❌ "+e.message,"error");
+ }finally{
+  btn.disabled=false;
+  btn.textContent="⚡ KÍCH HOẠT";
+ }
 }
-async function verifySaved(){
+async function verifyKey(){
  const key=localStorage.getItem("hq_access_key");
  if(!key)return;
  try{
-  await api("/api/verify",{method:"POST",body:{key,deviceId:device}});
-  enterSite();
+  const result=await request("/api/verify",{key,deviceId});
+  if(result.ok!==false){
+   $("enterLink").classList.remove("hidden");
+   message("✅ Thiết bị đã được xác thực.","success");
+  }
  }catch(e){
   localStorage.removeItem("hq_access_key");
-  message("gateMessage","KEY không còn hiệu lực: "+e.message);
+  message("KEY không hợp lệ hoặc đã bị khóa. Vui lòng kiểm tra lại.","error");
  }
 }
-function openAdmin(){
- $("adminView").style.display="block";
- $("adminLogin").classList.remove("hidden");
- $("adminDashboard").classList.add("hidden");
-}
-function closeAdmin(){$("adminView").style.display="none"}
-async function adminSignIn(){
- message("adminLoginMessage","Đang xác thực tài khoản...");
+async function copyDevice(){
  try{
-  const d=await api("/api/admin/login",{method:"POST",body:{username:$("adminUser").value.trim(),password:$("adminPass").value}});
-  adminToken=d.token;sessionStorage.setItem("hq_admin_token",adminToken);
-  $("adminLogin").classList.add("hidden");$("adminDashboard").classList.remove("hidden");
-  await loadKeys();
- }catch(e){message("adminLoginMessage",e.message)}
+  await navigator.clipboard.writeText(deviceId);
+  message("Đã sao chép Device ID!","success");
+ }catch(e){
+  const t=document.createElement("textarea");
+  t.value=deviceId;document.body.appendChild(t);
+  t.select();document.execCommand("copy");t.remove();
+  message("Đã sao chép Device ID!","success");
+ }
 }
-function adminLogout(){
- adminToken="";sessionStorage.removeItem("hq_admin_token");
- $("adminDashboard").classList.add("hidden");$("adminLogin").classList.remove("hidden");
-}
-document.querySelectorAll("[data-admin-tab]").forEach(b=>b.onclick=()=>{
- document.querySelectorAll("[data-admin-tab]").forEach(x=>x.classList.toggle("active",x===b));
- document.querySelectorAll(".adminsection").forEach(x=>x.classList.toggle("active",x.id==="admin-"+b.dataset.adminTab));
-});
-async function createKey(){
- try{
-  const unit=$("keyUnit").value;
-  const d=await api("/api/admin/create",{method:"POST",admin:true,body:{
-   label:$("keyLabel").value,duration:unit==="permanent"?1:Number($("keyDuration").value),
-   unit,maxDevices:Number($("keyMax").value)
-  }});
-  message("newKeyResult","KEY: "+d.key+" — Hãy sao chép và lưu lại.");
-  await loadKeys();
- }catch(e){message("newKeyResult",e.message)}
-}
-async function loadKeys(){
- try{
-  const d=await api("/api/admin/list",{admin:true});
-  $("keyList").innerHTML=d.keys.map(k=>`
-   <div class="item">
-    <b>${esc(k.key)}</b><br>${esc(k.label||"Không có ghi chú")}<br>
-    Trạng thái: ${esc(k.status)}<br>
-    Thiết bị: ${(k.devices||[]).length}/${k.maxDevices}<br>
-    Hạn: ${k.expiresAt?new Date(k.expiresAt).toLocaleString("vi-VN"):"Vĩnh viễn"}
-    <div class="item-actions">
-     <button class="btn alt" onclick="setKeyStatus('${esc(k.key)}','${k.status==="active"?"locked":"active"}')">${k.status==="active"?"KHÓA":"MỞ KHÓA"}</button>
-     <button class="btn danger" onclick="setKeyStatus('${esc(k.key)}','revoked')">THU HỒI</button>
-    </div>
-   </div>`).join("")||'<div class="note">Chưa có KEY.</div>';
- }catch(e){$("keyList").textContent=e.message}
-}
-async function setKeyStatus(key,status){
- if(!confirm("Xác nhận đổi trạng thái KEY?"))return;
- try{await api("/api/admin/status",{method:"POST",admin:true,body:{key,status}});await loadKeys()}
- catch(e){alert(e.message)}
-}
-async function loadDevices(){
- try{
-  const d=await api("/api/admin/devices",{admin:true});
-  $("deviceList").innerHTML=d.devices.map(x=>`
-   <div class="item"><b>${esc(x.deviceId)}</b><br>KEY: ${esc(x.key)}<br>${esc(x.label)}
-   <div class="item-actions"><button class="btn danger" onclick="removeDevice('${esc(x.key)}','${esc(x.deviceId)}')">GỠ THIẾT BỊ</button></div></div>
-  `).join("")||'<div class="note">Chưa có thiết bị.</div>';
- }catch(e){$("deviceList").textContent=e.message}
-}
-async function removeDevice(key,deviceId){
- if(!confirm("Gỡ thiết bị khỏi KEY này?"))return;
- try{await api("/api/admin/device/remove",{method:"POST",admin:true,body:{key,deviceId}});await loadDevices();await loadKeys()}
- catch(e){alert(e.message)}
-}
-async function createCtv(){
- const permissions=[];
- if($("permLive").checked)permissions.push("live");
- if($("permNotice").checked)permissions.push("notice");
- if($("permProfile").checked)permissions.push("profile");
- try{
-  await api("/api/admin/ctv/create",{method:"POST",admin:true,body:{
-   username:$("ctvUser").value,password:$("ctvPass").value,
-   days:Number($("ctvDays").value),note:$("ctvNote").value,permissions
-  }});
-  alert("Đã tạo tài khoản CTV.");await loadCtvs();
- }catch(e){alert(e.message)}
-}
-async function loadCtvs(){
- try{
-  const d=await api("/api/admin/ctv/list",{admin:true});
-  $("ctvList").innerHTML=d.accounts.map(a=>`
-   <div class="item"><b>${esc(a.username)}</b><br>Trạng thái: ${esc(a.status)}<br>
-   Quyền: ${esc((a.permissions||[]).join(", "))}<br>
-   Hết hạn: ${a.expiresAt?new Date(a.expiresAt).toLocaleString("vi-VN"):"—"}
-   <div class="item-actions">
-    <button class="btn alt" onclick="updateCtv('${esc(a.username)}','${a.status==="active"?"locked":"active"}')">${a.status==="active"?"KHÓA":"MỞ KHÓA"}</button>
-    <button class="btn danger" onclick="deleteCtv('${esc(a.username)}')">XÓA CTV</button>
-   </div></div>`).join("")||'<div class="note">Chưa có CTV.</div>';
- }catch(e){$("ctvList").textContent=e.message}
-}
-async function updateCtv(username,status){
- try{await api("/api/admin/ctv/update",{method:"POST",admin:true,body:{username,status}});await loadCtvs()}
- catch(e){alert(e.message)}
-}
-async function deleteCtv(username){
- if(!confirm("Xóa tài khoản CTV này?"))return;
- try{await api("/api/admin/ctv/delete",{method:"POST",admin:true,body:{username}});await loadCtvs()}
- catch(e){alert(e.message)}
-}
-async function loadSettings(){
- try{
-  const d=await api("/api/admin/settings",{admin:true});
-  $("siteName").value=d.settings.siteName||"HQuan.com";
-  $("siteAnnouncement").value=d.settings.announcement||"";
- }catch(e){alert(e.message)}
-}
-async function saveSettings(){
- try{
-  await api("/api/admin/settings",{method:"POST",admin:true,body:{
-   siteName:$("siteName").value,announcement:$("siteAnnouncement").value
-  }});
-  alert("Đã lưu thông báo và tên website.");
- }catch(e){alert(e.message)}
-}
-function selectTab(tab){
- currentTab=tab;
- document.querySelectorAll("[data-tab]").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
-}
-document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>selectTab(b.dataset.tab));
-document.querySelectorAll("[data-filter]").forEach(b=>b.onclick=()=>{
- b.classList.toggle("active");
- currentFilter=b.classList.contains("active")?b.dataset.filter:"";
-});
-function showHome(){selectTab("all")}
-function showNotice(){alert("Thông báo sẽ hiển thị tại đây khi được quản trị viên cập nhật.")}
-$("keyUnit").addEventListener("change",()=>{
- $("keyDuration").disabled=$("keyUnit").value==="permanent";
-});
-verifySaved();
+verifyKey();
 </script>
 </body>
 </html>
